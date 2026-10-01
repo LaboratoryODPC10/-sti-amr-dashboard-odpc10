@@ -666,37 +666,46 @@
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
        // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic (เพิ่ม Co-infection CT/NG)
-        function renderSummaryTable2569() {
+       function renderSummaryTable2569() {
             const tbody = document.getElementById('summaryTable2569Body');
             if (!tbody) return;
 
             const d = DATA_SUMMARY_2569;
-            const overallRate = d.total_patients > 0 ? ((d.total_infected / d.total_patients) * 100).toFixed(1) + '%' : '0.0%';
 
+            // ฟังก์ชันช่วยคำนวณ % อัตโนมัติ (ทศนิยม 1 ตำแหน่ง)
+            const calcRate = (pos, tested) => tested > 0 ? ((pos / tested) * 100).toFixed(1) + '%' : '0.0%';
+
+            // 1. NG Culture
             const ngCultTested = d.ng_culture?.tested ?? 11;
             const ngCultPos = d.ng_culture?.pos ?? d.ng_culture?.positive ?? 5;
-            const ngCultRate = d.ng_culture?.rate ?? '45.5%';
+            const ngCultRate = calcRate(ngCultPos, ngCultTested); // 👈 คำนวณอัตโนมัติ
 
+            // 2. NG PCR
             const ngPcrTested = d.ng_pcr?.tested ?? 17;
             const ngPcrPos = d.ng_pcr?.pos ?? d.ng_pcr?.positive ?? 4;
-            const ngPcrRate = d.ng_pcr?.rate ?? '23.5%';
+            const ngPcrRate = calcRate(ngPcrPos, ngPcrTested); // 👈 คำนวณอัตโนมัติ
 
             const ngOverall = d.ng_overall ?? 6;
 
+            // 3. CT PCR
             const ctPcrTested = d.ct_pcr?.tested ?? 17;
             const ctPcrPos = d.ct_pcr?.pos ?? d.ct_pcr?.positive ?? 4;
-            const ctPcrRate = d.ct_pcr?.rate ?? '23.5%';
+            const ctPcrRate = calcRate(ctPcrPos, ctPcrTested); // 👈 คำนวณอัตโนมัติ
 
-            // 👉 ดึงข้อมูล Co-infection CT/NG ปี 2569
+            // 4. Co-infection CT/NG
             const coData = d.coinfection || {};
             const coTested = coData.tested ?? 17;
             const coPos = coData.pos ?? coData.positive ?? 2;
-            const coRate = coData.rate ?? '11.8%';
+            const coRate = calcRate(coPos, coTested); // 👈 คำนวณอัตโนมัติ
 
+            // 5. KOH / Wet smear
             const fungiData = d.fungi_koh || d.fungi || {};
             const fungiTested = fungiData.tested ?? 17;
             const fungiPos = fungiData.pos ?? fungiData.positive ?? 3;
-            const fungiRate = fungiData.rate ?? '17.6%';
+            const fungiRate = calcRate(fungiPos, fungiTested); // 👈 คำนวณอัตโนมัติ
+
+            // 6. ภาพรวมสะสม
+            const overallRate = calcRate(d.total_infected, d.total_patients);
 
             tbody.innerHTML = `
                 <tr class="hover:bg-slate-50">
@@ -734,7 +743,6 @@
                     <td class="px-4 py-3 text-right font-bold text-teal-700">${ctPcrPos} ราย</td>
                     <td class="px-4 py-3 text-right font-bold text-teal-700 bg-teal-50/40">${ctPcrRate}</td>
                 </tr>
-                <!-- 👉 แถว Co-infection CT/NG เพิ่มใหม่แบบไฮไลต์สีม่วง -->
                 <tr class="bg-purple-50/40 hover:bg-purple-50/70 border-y border-purple-100">
                     <td class="px-4 py-3 font-semibold text-purple-950">
                         <i class="fa-solid fa-code-merge text-purple-600 mr-1.5"></i> การติดเชื้อร่วม (CT &amp; NG Co-infection)
