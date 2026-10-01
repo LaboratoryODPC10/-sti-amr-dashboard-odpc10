@@ -330,7 +330,16 @@
         </section>
 
         <!-- ==================== TAB 2: 10-YEAR TREND ==================== -->
-        <section id="section-trend" class="space-y-8 hidden">
+        <!-- ปุ่มแท็บด้านบน -->
+<button onclick="switchTab('trend')" id="tab-trend" class="tab-btn py-3 text-sm font-medium text-slate-600 hover:text-sky-600 whitespace-nowrap">
+    <i class="fa-solid fa-chart-line mr-2"></i>แนวโน้มแยกวิธีตรวจ (พ.ศ. 2559 - 2569)
+</button>
+
+<!-- ในแท็บ SECTION-TREND -->
+<div class="mb-4">
+    <h3 class="text-base font-bold text-slate-900">แนวโน้มการตรวจและพบเชื้อสะสม (พ.ศ. 2559 - 2569)</h3>
+    <p class="text-xs text-slate-500">ข้อมูลสถิติจำแนกรายปีสะสม (ตรวจสะสม 695 คน ติดเชื้อสะสม 240 เคส)</p>
+</div>
             
            <div class="overflow-x-auto">
     <table class="min-w-full border-collapse text-xs">
@@ -456,18 +465,19 @@
             fungi_koh: { tested: 17, pos: 3, rate: '17.6%' }
         };
 
-        // ข้อมูล 10 ปี (Calc_summary: อัปเดตเชื้อราสะสมรวม 39 เคส)
+       // ข้อมูลสะสมรายปี พ.ศ. 2559 - 2569 (รวม 11 ปี จาก Calc_summary)
         const TREND_10_YEARS = [
-            { year: '2560', patients: 56, ng: 11, ct: 0, fungi: 13, cum_pts: 56, cum_inf: 24, ng_culture: 11, ng_pcr: 0 },
-            { year: '2561', patients: 34, ng: 4, ct: 0, fungi: 4, cum_pts: 90, cum_inf: 32, ng_culture: 4, ng_pcr: 0 },
-            { year: '2562', patients: 63, ng: 15, ct: 0, fungi: 8, cum_pts: 153, cum_inf: 56, ng_culture: 15, ng_pcr: 0 },
-            { year: '2563', patients: 58, ng: 22, ct: 0, fungi: 2, cum_pts: 211, cum_inf: 90, ng_culture: 22, ng_pcr: 0 },
-            { year: '2564', patients: 32, ng: 16, ct: 0, fungi: 3, cum_pts: 243, cum_inf: 124, ng_culture: 16, ng_pcr: 0 },
-            { year: '2565', patients: 47, ng: 22, ct: 0, fungi: 1, cum_pts: 290, cum_inf: 150, ng_culture: 22, ng_pcr: 0 },
-            { year: '2566', patients: 19, ng: 6, ct: 0, fungi: 3, cum_pts: 309, cum_inf: 159, ng_culture: 6, ng_pcr: 0 },
-            { year: '2567', patients: 224, ng: 33, ct: 32, fungi: 0, cum_pts: 533, cum_inf: 161, ng_culture: 10, ng_pcr: 23 },
-            { year: '2568', patients: 38, ng: 17, ct: 8, fungi: 2, cum_pts: 571, cum_inf: 186, ng_culture: 5, ng_pcr: 13 },
-            { year: '2569', patients: 44, ng: 6, ct: 4, fungi: 3, cum_pts: 615, cum_inf: 199, ng_culture: 5, ng_pcr: 4 }
+            { year: '2559', patients: 80, ng: 41, ct: 0, fungi: 0, cum_pts: 80, cum_inf: 41, ng_culture: 34, ng_pcr: 0 },
+            { year: '2560', patients: 56, ng: 11, ct: 0, fungi: 13, cum_pts: 136, cum_inf: 65, ng_culture: 11, ng_pcr: 0 },
+            { year: '2561', patients: 34, ng: 4, ct: 0, fungi: 4, cum_pts: 170, cum_inf: 73, ng_culture: 4, ng_pcr: 0 },
+            { year: '2562', patients: 63, ng: 15, ct: 0, fungi: 8, cum_pts: 233, cum_inf: 96, ng_culture: 15, ng_pcr: 0 },
+            { year: '2563', patients: 58, ng: 22, ct: 0, fungi: 2, cum_pts: 291, cum_inf: 120, ng_culture: 22, ng_pcr: 0 },
+            { year: '2564', patients: 32, ng: 16, ct: 0, fungi: 3, cum_pts: 323, cum_inf: 139, ng_culture: 16, ng_pcr: 0 },
+            { year: '2565', patients: 47, ng: 22, ct: 0, fungi: 1, cum_pts: 370, cum_inf: 162, ng_culture: 22, ng_pcr: 0 },
+            { year: '2566', patients: 19, ng: 6, ct: 0, fungi: 3, cum_pts: 389, cum_inf: 171, ng_culture: 6, ng_pcr: 0 },
+            { year: '2567', patients: 224, ng: 33, ct: 32, fungi: 0, cum_pts: 613, cum_inf: 203, ng_culture: 10, ng_pcr: 23 },
+            { year: '2568', patients: 38, ng: 17, ct: 8, fungi: 2, cum_pts: 651, cum_inf: 228, ng_culture: 5, ng_pcr: 13 },
+            { year: '2569', patients: 44, ng: 6, ct: 4, fungi: 3, cum_pts: 695, cum_inf: 240, ng_culture: 5, ng_pcr: 4 }
         ];
 
         // ข้อมูลสถิติประชากร (รวม 695 พอดีตาม Calc_Summary)
