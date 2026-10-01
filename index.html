@@ -772,34 +772,39 @@
         function renderStandardTables() {
             const trendBody = document.getElementById('trendTableBody');
             const trendFoot = document.getElementById('trendTableFoot');
-            if (trendBody && trendFoot) {
+           if (trendBody && trendFoot) {
                 trendBody.innerHTML = TREND_10_YEARS.map(r => `
-                    <tr class="hover:bg-slate-50">
-                        <td class="px-3 py-2.5 font-bold text-slate-900">${r.year}</td>
-                        <td class="px-3 py-2.5 text-right">${r.patients}</td>
-                        <td class="px-3 py-2.5 text-right bg-sky-50/60 font-bold text-sky-800">${r.ng}</td>
-                        <td class="px-3 py-2.5 text-right bg-teal-50/60 font-bold text-teal-800">${r.ct}</td>
-                        <td class="px-3 py-2.5 text-right bg-amber-50/60 font-bold text-amber-800">${r.fungi}</td>
-                        <td class="px-3 py-2.5 text-right bg-slate-50">${r.cum_pts}</td>
-                        <td class="px-3 py-2.5 text-right bg-rose-50 font-bold text-rose-800">${r.cum_inf}</td>
-                        <td class="px-3 py-2.5 text-right bg-indigo-50/60 font-bold text-indigo-800">${r.ng_culture}</td>
-                        <td class="px-3 py-2.5 text-right bg-purple-50/60 font-bold text-purple-800">${r.ng_pcr}</td>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-3 py-2.5 font-bold text-slate-900 border-r border-slate-100">${r.year}</td>
+                        <td class="px-3 py-2.5 text-right font-medium border-r border-slate-100">${r.patients}</td>
+                        <td class="px-3 py-2.5 text-right bg-sky-50/40 font-bold text-sky-800 border-r border-slate-100">${r.ng}</td>
+                        <td class="px-3 py-2.5 text-right bg-teal-50/40 font-bold text-teal-800 border-r border-slate-100">${r.ct}</td>
+                        <td class="px-3 py-2.5 text-right bg-amber-50/40 font-bold text-amber-800 border-r border-slate-200">${r.fungi}</td>
+                        <td class="px-3 py-2.5 text-right bg-indigo-50/40 font-medium text-indigo-800 border-r border-slate-100">${r.ng_culture}</td>
+                        <td class="px-3 py-2.5 text-right bg-purple-50/40 font-medium text-purple-800 border-r border-slate-200">${r.ng_pcr}</td>
+                        <td class="px-3 py-2.5 text-right bg-slate-50/80 border-r border-slate-100">${r.cum_pts}</td>
+                        <td class="px-3 py-2.5 text-right bg-rose-50/80 font-bold text-rose-800">${r.cum_inf}</td>
                     </tr>
                 `).join('');
 
-                const totalFungi = TREND_10_YEARS.reduce((sum, r) => sum + r.fungi, 0);
+                const totalPts = TREND_10_YEARS.reduce((s, r) => s + r.patients, 0);
+                const totalNG = TREND_10_YEARS.reduce((s, r) => s + r.ng, 0);
+                const totalCT = TREND_10_YEARS.reduce((s, r) => s + r.ct, 0);
+                const totalFungi = TREND_10_YEARS.reduce((s, r) => s + r.fungi, 0);
+                const totalCult = TREND_10_YEARS.reduce((s, r) => s + r.ng_culture, 0);
+                const totalPCR = TREND_10_YEARS.reduce((s, r) => s + r.ng_pcr, 0);
 
                 trendFoot.innerHTML = `
-                    <tr>
-                        <td class="px-3 py-3">รวมทั้งสิ้น (10 ปี)</td>
-                        <td class="px-3 py-3 text-right font-black">615</td>
-                        <td class="px-3 py-3 text-right bg-sky-100 text-sky-900">152</td>
-                        <td class="px-3 py-3 text-right bg-teal-100 text-teal-900">44</td>
-                        <td class="px-3 py-3 text-right bg-amber-100 text-amber-900 font-black">${totalFungi}</td>
-                        <td class="px-3 py-3 text-right bg-slate-200">615</td>
-                        <td class="px-3 py-3 text-right bg-rose-100 text-rose-900">199</td>
-                        <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900">116</td>
-                        <td class="px-3 py-3 text-right bg-purple-100 text-purple-900">40</td>
+                    <tr class="border-t-2 border-slate-300">
+                        <td class="px-3 py-3 border-r border-slate-200 font-black">รวมทั้งสิ้น</td>
+                        <td class="px-3 py-3 text-right font-black border-r border-slate-200">${totalPts}</td>
+                        <td class="px-3 py-3 text-right bg-sky-100 text-sky-900 font-black border-r border-slate-200">${totalNG}</td>
+                        <td class="px-3 py-3 text-right bg-teal-100 text-teal-900 font-black border-r border-slate-200">${totalCT}</td>
+                        <td class="px-3 py-3 text-right bg-amber-100 text-amber-900 font-black border-r border-slate-300">${totalFungi}</td>
+                        <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900 font-black border-r border-slate-200">${totalCult}</td>
+                        <td class="px-3 py-3 text-right bg-purple-100 text-purple-900 font-black border-r border-slate-300">${totalPCR}</td>
+                        <td class="px-3 py-3 text-right bg-slate-200 font-black border-r border-slate-200">${totalPts}</td>
+                        <td class="px-3 py-3 text-right bg-rose-100 text-rose-900 font-black">240</td>
                     </tr>
                 `;
             }
