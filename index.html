@@ -62,7 +62,7 @@
                     <i class="fa-solid fa-chart-pie mr-2"></i>ภาพรวมผู้บริหาร (Overview)
                 </button>
                 <button onclick="switchTab('trend')" id="tab-trend" class="tab-btn py-3 text-sm font-medium text-slate-600 hover:text-sky-600 whitespace-nowrap">
-                    <i class="fa-solid fa-chart-line mr-2"></i>แนวโน้ม 10 ปี แยกวิธีตรวจ
+                    <i class="fa-solid fa-chart-line mr-2"></i>แนวโน้มแยกวิธีตรวจ (พ.ศ. 2559 - 2569)
                 </button>
                 <button onclick="switchTab('amr')" id="tab-amr" class="tab-btn py-3 text-sm font-medium text-slate-600 hover:text-sky-600 whitespace-nowrap">
                     <i class="fa-solid fa-shield-virus mr-2"></i>เฝ้าระวังเชื้อดื้อยา (AMR & MIC)
@@ -164,7 +164,7 @@
                     </div>
                 </div>
 
-                <!-- 5. พบเชื้อรา (KOH / Wet smear) - อัปเดต 39 จาก 133 ตรวจ (29.3%) -->
+                <!-- 5. พบเชื้อรา (KOH / Wet smear) -->
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-amber-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -329,44 +329,131 @@
 
         </section>
 
-        <!-- ==================== TAB 2: 10-YEAR TREND ==================== -->
-        <!-- ปุ่มแท็บด้านบน -->
-<button onclick="switchTab('trend')" id="tab-trend" class="tab-btn py-3 text-sm font-medium text-slate-600 hover:text-sky-600 whitespace-nowrap">
-    <i class="fa-solid fa-chart-line mr-2"></i>แนวโน้มแยกวิธีตรวจ (พ.ศ. 2559 - 2569)
-</button>
-
-<!-- ในแท็บ SECTION-TREND -->
-<div class="mb-4">
-    <h3 class="text-base font-bold text-slate-900">แนวโน้มการตรวจและพบเชื้อสะสม (พ.ศ. 2559 - 2569)</h3>
-    <p class="text-xs text-slate-500">ข้อมูลสถิติจำแนกรายปีสะสม (ตรวจสะสม 695 คน ติดเชื้อสะสม 240 เคส)</p>
-</div>
+        <!-- ==================== TAB 2: TREND 2559 - 2569 ==================== -->
+        <section id="section-trend" class="space-y-8 hidden">
             
-           <div class="overflow-x-auto">
-    <table class="min-w-full border-collapse text-xs">
-        <thead>
-            <!-- แถวที่ 1: จัดกลุ่มหัวข้อใหญ่ (หมวดหมู่ชัดเจน) -->
-            <tr class="bg-slate-100 text-slate-700 text-center font-bold border-b border-slate-200">
-                <th rowspan="2" class="px-3 py-3 text-left border-r border-slate-200 bg-slate-200/60">ปี พ.ศ.</th>
-                <th rowspan="2" class="px-3 py-3 text-right border-r border-slate-200 bg-slate-200/60">ผู้รับบริการ<br><span class="text-[10px] font-normal text-slate-500">(รายปี)</span></th>
-                <th colspan="3" class="px-3 py-2 border-r border-slate-200 bg-sky-50 text-sky-900">ตรวจพบเชื้อจำแนกตามชนิดโรค (เคส)</th>
-                <th colspan="2" class="px-3 py-2 border-r border-slate-200 bg-indigo-50 text-indigo-900">เฉพาะหนองในแยกวิธีตรวจ (เคส)</th>
-                <th colspan="2" class="px-3 py-2 bg-slate-200/80 text-slate-800">ยอดสะสมต่อเนื่อง (Cumulative)</th>
-            </tr>
-            <!-- แถวที่ 2: หัวข้อย่อยแต่ละคอลัมน์ -->
-            <tr class="bg-slate-50 text-slate-600 font-semibold border-b-2 border-slate-300">
-                <th class="px-3 py-2 text-right bg-sky-50/60 text-sky-800 border-r border-slate-100">หนองใน (NG)</th>
-                <th class="px-3 py-2 text-right bg-teal-50/60 text-teal-800 border-r border-slate-100">คลามีเดีย (CT)</th>
-                <th class="px-3 py-2 text-right bg-amber-50/60 text-amber-800 border-r border-slate-200">เชื้อรา (KOH/Wet)</th>
-                <th class="px-3 py-2 text-right bg-indigo-50/60 text-indigo-800 border-r border-slate-100">เพาะเชื้อ (Culture)</th>
-                <th class="px-3 py-2 text-right bg-purple-50/60 text-purple-800 border-r border-slate-200">PCR สารพันธุกรรม</th>
-                <th class="px-3 py-2 text-right bg-slate-100 border-r border-slate-100">ตรวจสะสม (คน)</th>
-                <th class="px-3 py-2 text-right bg-rose-50 text-rose-800 font-bold">ติดเชื้อสะสม (เคส)</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-200 bg-white" id="trendTableBody"></tbody>
-        <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="trendTableFoot"></tfoot>
-    </table>
-</div>
+            <!-- กราฟแนวโน้มสะสม -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
+                <div class="mb-4">
+                    <h3 class="text-base font-bold text-slate-900">แนวโน้มการตรวจและพบเชื้อสะสม (พ.ศ. 2559 - 2569)</h3>
+                    <p class="text-xs text-slate-500">ข้อมูลสถิติจำแนกรายปีสะสม 11 ปีงบประมาณ (ตรวจสะสม 695 คน ติดเชื้อสะสม 240 เคส)</p>
+                </div>
+                <div class="relative h-80 sm:h-96">
+                    <canvas id="trend10YearsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- ตารางสรุปสะสมรายปี หัวตาราง 2 ชั้นจัดกลุ่มชัดเจน -->
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900">ตารางสรุปผลการให้บริการตรวจวิเคราะห์สะสม (พ.ศ. 2559 - 2569)</h4>
+                        <p class="text-xs text-slate-500">จำแนกตามชนิดเชื้อที่ตรวจพบ วิธีตรวจวิเคราะห์ และยอดสะสมต่อเนื่อง</p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border-collapse text-xs">
+                        <thead>
+                            <!-- แถวที่ 1: จัดกลุ่มหัวข้อใหญ่ -->
+                            <tr class="bg-slate-100 text-slate-700 text-center font-bold border-b border-slate-200">
+                                <th rowspan="2" class="px-3 py-3 text-left border-r border-slate-200 bg-slate-200/60">ปี พ.ศ.</th>
+                                <th rowspan="2" class="px-3 py-3 text-right border-r border-slate-200 bg-slate-200/60">ผู้รับบริการ<br><span class="text-[10px] font-normal text-slate-500">(รายปี)</span></th>
+                                <th colspan="3" class="px-3 py-2 border-r border-slate-200 bg-sky-50 text-sky-900">ตรวจพบเชื้อจำแนกตามชนิดโรค (เคส)</th>
+                                <th colspan="2" class="px-3 py-2 border-r border-slate-200 bg-indigo-50 text-indigo-900">เฉพาะหนองในแยกวิธีตรวจ (เคส)</th>
+                                <th colspan="2" class="px-3 py-2 bg-slate-200/80 text-slate-800">ยอดสะสมต่อเนื่อง (Cumulative)</th>
+                            </tr>
+                            <!-- แถวที่ 2: หัวข้อย่อยแต่ละคอลัมน์ -->
+                            <tr class="bg-slate-50 text-slate-600 font-semibold border-b-2 border-slate-300">
+                                <th class="px-3 py-2 text-right bg-sky-50/60 text-sky-800 border-r border-slate-100">หนองใน (NG)</th>
+                                <th class="px-3 py-2 text-right bg-teal-50/60 text-teal-800 border-r border-slate-100">คลามีเดีย (CT)</th>
+                                <th class="px-3 py-2 text-right bg-amber-50/60 text-amber-800 border-r border-slate-200">เชื้อรา (KOH/Wet)</th>
+                                <th class="px-3 py-2 text-right bg-indigo-50/60 text-indigo-800 border-r border-slate-100">เพาะเชื้อ (Culture)</th>
+                                <th class="px-3 py-2 text-right bg-purple-50/60 text-purple-800 border-r border-slate-200">PCR สารพันธุกรรม</th>
+                                <th class="px-3 py-2 text-right bg-slate-100 border-r border-slate-100">ตรวจสะสม (คน)</th>
+                                <th class="px-3 py-2 text-right bg-rose-50 text-rose-800 font-bold">ติดเชื้อสะสม (เคส)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="trendTableBody"></tbody>
+                        <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="trendTableFoot"></tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== TAB 3: AMR & MIC ==================== -->
+        <section id="section-amr" class="space-y-8 hidden">
+            
+            <!-- 1. AMR Profile Bar Chart -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
+                <h3 class="text-base font-bold text-slate-900 mb-1">สถานการณ์ความไวต่อยาของเชื้อหนองใน (AMR Profile สะสม)</h3>
+                <p class="text-xs text-slate-500 mb-4">อัตราส่วนไวต่อยา (S) และดื้อยา (R) ต่อยาต้านจุลชีพ 6 ชนิดหลักจากฐานข้อมูล</p>
+                <div class="relative h-80">
+                    <canvas id="amrBarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 2. ตารางอัตราดื้อยารายปี (พ.ศ. 2559 - 2569) -->
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900">ตารางอัตราการดื้อยาต้านจุลชีพรายปี (พ.ศ. 2559 - 2569)</h4>
+                        <p class="text-xs text-slate-500">ร้อยละการดื้อยาต้านจุลชีพ 6 ชนิดและค่าเฉลี่ยดื้อยารวม (Mean AMR)</p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="px-3 py-3 text-left">ปี พ.ศ.</th>
+                                <th class="px-3 py-3 text-right">Penicillin</th>
+                                <th class="px-3 py-3 text-right">Ciprofloxacin</th>
+                                <th class="px-3 py-3 text-right">Spectinomycin</th>
+                                <th class="px-3 py-3 text-right">Tetracycline</th>
+                                <th class="px-3 py-3 text-right">Azithromycin</th>
+                                <th class="px-3 py-3 text-right">Ceftriaxone</th>
+                                <th class="px-3 py-3 text-right font-bold bg-amber-50 text-amber-900">เฉลี่ย 6 ชนิด</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="amrYearlyTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. MIC Distribution Bar Chart -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 flex items-center">
+                            <i class="fa-solid fa-chart-column text-sky-600 mr-2"></i>
+                            การแจกแจงความถี่ค่า MIC ย้อนหลัง 5 ปี (พ.ศ. 2565 - 2569)
+                        </h3>
+                        <p class="text-xs text-slate-500">ติดตามการกระจายตัวของค่า MIC และเฝ้าระวังการขยับสูงขึ้นของเชื้อ Neisseria gonorrhoeae (MIC Creep)</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label for="drugSelector" class="text-xs font-semibold text-slate-600">เลือกยาต้านจุลชีพ:</label>
+                        <select id="drugSelector" onchange="updateMICChart(this.value)" class="text-xs font-medium bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                            <option value="CRO">Ceftriaxone (CRO) - ยาฉีดหลัก</option>
+                            <option value="CFM">Cefixime (CFM) - ยากินหลัก</option>
+                            <option value="AZM">Azithromycin (AZM) - ยาร่วมรักษา</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="micInfoBanner" class="mb-4 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg flex flex-wrap justify-between items-center text-xs text-slate-600">
+                    <div>
+                        <strong>เกณฑ์มาตรฐาน (Breakpoint):</strong> <span id="breakpointText" class="text-emerald-700 font-bold">ไวต่อยา (S) เมื่อ MIC ≤ 0.25 mg/L</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500">
+                        *หากแท่งกราฟปีหลังๆ ขยับตัวไปทางขวา แสดงว่าเกิดการลดความไวของเชื้อในพื้นที่
+                    </div>
+                </div>
+
+                <div class="relative h-80">
+                    <canvas id="micDistributionChart"></canvas>
+                </div>
+            </div>
+
         </section>
 
         <!-- ==================== TAB 4: EQA ==================== -->
@@ -465,7 +552,7 @@
             fungi_koh: { tested: 17, pos: 3, rate: '17.6%' }
         };
 
-       // ข้อมูลสะสมรายปี พ.ศ. 2559 - 2569 (รวม 11 ปี จาก Calc_summary)
+        // ข้อมูลสะสมรายปี พ.ศ. 2559 - 2569 (รวม 11 ปี จาก Calc_summary)
         const TREND_10_YEARS = [
             { year: '2559', patients: 80, ng: 41, ct: 0, fungi: 0, cum_pts: 80, cum_inf: 41, ng_culture: 34, ng_pcr: 0 },
             { year: '2560', patients: 56, ng: 11, ct: 0, fungi: 13, cum_pts: 136, cum_inf: 65, ng_culture: 11, ng_pcr: 0 },
@@ -626,52 +713,45 @@
                     <td class="px-3 py-3 text-right bg-amber-100 text-amber-900 font-black">${sumFungi}</td>
                     <td class="px-3 py-3 text-right font-black text-slate-900">${sumTotalPos}</td>
                     <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900 font-black">${overallRate}</td>
-                    <td class="px-4 py-3 text-center text-rose-700 font-bold">⚠️️ พบเชื้อดื้อยา 1 เคส (พ.ค. 69)</td>
+                    <td class="px-4 py-3 text-center text-rose-700 font-bold">⚠️ พบเชื้อดื้อยา 1 เคส (พ.ค. 69)</td>
                     <td class="px-4 py-3 text-rose-700 text-[11px]">✓ เฝ้าระวัง MIC Shift</td>
                 </tr>
             `;
         }
 
-        // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic (พร้อม Co-infection และคำนวณ % อัตโนมัติ)
+        // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic
         function renderSummaryTable2569() {
             const tbody = document.getElementById('summaryTable2569Body');
             if (!tbody) return;
 
             const d = DATA_SUMMARY_2569;
 
-            // ฟังก์ชันช่วยคำนวณ % อัตโนมัติ (ทศนิยม 1 ตำแหน่ง)
             const calcRate = (pos, tested) => tested > 0 ? ((pos / tested) * 100).toFixed(1) + '%' : '0.0%';
 
-            // 1. NG Culture
             const ngCultTested = d.ng_culture?.tested ?? 11;
             const ngCultPos = d.ng_culture?.pos ?? d.ng_culture?.positive ?? 5;
             const ngCultRate = calcRate(ngCultPos, ngCultTested);
 
-            // 2. NG PCR
             const ngPcrTested = d.ng_pcr?.tested ?? 17;
             const ngPcrPos = d.ng_pcr?.pos ?? d.ng_pcr?.positive ?? 4;
             const ngPcrRate = calcRate(ngPcrPos, ngPcrTested);
 
             const ngOverall = d.ng_overall ?? 6;
 
-            // 3. CT PCR
             const ctPcrTested = d.ct_pcr?.tested ?? 17;
             const ctPcrPos = d.ct_pcr?.pos ?? d.ct_pcr?.positive ?? 4;
             const ctPcrRate = calcRate(ctPcrPos, ctPcrTested);
 
-            // 4. Co-infection CT/NG
             const coData = d.coinfection || {};
             const coTested = coData.tested ?? 17;
             const coPos = coData.pos ?? coData.positive ?? 2;
             const coRate = calcRate(coPos, coTested);
 
-            // 5. KOH / Wet smear
             const fungiData = d.fungi_koh || d.fungi || {};
             const fungiTested = fungiData.tested ?? 17;
             const fungiPos = fungiData.pos ?? fungiData.positive ?? 3;
             const fungiRate = calcRate(fungiPos, fungiTested);
 
-            // 6. ภาพรวมสะสม
             const overallRate = calcRate(d.total_infected, d.total_patients);
 
             tbody.innerHTML = `
@@ -739,7 +819,7 @@
             `;
         }
 
-        // 3. เรนเดอร์ตารางประชากรและหน่วยงาน (คำนวณผลรวมอัตโนมัติ)
+        // 3. เรนเดอร์ตารางประชากรและหน่วยงาน
         function renderDemographicTables() {
             const ageBody = document.getElementById('ageTableBody');
             if (ageBody) {
@@ -778,11 +858,11 @@
             }
         }
 
-        // 4. เรนเดอร์ตารางสถิติสะสม 10 ปี, AMR และ EQA (อัปเดตผลรวมเชื้อราอัตโนมัติ)
+        // 4. เรนเดอร์ตารางสถิติสะสม 11 ปี, AMR และ EQA
         function renderStandardTables() {
             const trendBody = document.getElementById('trendTableBody');
             const trendFoot = document.getElementById('trendTableFoot');
-           if (trendBody && trendFoot) {
+            if (trendBody && trendFoot) {
                 trendBody.innerHTML = TREND_10_YEARS.map(r => `
                     <tr class="hover:bg-slate-50 transition-colors">
                         <td class="px-3 py-2.5 font-bold text-slate-900 border-r border-slate-100">${r.year}</td>
