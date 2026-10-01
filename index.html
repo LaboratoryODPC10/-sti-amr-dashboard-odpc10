@@ -665,56 +665,7 @@
 
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
-        // 1. เรนเดอร์ตารางเฝ้าระวังรายเดือน ปี 2569
-        function renderCurrentYearMonthlyTable() {
-            const tbody = document.getElementById('currentYearMonthlyTableBody');
-            const tfoot = document.getElementById('currentYearMonthlyTableFoot');
-            if (!tbody || !tfoot) return;
-
-            let sumTested = 0, sumNG = 0, sumCT = 0, sumFungi = 0, sumTotalPos = 0;
-
-            tbody.innerHTML = MONTHLY_SURVEILLANCE_2569.map(d => {
-                sumTested += d.tested;
-                sumNG += d.ng;
-                sumCT += d.ct;
-                sumFungi += d.fungi;
-                sumTotalPos += d.total_pos;
-
-                const isAlert = d.amr_badge.includes('ดื้อยา');
-
-                return `
-                    <tr class="hover:bg-slate-50 transition-colors ${isAlert ? 'bg-rose-50/40' : ''}">
-                        <td class="px-3 py-2.5 font-bold text-slate-900">${d.month}</td>
-                        <td class="px-3 py-2.5 text-right font-medium">${d.tested}</td>
-                        <td class="px-3 py-2.5 text-right bg-sky-50/50 text-sky-800 font-bold">${d.ng > 0 ? d.ng : '-'}</td>
-                        <td class="px-3 py-2.5 text-right bg-teal-50/50 text-teal-800 font-bold">${d.ct > 0 ? d.ct : '-'}</td>
-                        <td class="px-3 py-2.5 text-right bg-amber-50/50 text-amber-800 font-bold">${d.fungi > 0 ? d.fungi : '-'}</td>
-                        <td class="px-3 py-2.5 text-right font-black text-slate-900">${d.total_pos > 0 ? d.total_pos : '-'}</td>
-                        <td class="px-3 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${d.pos_rate}</td>
-                        <td class="px-4 py-2.5 text-center text-xs font-semibold">${d.amr_badge}</td>
-                        <td class="px-4 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
-
-            tfoot.innerHTML = `
-                <tr>
-                    <td class="px-3 py-3">รวมทั้งสิ้น (Total FY 2569)</td>
-                    <td class="px-3 py-3 text-right font-black">${sumTested}</td>
-                    <td class="px-3 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNG}</td>
-                    <td class="px-3 py-3 text-right bg-teal-100 text-teal-900 font-black">${sumCT}</td>
-                    <td class="px-3 py-3 text-right bg-amber-100 text-amber-900 font-black">${sumFungi}</td>
-                    <td class="px-3 py-3 text-right font-black text-slate-900">${sumTotalPos}</td>
-                    <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900 font-black">${overallRate}</td>
-                    <td class="px-4 py-3 text-center text-rose-700 font-bold">⚠️ พบเชื้อดื้อยา 1 เคส (พ.ค. 69)</td>
-                    <td class="px-4 py-3 text-rose-700 text-[11px]">✓ เฝ้าระวัง MIC Shift</td>
-                </tr>
-            `;
-        }
-
-        // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic
+       // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic (เพิ่ม Co-infection CT/NG)
         function renderSummaryTable2569() {
             const tbody = document.getElementById('summaryTable2569Body');
             if (!tbody) return;
@@ -735,6 +686,12 @@
             const ctPcrTested = d.ct_pcr?.tested ?? 17;
             const ctPcrPos = d.ct_pcr?.pos ?? d.ct_pcr?.positive ?? 4;
             const ctPcrRate = d.ct_pcr?.rate ?? '23.5%';
+
+            // 👉 ดึงข้อมูล Co-infection CT/NG ปี 2569
+            const coData = d.coinfection || {};
+            const coTested = coData.tested ?? 17;
+            const coPos = coData.pos ?? coData.positive ?? 2;
+            const coRate = coData.rate ?? '11.8%';
 
             const fungiData = d.fungi_koh || d.fungi || {};
             const fungiTested = fungiData.tested ?? 17;
@@ -777,9 +734,19 @@
                     <td class="px-4 py-3 text-right font-bold text-teal-700">${ctPcrPos} ราย</td>
                     <td class="px-4 py-3 text-right font-bold text-teal-700 bg-teal-50/40">${ctPcrRate}</td>
                 </tr>
+                <!-- 👉 แถว Co-infection CT/NG เพิ่มใหม่แบบไฮไลต์สีม่วง -->
+                <tr class="bg-purple-50/40 hover:bg-purple-50/70 border-y border-purple-100">
+                    <td class="px-4 py-3 font-semibold text-purple-950">
+                        <i class="fa-solid fa-code-merge text-purple-600 mr-1.5"></i> การติดเชื้อร่วม (CT &amp; NG Co-infection)
+                    </td>
+                    <td class="px-4 py-3 text-slate-600">Real-time Multiplex PCR (Dual Pathogen)</td>
+                    <td class="px-4 py-3 text-right font-medium">${coTested} ตัวอย่าง</td>
+                    <td class="px-4 py-3 text-right font-bold text-purple-700">${coPos} ราย</td>
+                    <td class="px-4 py-3 text-right font-bold text-purple-700 bg-purple-100/60">${coRate}</td>
+                </tr>
                 <tr class="hover:bg-slate-50">
                     <td class="px-4 py-3 font-semibold text-amber-900">
-                        <i class="fa-solid fa-circle-nodes text-amber-600 mr-1.5"></i> ตรวจเชื้อรา (KOH Preparation)
+                        <i class="fa-solid fa-circle-nodes text-amber-600 mr-1.5"></i> ตรวจเชื้อรา (KOH / Wet smear)
                     </td>
                     <td class="px-4 py-3 text-slate-600">Direct Microscopy</td>
                     <td class="px-4 py-3 text-right font-medium">${fungiTested} ตัวอย่าง</td>
@@ -796,7 +763,6 @@
                 </tr>
             `;
         }
-
         // 3. เรนเดอร์ตารางประชากรและหน่วยงาน (ฟังก์ชันเดียว คำนวณผลรวมอัตโนมัติ)
         function renderDemographicTables() {
             const ageBody = document.getElementById('ageTableBody');
