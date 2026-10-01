@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         <div class="mt-2.5 flex items-baseline">
-                            <span class="text-2xl sm:text-3xl font-black text-amber-600" id="kpi-fungi-pos">56</span>
+                            <span class="text-2xl sm:text-3xl font-black text-amber-600" id="kpi-fungi-pos">39</span>
                             <span class="text-[11px] text-slate-400 ml-1">/ 131 ตรวจ</span>
                         </div>
                     </div>
@@ -551,15 +551,15 @@
 
         // ข้อมูล 10 ปี (Calc_summary)
         const TREND_10_YEARS = [
-            { year: '2560', patients: 56, ng: 11, ct: 0, fungi: 0, cum_pts: 56, cum_inf: 11, ng_culture: 11, ng_pcr: 0 },
-            { year: '2561', patients: 34, ng: 4, ct: 0, fungi: 0, cum_pts: 90, cum_inf: 15, ng_culture: 4, ng_pcr: 0 },
-            { year: '2562', patients: 63, ng: 15, ct: 0, fungi: 0, cum_pts: 153, cum_inf: 30, ng_culture: 15, ng_pcr: 0 },
-            { year: '2563', patients: 58, ng: 22, ct: 0, fungi: 0, cum_pts: 211, cum_inf: 52, ng_culture: 22, ng_pcr: 0 },
-            { year: '2564', patients: 32, ng: 16, ct: 0, fungi: 0, cum_pts: 243, cum_inf: 68, ng_culture: 16, ng_pcr: 0 },
-            { year: '2565', patients: 47, ng: 22, ct: 0, fungi: 0, cum_pts: 290, cum_inf: 90, ng_culture: 22, ng_pcr: 0 },
-            { year: '2566', patients: 19, ng: 6, ct: 0, fungi: 0, cum_pts: 309, cum_inf: 96, ng_culture: 6, ng_pcr: 0 },
+            { year: '2560', patients: 56, ng: 11, ct: 0, fungi: 13, cum_pts: 56, cum_inf: 11, ng_culture: 11, ng_pcr: 0 },
+            { year: '2561', patients: 34, ng: 4, ct: 0, fungi: 4, cum_pts: 90, cum_inf: 15, ng_culture: 4, ng_pcr: 0 },
+            { year: '2562', patients: 63, ng: 15, ct: 0, fungi: 8, cum_pts: 153, cum_inf: 30, ng_culture: 15, ng_pcr: 0 },
+            { year: '2563', patients: 58, ng: 22, ct: 0, fungi: 2, cum_pts: 211, cum_inf: 52, ng_culture: 22, ng_pcr: 0 },
+            { year: '2564', patients: 32, ng: 16, ct: 0, fungi: 3, cum_pts: 243, cum_inf: 68, ng_culture: 16, ng_pcr: 0 },
+            { year: '2565', patients: 47, ng: 22, ct: 0, fungi: 1, cum_pts: 290, cum_inf: 90, ng_culture: 22, ng_pcr: 0 },
+            { year: '2566', patients: 19, ng: 6, ct: 0, fungi: 3, cum_pts: 309, cum_inf: 96, ng_culture: 6, ng_pcr: 0 },
             { year: '2567', patients: 224, ng: 33, ct: 32, fungi: 0, cum_pts: 533, cum_inf: 161, ng_culture: 10, ng_pcr: 23 },
-            { year: '2568', patients: 38, ng: 17, ct: 8, fungi: 0, cum_pts: 571, cum_inf: 186, ng_culture: 5, ng_pcr: 13 },
+            { year: '2568', patients: 38, ng: 17, ct: 8, fungi: 2, cum_pts: 571, cum_inf: 186, ng_culture: 5, ng_pcr: 13 },
             { year: '2569', patients: 44, ng: 6, ct: 4, fungi: 3, cum_pts: 615, cum_inf: 199, ng_culture: 5, ng_pcr: 4 }
         ];
 
@@ -1014,7 +1014,7 @@
                     type: 'doughnut',
                     data: {
                         labels: ['หนองใน (NG Pos)', 'คลามีเดีย (CT Pos)', 'เชื้อรา (KOH)', 'ไม่พบเชื้อ'],
-                        datasets: [{ data: [191, 44, 56, 404], backgroundColor: ['#0284c7', '#0d9488', '#f59e0b', '#e2e8f0'], borderWidth: 0 }]
+                        datasets: [{ data: [191, 44, 39, 404], backgroundColor: ['#0284c7', '#0d9488', '#f59e0b', '#e2e8f0'], borderWidth: 0 }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
                 });
@@ -1026,7 +1026,7 @@
                     type: 'doughnut',
                     data: {
                         labels: ['ท่อปัสสาวะ (Urethra)', 'อื่นๆ / ปากมดลูก', 'พลาสมา / เลือด', 'ผิวหนัง (Skin/KOH)'],
-                        datasets: [{ data: [557, 114, 70, 17], backgroundColor: ['#0369a1', '#8b5cf6', '#ec4899', '#fbbf24'], borderWidth: 0 }]
+                        datasets: [{ data: [557, 114, 70, 133], backgroundColor: ['#0369a1', '#8b5cf6', '#ec4899', '#fbbf24'], borderWidth: 0 }]
                     },
                     options: {
                         responsive: true,
