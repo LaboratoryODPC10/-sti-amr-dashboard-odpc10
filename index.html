@@ -80,7 +80,7 @@
         <!-- ==================== TAB 1: OVERVIEW ==================== -->
         <section id="section-overview" class="space-y-8">
 
-            <!-- 1. KPI Cards แถวเดียว 6 คอลัมน์สมบูรณ์ (แก้ไขโครงสร้างการ์ดใบที่ 1 ให้ครบถ้วน) -->
+            <!-- 1. KPI Cards แถวเดียว 6 คอลัมน์สมบูรณ์ -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
                 
                 <!-- 1. ผู้รับบริการสะสม -->
@@ -144,45 +144,45 @@
                     </div>
                 </div>
 
-               <!-- 4. ติดเชื้อร่วม (CT/NG Co-infection) -->
-<div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-purple-300 transition-all flex flex-col justify-between">
-    <div>
-        <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold text-purple-700 uppercase tracking-wider">ติดเชื้อร่วม (Co-inf)</span>
-            <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shadow-sm">
-                <i class="fa-solid fa-code-merge text-xs"></i>
-            </div>
-        </div>
-        <div class="mt-2.5">
-            <span class="text-2xl sm:text-3xl font-black text-purple-700" id="kpi-coinfect">18</span>
-            <span class="text-[11px] text-slate-500 ml-0.5">เคส</span>
-        </div>
-    </div>
-    <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-        <span class="text-slate-500">CT+ &amp; NG+</span>
-        <span class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">Dual Pathogen</span>
-    </div>
-</div>
+                <!-- 4. ติดเชื้อร่วม (CT/NG Co-infection) -->
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-purple-300 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-purple-700 uppercase tracking-wider">ติดเชื้อร่วม (Co-inf)</span>
+                            <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-code-merge text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2.5">
+                            <span class="text-2xl sm:text-3xl font-black text-purple-700" id="kpi-coinfect">18</span>
+                            <span class="text-[11px] text-slate-500 ml-0.5">เคส</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-500">CT+ &amp; NG+</span>
+                        <span class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">Dual Pathogen</span>
+                    </div>
+                </div>
 
-              <!-- 5. พบเชื้อรา (KOH / Wet smear) -->
-<div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-amber-300 transition-all flex flex-col justify-between">
-    <div>
-        <div class="flex items-center justify-between">
-            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">KOH / Wet smear</span>
-            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm">
-                <i class="fa-solid fa-circle-nodes text-xs"></i>
-            </div>
-        </div>
-        <div class="mt-2.5 flex items-baseline">
-            <span class="text-2xl sm:text-3xl font-black text-amber-600" id="kpi-fungi-pos">56</span>
-            <span class="text-[11px] text-slate-400 ml-1">/ 131 ตรวจ</span>
-        </div>
-    </div>
-    <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-        <span class="text-slate-500">Positivity</span>
-        <span class="font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">42.7%</span>
-    </div>
-</div>
+                <!-- 5. พบเชื้อรา (KOH / Wet smear) -->
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-amber-300 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">KOH / Wet smear</span>
+                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-circle-nodes text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2.5 flex items-baseline">
+                            <span class="text-2xl sm:text-3xl font-black text-amber-600" id="kpi-fungi-pos">56</span>
+                            <span class="text-[11px] text-slate-400 ml-1">/ 131 ตรวจ</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-500">Positivity</span>
+                        <span class="font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">42.7%</span>
+                    </div>
+                </div>
 
                 <!-- 6. ความไวต่อยาหลัก Ceftriaxone -->
                 <div class="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-4 rounded-2xl shadow-sm flex flex-col justify-between">
@@ -545,6 +545,7 @@
             ng_pcr: { tested: 17, pos: 4, rate: '23.5%' },
             ng_overall: 6,
             ct_pcr: { tested: 17, pos: 4, rate: '23.5%' },
+            coinfection: { tested: 17, pos: 2, rate: '11.8%' },
             fungi_koh: { tested: 17, pos: 3, rate: '17.6%' }
         };
 
@@ -665,8 +666,57 @@
 
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
-       // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic (เพิ่ม Co-infection CT/NG)
-       function renderSummaryTable2569() {
+        // 1. เรนเดอร์ตารางเฝ้าระวังรายเดือน ปี 2569 (ใส่กลับมาเรียบร้อย)
+        function renderCurrentYearMonthlyTable() {
+            const tbody = document.getElementById('currentYearMonthlyTableBody');
+            const tfoot = document.getElementById('currentYearMonthlyTableFoot');
+            if (!tbody || !tfoot) return;
+
+            let sumTested = 0, sumNG = 0, sumCT = 0, sumFungi = 0, sumTotalPos = 0;
+
+            tbody.innerHTML = MONTHLY_SURVEILLANCE_2569.map(d => {
+                sumTested += d.tested;
+                sumNG += d.ng;
+                sumCT += d.ct;
+                sumFungi += d.fungi;
+                sumTotalPos += d.total_pos;
+
+                const isAlert = d.amr_badge.includes('ดื้อยา');
+
+                return `
+                    <tr class="hover:bg-slate-50 transition-colors ${isAlert ? 'bg-rose-50/40' : ''}">
+                        <td class="px-3 py-2.5 font-bold text-slate-900">${d.month}</td>
+                        <td class="px-3 py-2.5 text-right font-medium">${d.tested}</td>
+                        <td class="px-3 py-2.5 text-right bg-sky-50/50 text-sky-800 font-bold">${d.ng > 0 ? d.ng : '-'}</td>
+                        <td class="px-3 py-2.5 text-right bg-teal-50/50 text-teal-800 font-bold">${d.ct > 0 ? d.ct : '-'}</td>
+                        <td class="px-3 py-2.5 text-right bg-amber-50/50 text-amber-800 font-bold">${d.fungi > 0 ? d.fungi : '-'}</td>
+                        <td class="px-3 py-2.5 text-right font-black text-slate-900">${d.total_pos > 0 ? d.total_pos : '-'}</td>
+                        <td class="px-3 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${d.pos_rate}</td>
+                        <td class="px-4 py-2.5 text-center text-xs font-semibold">${d.amr_badge}</td>
+                        <td class="px-4 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
+
+            tfoot.innerHTML = `
+                <tr>
+                    <td class="px-3 py-3">รวมทั้งสิ้น (Total FY 2569)</td>
+                    <td class="px-3 py-3 text-right font-black">${sumTested}</td>
+                    <td class="px-3 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNG}</td>
+                    <td class="px-3 py-3 text-right bg-teal-100 text-teal-900 font-black">${sumCT}</td>
+                    <td class="px-3 py-3 text-right bg-amber-100 text-amber-900 font-black">${sumFungi}</td>
+                    <td class="px-3 py-3 text-right font-black text-slate-900">${sumTotalPos}</td>
+                    <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900 font-black">${overallRate}</td>
+                    <td class="px-4 py-3 text-center text-rose-700 font-bold">⚠️ พบเชื้อดื้อยา 1 เคส (พ.ค. 69)</td>
+                    <td class="px-4 py-3 text-rose-700 text-[11px]">✓ เฝ้าระวัง MIC Shift</td>
+                </tr>
+            `;
+        }
+
+        // 2. เรนเดอร์ตารางสรุปปี 2569 แบบ Dynamic (พร้อม Co-infection และคำนวณ % อัตโนมัติ)
+        function renderSummaryTable2569() {
             const tbody = document.getElementById('summaryTable2569Body');
             if (!tbody) return;
 
@@ -678,31 +728,31 @@
             // 1. NG Culture
             const ngCultTested = d.ng_culture?.tested ?? 11;
             const ngCultPos = d.ng_culture?.pos ?? d.ng_culture?.positive ?? 5;
-            const ngCultRate = calcRate(ngCultPos, ngCultTested); // 👈 คำนวณอัตโนมัติ
+            const ngCultRate = calcRate(ngCultPos, ngCultTested);
 
             // 2. NG PCR
             const ngPcrTested = d.ng_pcr?.tested ?? 17;
             const ngPcrPos = d.ng_pcr?.pos ?? d.ng_pcr?.positive ?? 4;
-            const ngPcrRate = calcRate(ngPcrPos, ngPcrTested); // 👈 คำนวณอัตโนมัติ
+            const ngPcrRate = calcRate(ngPcrPos, ngPcrTested);
 
             const ngOverall = d.ng_overall ?? 6;
 
             // 3. CT PCR
             const ctPcrTested = d.ct_pcr?.tested ?? 17;
             const ctPcrPos = d.ct_pcr?.pos ?? d.ct_pcr?.positive ?? 4;
-            const ctPcrRate = calcRate(ctPcrPos, ctPcrTested); // 👈 คำนวณอัตโนมัติ
+            const ctPcrRate = calcRate(ctPcrPos, ctPcrTested);
 
             // 4. Co-infection CT/NG
             const coData = d.coinfection || {};
             const coTested = coData.tested ?? 17;
             const coPos = coData.pos ?? coData.positive ?? 2;
-            const coRate = calcRate(coPos, coTested); // 👈 คำนวณอัตโนมัติ
+            const coRate = calcRate(coPos, coTested);
 
             // 5. KOH / Wet smear
             const fungiData = d.fungi_koh || d.fungi || {};
             const fungiTested = fungiData.tested ?? 17;
             const fungiPos = fungiData.pos ?? fungiData.positive ?? 3;
-            const fungiRate = calcRate(fungiPos, fungiTested); // 👈 คำนวณอัตโนมัติ
+            const fungiRate = calcRate(fungiPos, fungiTested);
 
             // 6. ภาพรวมสะสม
             const overallRate = calcRate(d.total_infected, d.total_patients);
@@ -771,7 +821,8 @@
                 </tr>
             `;
         }
-        // 3. เรนเดอร์ตารางประชากรและหน่วยงาน (ฟังก์ชันเดียว คำนวณผลรวมอัตโนมัติ)
+
+        // 3. เรนเดอร์ตารางประชากรและหน่วยงาน (คำนวณผลรวมอัตโนมัติ)
         function renderDemographicTables() {
             const ageBody = document.getElementById('ageTableBody');
             if (ageBody) {
@@ -963,7 +1014,7 @@
                     type: 'doughnut',
                     data: {
                         labels: ['หนองใน (NG Pos)', 'คลามีเดีย (CT Pos)', 'เชื้อรา (KOH)', 'ไม่พบเชื้อ'],
-                        datasets: [{ data: [191, 44, 3, 457], backgroundColor: ['#0284c7', '#0d9488', '#f59e0b', '#e2e8f0'], borderWidth: 0 }]
+                        datasets: [{ data: [191, 44, 56, 404], backgroundColor: ['#0284c7', '#0d9488', '#f59e0b', '#e2e8f0'], borderWidth: 0 }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
                 });
@@ -1101,4 +1152,3 @@
     </script>
 </body>
 </html>
-
