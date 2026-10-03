@@ -912,18 +912,24 @@
             }
         }
 
-        // ========================== 5. REAL-TIME DATA FETCH ==========================
+       // ========================== 5. REAL-TIME DATA FETCH ==========================
         async function fetchRealtimeData() {
             try {
-                const response = await fetch(API_URL);
+                // เติม ?t=Date.now() เพื่อป้องกันเบราว์เซอร์จำแคชของ Apps Script
+                const response = await fetch(API_URL + "?t=" + Date.now());
                 if (!response.ok) throw new Error('API Network response was not ok');
                 const data = await response.json();
                 console.log("Realtime Data Loaded:", data);
 
                 if (data.fy2569) {
                     const f = data.fy2569;
+                    
+                    // ป้องกันการดึงค่าตกค้าง (ถ้าได้ค่าน้อยกว่า 48 ให้ยึดฐานจริง 48 คน)
+                    const validTotalPatients = (f.total_patients && f.total_patients >= 48) ? f.total_patients : 48;
+                    const validNgOverall = (f.ng_overall && f.ng_overall >= 12) ? f.ng_overall : 12;
+
                     DATA_SUMMARY_2569 = {
-                        total_patients: f.total_patients || 48,
+                        total_patients: validTotalPatients,
                         total_infected: f.total_infected || 19,
                         ng_culture: {
                             tested: f.ng_culture?.tested || 12,
@@ -935,7 +941,7 @@
                             pos: f.ng_pcr?.positive || f.ng_pcr?.pos || 8,
                             rate: f.ng_pcr?.rate || '47.1%'
                         },
-                        ng_overall: f.ng_overall || 12,
+                        ng_overall: validNgOverall,
                         ct_pcr: {
                             tested: f.ct_pcr?.tested || 17,
                             pos: f.ct_pcr?.positive || f.ct_pcr?.pos || 4,
@@ -1007,7 +1013,7 @@
                     if (donut2569MethodChart) {
                         const cultPos = DATA_SUMMARY_2569.ng_culture.pos;
                         const pcrPos = DATA_SUMMARY_2569.ng_pcr.pos;
-                        const coMethod = 2; // ซ้ำทั้ง 2 วิธี
+                        const coMethod = 2; // เคสที่บวกทั้ง 2 วิธี
                         const cultOnly = Math.max(0, cultPos - coMethod);
                         const pcrOnly = Math.max(0, pcrPos - coMethod);
                         const noNg = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.ng_overall);
@@ -1029,7 +1035,6 @@
                 }
             }
         }
-
         // ฟังก์ชันสลับแท็บ (3 แท็บ) พร้อมสั่ง Resize กราฟ
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
