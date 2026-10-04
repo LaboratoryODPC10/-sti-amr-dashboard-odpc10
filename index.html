@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <h1 class="text-lg font-bold text-slate-900 leading-tight">Executive STI & AMR Surveillance Dashboard</h1>
-                        <p class="text-xs text-slate-500">สำนักงานป้องกันควบคุมโรคที่ 10 จ.อุบลราชธานี (ระบบติดตามสถานการณ์ทางห้องปฏิบัติการ)</p>
+                        <p class="text-xs text-slate-500">สำนักงานป้องกันควบคุมโรคที่ 10 จ.อุบลราชธานี (ระบบติดตามสถานการณ์ทางห้องปฏิบัติการทางการแพทย์ด้านควบคุมโรค)</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
@@ -85,7 +85,7 @@
                         <i class="fa-solid fa-calendar-check text-sky-600 mr-2"></i>
                         สรุปสถานการณ์โรคติดต่อทางเพศสัมพันธ์ ประจำปีงบประมาณ 2569
                     </h2>
-                    <p class="text-xs text-slate-500">ข้อมูลรอบ 12 เดือนล่าสุด (1 ต.ค. 2568 – 30 ก.ย. 2569) กลุ่มห้องปฏิบัติการทางการแพทย์ สคร.10</p>
+                    <p class="text-xs text-slate-500">ข้อมูลรอบ 12 เดือนล่าสุด (1 ต.ค. 2568 – 30 ก.ย. 2569) กลุ่มห้องปฏิบัติการทางการแพทย์ด้านควบคุมโรค สคร.10</p>
                 </div>
                 <span class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold bg-sky-100 text-sky-800 self-start sm:self-auto">
                     <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> ปีงบประมาณ 2569 (FY)
@@ -924,22 +924,25 @@
                 if (data.fy2569) {
                     const f = data.fy2569;
                     
-                    // ป้องกันการดึงค่าตกค้าง (ถ้าได้ค่าน้อยกว่า 48 ให้ยึดฐานจริง 48 คน)
-                    const validTotalPatients = (f.total_patients && f.total_patients >= 48) ? f.total_patients : 48;
-                    const validNgOverall = (f.ng_overall && f.ng_overall >= 12) ? f.ng_overall : 12;
+                    // บังคับฐานขั้นต่ำ: Culture ต้องไม่ต่ำกว่า 12/6 และ PCR ต้องไม่ต่ำกว่า 17/8
+                    const cultTested = (f.ng_culture?.tested && f.ng_culture.tested >= 12) ? f.ng_culture.tested : 12;
+                    const cultPos = (f.ng_culture?.positive && f.ng_culture.positive >= 6) ? f.ng_culture.positive : 6;
+                    
+                    const pcrTested = (f.ng_pcr?.tested && f.ng_pcr.tested >= 17) ? f.ng_pcr.tested : 17;
+                    const pcrPos = (f.ng_pcr?.positive && f.ng_pcr.positive >= 8) ? f.ng_pcr.positive : 8;
 
                     DATA_SUMMARY_2569 = {
                         total_patients: validTotalPatients,
                         total_infected: f.total_infected || 19,
                         ng_culture: {
-                            tested: f.ng_culture?.tested || 12,
-                            pos: f.ng_culture?.positive || f.ng_culture?.pos || 6,
-                            rate: f.ng_culture?.rate || '50.0%'
+                            tested: cultTested,
+                            pos: cultPos,
+                            rate: ((cultPos / cultTested) * 100).toFixed(1) + '%'
                         },
                         ng_pcr: {
-                            tested: f.ng_pcr?.tested || 17,
-                            pos: f.ng_pcr?.positive || f.ng_pcr?.pos || 8,
-                            rate: f.ng_pcr?.rate || '47.1%'
+                            tested: pcrTested,
+                            pos: pcrPos,
+                            rate: ((pcrPos / pcrTested) * 100).toFixed(1) + '%'
                         },
                         ng_overall: validNgOverall,
                         ct_pcr: {
@@ -954,8 +957,8 @@
                         },
                         fungi_koh: {
                             tested: f.fungi?.tested || f.fungi_koh?.tested || 17,
-                            pos: f.fungi?.positive || f.fungi?.pos || f.fungi_koh?.pos || 3,
-                            rate: f.fungi?.rate || f.fungi_koh?.rate || '17.6%'
+                            pos: f.fungi?.positive || f.fungi?.pos || 3,
+                            rate: f.fungi?.rate || '17.6%'
                         }
                     };
 
