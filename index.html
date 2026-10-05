@@ -218,7 +218,6 @@
             </div>
 
             <!-- 2. Donut Charts ปีงบประมาณ 2569 -->
-          <!-- Donut Charts ปีงบประมาณ 2569 -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- วงที่ 1: สัดส่วนการติดเชื้อปี 2569 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
@@ -392,7 +391,7 @@
             <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
                 <h3 class="text-base font-bold text-slate-900 mb-1">สถานการณ์ความไวต่อยาของเชื้อหนองใน (AMR Profile สะสม)</h3>
                 <p class="text-xs text-slate-500 mb-4">อัตราส่วนไวต่อยา (S) และดื้อยา (R) ต่อยาต้านจุลชีพ 6 ชนิดหลักจากฐานข้อมูล</p>
-                <div class="relative h-80">
+                <div class="relative w-full" style="height: 320px; min-height: 320px;">
                     <canvas id="amrBarChart"></canvas>
                 </div>
             </div>
@@ -451,7 +450,7 @@
                     </div>
                 </div>
 
-                <div class="relative h-80">
+                <div class="relative w-full" style="height: 320px; min-height: 320px;">
                     <canvas id="micDistributionChart"></canvas>
                 </div>
             </div>
@@ -783,9 +782,8 @@
             `;
         }
 
-        // ฟังก์ชันเรนเดอร์ 3 ตารางจำแนกของปี 2569 แบบ Dynamic
+        // ฟังก์ชันเรนเดอร์ 3 ตารางจำแนกของปี 2569
         function renderDemographic2569Tables() {
-            // 1. ตำแหน่งสิ่งส่งตรวจ
             const specBody = document.getElementById('specimen2569TableBody');
             if (specBody) {
                 const totalSpec = SPECIMEN_2569_DATA.reduce((sum, item) => sum + item.count, 0);
@@ -804,7 +802,6 @@
                 `;
             }
 
-            // 2. กลุ่มอายุ
             const ageBody = document.getElementById('age2569TableBody');
             if (ageBody) {
                 const totalAge = AGE_2569_DATA.reduce((sum, item) => sum + item.count, 0);
@@ -823,7 +820,6 @@
                 `;
             }
 
-            // 3. หน่วยงานที่ส่งตรวจ (สร้างแถวอัตโนมัติตาม Array ไม่ฟิกซ์จำนวนแถว)
             const facBody = document.getElementById('facility2569TableBody');
             if (facBody) {
                 const totalFac = FACILITY_2569_DATA.reduce((sum, item) => sum + item.count, 0);
@@ -838,6 +834,58 @@
                         <td class="py-2">รวมทั้งหมด</td>
                         <td class="py-2 text-right font-black text-slate-900">${totalFac}</td>
                         <td class="py-2 text-right">100.0%</td>
+                    </tr>
+                `;
+            }
+        }
+
+        function renderStandardTables() {
+            const amrBody = document.getElementById('amrYearlyTableBody');
+            if (amrBody) {
+                amrBody.innerHTML = AMR_YEARLY.map(y => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="px-3 py-2 font-bold text-slate-900">${y.year}</td>
+                        <td class="px-3 py-2 text-right">${y.pen}</td>
+                        <td class="px-3 py-2 text-right">${y.cip}</td>
+                        <td class="px-3 py-2 text-right">${y.sc}</td>
+                        <td class="px-3 py-2 text-right">${y.tc}</td>
+                        <td class="px-3 py-2 text-right text-emerald-600">${y.azm}</td>
+                        <td class="px-3 py-2 text-right text-emerald-600">${y.cro}</td>
+                        <td class="px-3 py-2 text-right font-bold bg-amber-50/50 text-amber-900">${y.mean}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="bg-slate-100 font-bold border-t-2 border-slate-300">
+                        <td class="px-3 py-2">ภาพรวมสะสม</td>
+                        <td class="px-3 py-2 text-right">92.3%</td>
+                        <td class="px-3 py-2 text-right">93.6%</td>
+                        <td class="px-3 py-2 text-right">14.0%</td>
+                        <td class="px-3 py-2 text-right">82.8%</td>
+                        <td class="px-3 py-2 text-right text-emerald-700">0.0%</td>
+                        <td class="px-3 py-2 text-right text-emerald-700">0.0%</td>
+                        <td class="px-3 py-2 text-right bg-amber-100 text-amber-900">47.1%</td>
+                    </tr>
+                `;
+            }
+
+            const eqaBody = document.getElementById('eqaTableBody');
+            if (eqaBody) {
+                eqaBody.innerHTML = EQA_PROGRAMS.map(e => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="px-4 py-3 font-semibold text-slate-800">${e.prog}</td>
+                        <td class="px-4 py-3 text-right font-medium">${e.rounds}</td>
+                        <td class="px-4 py-3 text-right font-bold text-emerald-600">${e.pass}</td>
+                        <td class="px-4 py-3 text-right text-slate-400">${e.fail}</td>
+                        <td class="px-4 py-3 text-right font-bold text-emerald-700">${e.rate}</td>
+                        <td class="px-4 py-3 text-slate-600">${e.status}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="bg-slate-50 font-bold border-t-2 border-slate-300">
+                        <td class="px-4 py-3">รวมทั้งหมด</td>
+                        <td class="px-4 py-3 text-right">31</td>
+                        <td class="px-4 py-3 text-right text-emerald-600">30</td>
+                        <td class="px-4 py-3 text-right text-slate-400">0</td>
+                        <td class="px-4 py-3 text-right text-emerald-700 font-black">100.0%</td>
+                        <td class="px-4 py-3 text-emerald-700">✓ ISO 15189 Compliant</td>
                     </tr>
                 `;
             }
@@ -916,13 +964,16 @@
             renderMICDistribution(drugKey);
         };
 
-      function initStaticCharts() {
-            // 1. กราฟสัดส่วนผลการติดเชื้อปี 2569 (ติดเชื้อจริง 17 คน / ไม่พบเชื้อ 31 คน)
-            const donut2569InfCtx = document.getElementById('donut2569Infection');
-            if (donut2569InfCtx) {
-                if (donut2569InfChart) donut2569InfChart.destroy();
-                
-                donut2569InfChart = new Chart(donut2569InfCtx, {
+        // ฟังก์ชันสร้างชาร์ตแบบเดี่ยวตัวเดียว ป้องกันการถูกสร้างซ้ำ
+        function initStaticCharts() {
+            // 1. กราฟ Donut สัดส่วนผลการติดเชื้อปี 2569
+            const donut2569InfCanvas = document.getElementById('donut2569Infection');
+            if (donut2569InfCanvas) {
+                if (donut2569InfChart) {
+                    donut2569InfChart.destroy();
+                }
+                const ctx1 = donut2569InfCanvas.getContext('2d');
+                donut2569InfChart = new Chart(ctx1, {
                     type: 'doughnut',
                     data: {
                         labels: [
@@ -957,12 +1008,14 @@
                 });
             }
 
-            // 2. กราฟประสิทธิภาพการตรวจพบหนองในแยกวิธี
-            const donut2569MethodCtx = document.getElementById('donut2569Method');
-            if (donut2569MethodCtx) {
-                if (donut2569MethodChart) donut2569MethodChart.destroy();
-
-                donut2569MethodChart = new Chart(donut2569MethodCtx, {
+            // 2. กราฟ Donut ประสิทธิภาพการตรวจพบหนองในแยกวิธี
+            const donut2569MethodCanvas = document.getElementById('donut2569Method');
+            if (donut2569MethodCanvas) {
+                if (donut2569MethodChart) {
+                    donut2569MethodChart.destroy();
+                }
+                const ctx2 = donut2569MethodCanvas.getContext('2d');
+                donut2569MethodChart = new Chart(ctx2, {
                     type: 'doughnut',
                     data: {
                         labels: [
@@ -996,12 +1049,14 @@
                 });
             }
 
-            // 3. กราฟ AMR แนวนอน
-            const amrCtx = document.getElementById('amrBarChart');
-            if (amrCtx) {
-                if (amrBarChartInstance) amrBarChartInstance.destroy();
-
-                amrBarChartInstance = new Chart(amrCtx, {
+            // 3. กราฟแท่ง AMR แนวนอน
+            const amrCanvas = document.getElementById('amrBarChart');
+            if (amrCanvas) {
+                if (amrBarChartInstance) {
+                    amrBarChartInstance.destroy();
+                }
+                const ctx3 = amrCanvas.getContext('2d');
+                amrBarChartInstance = new Chart(ctx3, {
                     type: 'bar',
                     data: {
                         labels: AMR_DRUGS.map(d => d.drug),
@@ -1076,7 +1131,7 @@
                         }
                     };
 
-                    // อัปเดต KPI Cards
+                    // อัปเดตตัวเลขบน Card
                     const pts = document.getElementById('kpi-2569-pts');
                     if (pts) pts.innerText = DATA_SUMMARY_2569.total_patients;
 
@@ -1115,7 +1170,7 @@
                     const fungiRate = document.getElementById('kpi-2569-fungi-rate');
                     if (fungiRate) fungiRate.innerText = DATA_SUMMARY_2569.fungi_koh.rate;
 
-                    // สั่งอัปเดตกราฟ Donut ปี 2569 แบบ Live
+                    // สั่งอัปเดตกราฟ Donut แบบ Live Data
                     if (donut2569InfChart) {
                         const coVal = DATA_SUMMARY_2569.coinfection.pos;
                         const ngSingle = Math.max(0, DATA_SUMMARY_2569.ng_overall - coVal);
@@ -1164,7 +1219,7 @@
             }
         }
 
-        // ฟังก์ชันสลับแท็บ (3 แท็บ) พร้อมสั่ง Resize กราฟ
+        // ฟังก์ชันสลับแท็บ
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('tab-' + tabId);
