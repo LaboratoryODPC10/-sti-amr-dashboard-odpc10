@@ -218,6 +218,7 @@
             </div>
 
             <!-- 2. Donut Charts ปีงบประมาณ 2569 -->
+          <!-- Donut Charts ปีงบประมาณ 2569 -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- วงที่ 1: สัดส่วนการติดเชื้อปี 2569 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
@@ -226,7 +227,7 @@
                         <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-800" id="badge-inf-rate">พบเชื้อ 35.4%</span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">จำแนกตามผู้ป่วยติดเชื้อเดี่ยว ติดเชื้อร่วม (Co-infection) และไม่พบเชื้อ</p>
-                    <div class="relative h-64">
+                    <div class="relative w-full" style="height: 260px; min-height: 260px;">
                         <canvas id="donut2569Infection"></canvas>
                     </div>
                 </div>
@@ -238,12 +239,12 @@
                         <span class="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-100 text-indigo-800" id="badge-ng-yield">รวม 12 ราย</span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">เปรียบเทียบการตรวจพบระหว่างการเพาะเชื้อ (Culture) และสารพันธุกรรม (PCR)</p>
-                    <div class="relative h-64">
+                    <div class="relative w-full" style="height: 260px; min-height: 260px;">
                         <canvas id="donut2569Method"></canvas>
                     </div>
                 </div>
             </div>
-
+            
             <!-- 3. ตารางเฝ้าระวังรายเดือน 2569 -->
             <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
                 <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -915,10 +916,12 @@
             renderMICDistribution(drugKey);
         };
 
-        function initStaticCharts() {
+      function initStaticCharts() {
             // 1. กราฟสัดส่วนผลการติดเชื้อปี 2569 (ติดเชื้อจริง 17 คน / ไม่พบเชื้อ 31 คน)
             const donut2569InfCtx = document.getElementById('donut2569Infection');
             if (donut2569InfCtx) {
+                if (donut2569InfChart) donut2569InfChart.destroy();
+                
                 donut2569InfChart = new Chart(donut2569InfCtx, {
                     type: 'doughnut',
                     data: {
@@ -957,6 +960,8 @@
             // 2. กราฟประสิทธิภาพการตรวจพบหนองในแยกวิธี
             const donut2569MethodCtx = document.getElementById('donut2569Method');
             if (donut2569MethodCtx) {
+                if (donut2569MethodChart) donut2569MethodChart.destroy();
+
                 donut2569MethodChart = new Chart(donut2569MethodCtx, {
                     type: 'doughnut',
                     data: {
@@ -994,6 +999,8 @@
             // 3. กราฟ AMR แนวนอน
             const amrCtx = document.getElementById('amrBarChart');
             if (amrCtx) {
+                if (amrBarChartInstance) amrBarChartInstance.destroy();
+
                 amrBarChartInstance = new Chart(amrCtx, {
                     type: 'bar',
                     data: {
