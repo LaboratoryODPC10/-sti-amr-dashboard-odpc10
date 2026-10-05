@@ -95,7 +95,7 @@
             <!-- 1. KPI Cards ปี 2569 -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
                 
-                <!-- 1. ผู้รับบริการ -->
+                <!-- ผู้รับบริการ -->
                 <div class="bg-gradient-to-br from-sky-600 via-sky-700 to-indigo-800 text-white p-4 rounded-2xl shadow-sm border border-sky-400/30 flex flex-col justify-between relative overflow-hidden">
                     <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
                     <div>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
 
-                <!-- 2. พบหนองใน (NG Overall) -->
+                <!-- พบหนองใน (NG Overall) -->
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-sky-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
 
-                <!-- 3. พบหนองในเทียม (CT PCR) -->
+                <!-- พบหนองในเทียม (CT PCR) -->
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-teal-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <!-- 4. ติดเชื้อร่วม (CT/NG Co-infection) -->
+                <!-- ติดเชื้อร่วม (CT/NG Co-infection) -->
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-purple-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
 
-                <!-- 5. พบเชื้อรา (KOH / Wet smear) -->
+                <!-- พบเชื้อรา (KOH / Wet smear) -->
                 <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow hover:border-amber-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -196,7 +196,7 @@
                     </div>
                 </div>
 
-                <!-- 6. เฝ้าระวังเชื้อดื้อยา -->
+                <!-- เฝ้าระวังเชื้อดื้อยา -->
                 <div class="bg-gradient-to-br from-rose-500 to-amber-600 text-white p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between">
@@ -308,49 +308,77 @@
                 </div>
             </div>
 
-            <!-- 5. [เพิ่มใหม่] ตารางจำแนกตามตำแหน่งสิ่งส่งตรวจ และ กลุ่มอายุ เฉพาะปี 2569 (N = 48) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 5. ตารางจำแนก 3 มิติ: สิ่งส่งตรวจ / กลุ่มอายุ / หน่วยงานส่งตรวจ ปี 2569 (Grid 3 คอลัมน์ยืดหยุ่น) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- ตารางตำแหน่งสิ่งส่งตรวจ ปี 2569 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
-                    <div class="flex items-center justify-between mb-3">
-                        <h4 class="text-sm font-bold text-slate-900 flex items-center">
-                            <i class="fa-solid fa-vial-virus text-sky-600 mr-2"></i> ตำแหน่งสิ่งส่งตรวจ ประจำปี 2569
-                        </h4>
-                        <span class="text-xs font-bold text-sky-700 bg-sky-50 px-2.5 py-0.5 rounded-full">N = 48</span>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-slate-200 text-xs">
-                            <thead class="bg-slate-50 text-slate-700 font-semibold">
-                                <tr>
-                                    <th class="py-2.5 text-left">ตำแหน่งสิ่งส่งตรวจ</th>
-                                    <th class="py-2.5 text-right">จำนวน (ตัวอย่าง)</th>
-                                    <th class="py-2.5 text-right">สัดส่วน (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100" id="specimen2569TableBody"></tbody>
-                        </table>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-vial-virus text-sky-600 mr-1.5"></i> ตำแหน่งสิ่งส่งตรวจ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full">N = 48</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">ตำแหน่ง</th>
+                                        <th class="py-2 text-right">จำนวน</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="specimen2569TableBody"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <!-- ตารางการกระจายตามกลุ่มอายุ ปี 2569 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
-                    <div class="flex items-center justify-between mb-3">
-                        <h4 class="text-sm font-bold text-slate-900 flex items-center">
-                            <i class="fa-solid fa-user-group text-indigo-600 mr-2"></i> การกระจายตัวตามกลุ่มอายุ ประจำปี 2569
-                        </h4>
-                        <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full">N = 48</span>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-user-group text-indigo-600 mr-1.5"></i> การกระจายตามกลุ่มอายุ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">N = 48</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">กลุ่มอายุ</th>
+                                        <th class="py-2 text-right">จำนวน</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="age2569TableBody"></tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-slate-200 text-xs">
-                            <thead class="bg-slate-50 text-slate-700 font-semibold">
-                                <tr>
-                                    <th class="py-2.5 text-left">กลุ่มอายุ</th>
-                                    <th class="py-2.5 text-right">จำนวน (คน)</th>
-                                    <th class="py-2.5 text-right">สัดส่วน (%)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100" id="age2569TableBody"></tbody>
-                        </table>
+                </div>
+
+                <!-- ตารางหน่วยงานที่ส่งตรวจ ปี 2569 (ยืดหยุ่นรองรับการเพิ่ม รพ. ใหม่) -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-hospital text-teal-600 mr-1.5"></i> หน่วยงานที่ส่งตรวจ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">N = 48</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">หน่วยงานส่งตรวจ</th>
+                                        <th class="py-2 text-right">เคส</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="facility2569TableBody"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -525,20 +553,27 @@
             fungi_koh: { tested: 17, pos: 3, rate: '17.6%' }
         };
 
-        // ข้อมูลตำแหน่งสิ่งส่งตรวจเฉพาะปี 2569 (รวม 48 ตัวอย่าง)
+        // ตำแหน่งสิ่งส่งตรวจปี 2569 (27 Urethra, 17 Skin, 4 Plasma)
         let SPECIMEN_2569_DATA = [
             { site: 'ท่อปัสสาวะ (Urethra)', count: 27, pct: '56.2%' },
             { site: 'ผิวหนัง (Skin / KOH)', count: 17, pct: '35.4%' },
             { site: 'พลาสมา / เลือด (Plasma)', count: 4, pct: '8.3%' }
         ];
 
-        // ข้อมูลการกระจายตัวตามกลุ่มอายุเฉพาะปี 2569 (รวม 48 คน)
+        // กลุ่มอายุปี 2569 (รวม 48 คน)
         let AGE_2569_DATA = [
             { group: '< 20 ปี', count: 7, pct: '14.6%' },
             { group: '20 - 29 ปี', count: 5, pct: '10.4%' },
             { group: '30 - 39 ปี', count: 6, pct: '12.5%' },
             { group: '40 - 49 ปี', count: 12, pct: '25.0%' },
             { group: '50 ปีขึ้นไป', count: 18, pct: '37.5%' }
+        ];
+
+        // หน่วยงานที่ส่งตรวจปี 2569 (3 แห่ง รวม 48 เคส)
+        let FACILITY_2569_DATA = [
+            { name: 'ศูนย์เวชฯ สคร.10', count: 34, pct: '70.8%' },
+            { name: 'รพ.มุกดาหาร', count: 13, pct: '27.1%' },
+            { name: 'รพ.พริ๊นซ์ อุบล', count: 1, pct: '2.1%' }
         ];
 
         const AMR_DRUGS = [
@@ -747,40 +782,61 @@
             `;
         }
 
-        // เรนเดอร์ตารางสิ่งส่งตรวจและอายุ ปี 2569
+        // ฟังก์ชันเรนเดอร์ 3 ตารางจำแนกของปี 2569 แบบ Dynamic
         function renderDemographic2569Tables() {
+            // 1. ตำแหน่งสิ่งส่งตรวจ
             const specBody = document.getElementById('specimen2569TableBody');
             if (specBody) {
                 const totalSpec = SPECIMEN_2569_DATA.reduce((sum, item) => sum + item.count, 0);
                 specBody.innerHTML = SPECIMEN_2569_DATA.map(s => `
                     <tr class="hover:bg-slate-50">
-                        <td class="py-2.5 text-slate-800 font-medium">${s.site}</td>
-                        <td class="py-2.5 text-right font-bold text-sky-700">${s.count}</td>
-                        <td class="py-2.5 text-right text-slate-500">${s.pct}</td>
+                        <td class="py-2 text-slate-800 font-medium">${s.site}</td>
+                        <td class="py-2 text-right font-bold text-sky-700">${s.count}</td>
+                        <td class="py-2 text-right text-slate-500">${s.pct}</td>
                     </tr>
                 `).join('') + `
                     <tr class="font-bold bg-slate-50 border-t border-slate-200">
-                        <td class="py-2.5">รวมทั้งหมด</td>
-                        <td class="py-2.5 text-right font-black text-slate-900">${totalSpec}</td>
-                        <td class="py-2.5 text-right">100.0%</td>
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalSpec}</td>
+                        <td class="py-2 text-right">100.0%</td>
                     </tr>
                 `;
             }
 
+            // 2. กลุ่มอายุ
             const ageBody = document.getElementById('age2569TableBody');
             if (ageBody) {
                 const totalAge = AGE_2569_DATA.reduce((sum, item) => sum + item.count, 0);
                 ageBody.innerHTML = AGE_2569_DATA.map(a => `
                     <tr class="hover:bg-slate-50">
-                        <td class="py-2.5 text-slate-800 font-medium">${a.group}</td>
-                        <td class="py-2.5 text-right font-bold text-indigo-700">${a.count}</td>
-                        <td class="py-2.5 text-right text-slate-500">${a.pct}</td>
+                        <td class="py-2 text-slate-800 font-medium">${a.group}</td>
+                        <td class="py-2 text-right font-bold text-indigo-700">${a.count}</td>
+                        <td class="py-2 text-right text-slate-500">${a.pct}</td>
                     </tr>
                 `).join('') + `
                     <tr class="font-bold bg-slate-50 border-t border-slate-200">
-                        <td class="py-2.5">รวมทั้งหมด</td>
-                        <td class="py-2.5 text-right font-black text-slate-900">${totalAge}</td>
-                        <td class="py-2.5 text-right">100.0%</td>
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalAge}</td>
+                        <td class="py-2 text-right">100.0%</td>
+                    </tr>
+                `;
+            }
+
+            // 3. หน่วยงานที่ส่งตรวจ (วนลูปสร้างแถวอัตโนมัติตาม Array ไม่ว่าจะเพิ่มกี่ รพ.)
+            const facBody = document.getElementById('facility2569TableBody');
+            if (facBody) {
+                const totalFac = FACILITY_2569_DATA.reduce((sum, item) => sum + item.count, 0);
+                facBody.innerHTML = FACILITY_2569_DATA.map(f => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-2 text-slate-800 font-medium truncate max-w-[130px]" title="${f.name}">${f.name}</td>
+                        <td class="py-2 text-right font-bold text-teal-700">${f.count}</td>
+                        <td class="py-2 text-right text-slate-500">${f.pct}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="font-bold bg-slate-50 border-t border-slate-200">
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalFac}</td>
+                        <td class="py-2 text-right">100.0%</td>
                     </tr>
                 `;
             }
@@ -1064,7 +1120,7 @@
                         }
                     };
 
-                    // อัปเดตตัวเลข KPI บนการ์ด
+                    // อัปเดต KPI Cards
                     const pts = document.getElementById('kpi-2569-pts');
                     if (pts) pts.innerText = DATA_SUMMARY_2569.total_patients;
 
@@ -1118,7 +1174,7 @@
                     if (donut2569MethodChart) {
                         const cultPos = DATA_SUMMARY_2569.ng_culture.pos;
                         const pcrPos = DATA_SUMMARY_2569.ng_pcr.pos;
-                        const coMethod = 2; // เคสที่บวกทั้ง 2 วิธี
+                        const coMethod = 2;
                         const cultOnly = Math.max(0, cultPos - coMethod);
                         const pcrOnly = Math.max(0, pcrPos - coMethod);
                         const noNg = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.ng_overall);
@@ -1130,12 +1186,15 @@
                     renderSummaryTable2569();
                 }
 
-                // หาก API มีการส่งข้อมูลตำแหน่งสิ่งส่งตรวจหรืออายุเฉพาะปี 69 มา ให้แทนที่
-                if (data.specimen_2569) {
+                // รองรับข้อมูล Dynamic จาก API ในอนาคต
+                if (data.specimen_2569 && Array.isArray(data.specimen_2569)) {
                     SPECIMEN_2569_DATA = data.specimen_2569;
                 }
-                if (data.age_2569) {
+                if (data.age_2569 && Array.isArray(data.age_2569)) {
                     AGE_2569_DATA = data.age_2569;
+                }
+                if (data.facility_2569 && Array.isArray(data.facility_2569)) {
+                    FACILITY_2569_DATA = data.facility_2569;
                 }
                 renderDemographic2569Tables();
 
