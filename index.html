@@ -1086,6 +1086,13 @@
                 if (!response.ok) throw new Error('API Network response was not ok');
                 const data = await response.json();
                 console.log("Realtime Data Loaded:", data);
+                
+                if (data.mic_2569) {
+    MIC_DATASETS.CRO.years['2569'] = data.mic_2569.CRO;
+    MIC_DATASETS.CFM.years['2569'] = data.mic_2569.CFM;
+    MIC_DATASETS.AZM.years['2569'] = data.mic_2569.AZM;
+    updateMICChart(document.getElementById('drugSelector').value);
+}
 
                 if (data.fy2569) {
                     const f = data.fy2569;
