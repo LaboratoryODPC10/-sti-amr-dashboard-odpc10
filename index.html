@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <h1 class="text-lg font-bold text-slate-900 leading-tight">Executive STI & AMR Surveillance Dashboard</h1>
-                        <p class="text-xs text-slate-500">สำนักงานป้องกันควบคุมโรคที่ 10 จ.อุบลราชธานี (ระบบติดตามสถานการณ์ทางห้องปฏิบัติการทางการแพทย์ด้านควบคุมโรค)</p>
+                        <p class="text-xs text-slate-500">สำนักงานป้องกันควบคุมโรคที่ 10 จ.อุบลราชธานี (ระบบติดตามสถานการณ์ทางห้องปฏิบัติการ)</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
@@ -85,10 +85,10 @@
                         <i class="fa-solid fa-calendar-check text-sky-600 mr-2"></i>
                         สรุปสถานการณ์โรคติดต่อทางเพศสัมพันธ์ ประจำปีงบประมาณ 2569
                     </h2>
-                    <p class="text-xs text-slate-500">ข้อมูลรอบ 12 เดือนล่าสุด (1 ต.ค. 2568 – 30 ก.ย. 2569) กลุ่มห้องปฏิบัติการทางการแพทย์ด้านควบคุมโรค สคร.10</p>
+                    <p class="text-xs text-slate-500">ข้อมูลรอบ 12 เดือนล่าสุด (1 ต.ค. 2568 – 30 ก.ย. 2569) กลุ่มห้องปฏิบัติการทางการแพทย์ สคร.10</p>
                 </div>
                 <span class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold bg-sky-100 text-sky-800 self-start sm:self-auto">
-                    <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> ปีงบประมาณ 2569 (FY)
+                    <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> ปีงบประมาณ 2569 (Current FY)
                 </span>
             </div>
 
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="mt-3 pt-2 border-t border-white/20 text-[10.5px] text-sky-100 flex justify-between items-center">
-                        <span>ติดเชื้อรวม: <strong class="text-white" id="kpi-2569-inf-sub">19 ราย</strong></span>
+                        <span>ติดเชื้อจริง: <strong class="text-white" id="kpi-2569-inf-sub">19 ราย</strong></span>
                         <span class="bg-white/20 px-1.5 py-0.5 rounded text-[10px]" id="kpi-2569-rate-sub">39.6%</span>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                        <span class="text-slate-500">Culture (4) + PCR (8)</span>
+                        <span class="text-slate-500">Culture + PCR</span>
                         <span class="font-bold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded">Deduplicated</span>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                         <h3 class="text-base font-bold text-slate-900">สัดส่วนผลการติดเชื้อ ประจำปี 2569 (N = 48)</h3>
                         <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-800" id="badge-inf-rate">พบเชื้อ 39.6%</span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">จำแนกตามชนิดเชื้อที่ตรวจพบสะสมในรอบปี (ติดเชื้อรวม 19 เคส)</p>
+                    <p class="text-xs text-slate-500 mb-4">จำแนกตามผู้ป่วยติดเชื้อเดี่ยว ติดเชื้อร่วม (Co-infection) และไม่พบเชื้อ</p>
                     <div class="relative h-64">
                         <canvas id="donut2569Infection"></canvas>
                     </div>
@@ -459,20 +459,20 @@
             { month: 'ก.พ. 69', ym: '2026-02', tested: 2, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'มี.ค. 69', ym: '2026-03', tested: 6, ng: 2, ct: 1, fungi: 0, total_pos: 2, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 2 เคส (ไวต่อยาหลัก)' },
             { month: 'เม.ย. 69', ym: '2026-04', tested: 4, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ CT และ NG จาก Real-time PCR' },
-            { month: 'พ.ค. 69', ym: '2026-05', tested: 3, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '66.7%', amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
+            { month: 'พ.ค. 69', ym: '2026-05', tested: 3, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '66.7%', amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
             { month: 'มิ.ย. 69', ym: '2026-06', tested: 4, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '25.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG จาก Real-time PCR' },
             { month: 'ก.ค. 69', ym: '2026-07', tested: 7, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '14.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ตรวจคัดกรองกลุ่มเสี่ยง' },
             { month: 'ส.ค. 69', ym: '2026-08', tested: 10, ng: 3, ct: 1, fungi: 2, total_pos: 5, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 2 เคส, ติดเชื้อร่วม CT/NG' },
             { month: 'ก.ย. 69', ym: '2026-09', tested: 2, ng: 0, ct: 0, fungi: 1, total_pos: 1, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 1 เคส' }
         ];
 
-        // ข้อมูลสรุปปี 2569 (NG Culture = 6, NG PCR = 8, Overall NG = 12, ติดเชื้อรวม = 19 ราย)
+        // ข้อมูลสรุปปี 2569 อ้างอิงตรงกับ GS
         let DATA_SUMMARY_2569 = {
             total_patients: 48,
-            total_infected: 19, // 4 (Culture only) + 8 (NG PCR) + 4 (CT PCR) + 3 (KOH) = 19
+            total_infected: 19,
             ng_culture: { tested: 12, pos: 6, rate: '50.0%' },
             ng_pcr: { tested: 17, pos: 8, rate: '47.1%' },
-            ng_overall: 12, // 4 + 8 = 12
+            ng_overall: 12,
             ct_pcr: { tested: 17, pos: 4, rate: '23.5%' },
             coinfection: { tested: 17, pos: 2, rate: '11.8%' },
             fungi_koh: { tested: 17, pos: 3, rate: '17.6%' }
@@ -557,7 +557,7 @@
             { prog: 'Slide proficiency Microfilaria', rounds: 1, pass: 1, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' }
         ];
 
-        // ตัวแปรเก็บ Instance ของกราฟ
+        // ตัวแปรเก็บ Instance ของกราฟเพื่ออัปเดต Live Data
         let donut2569InfChart = null;
         let donut2569MethodChart = null;
         let micChartInstance = null;
@@ -643,7 +643,7 @@
                     <td class="px-4 py-2.5 text-sky-950 font-bold" colspan="2">
                         <i class="fa-solid fa-arrows-to-circle text-sky-700 mr-1.5"></i> รวมผู้ป่วยติดเชื้อหนองใน (NG Overall - Deduplicated)
                     </td>
-                    <td class="px-4 py-2.5 text-right text-slate-500">Culture (4) + PCR (8)</td>
+                    <td class="px-4 py-2.5 text-right text-slate-500">รวม 2 วิธี</td>
                     <td class="px-4 py-2.5 text-right font-black text-sky-800">${d.ng_overall} ราย</td>
                     <td class="px-4 py-2.5 text-right text-sky-800 font-bold">—</td>
                 </tr>
@@ -676,7 +676,7 @@
                 </tr>
                 <tr class="bg-slate-100 font-bold border-t-2 border-slate-300">
                     <td class="px-4 py-3 text-slate-900 font-black" colspan="2">
-                        <i class="fa-solid fa-users text-slate-700 mr-1.5"></i> รวมตรวจพบเชื้อสะสม (4 Culture + 8 PCR NG + 4 CT + 3 เชื้อรา)
+                        <i class="fa-solid fa-users text-slate-700 mr-1.5"></i> รวมผู้รับบริการและผู้ติดเชื้อจริงสะสม (Total Unique Patients ปี 2569)
                     </td>
                     <td class="px-4 py-3 text-right font-black text-slate-900">${d.total_patients} คน</td>
                     <td class="px-4 py-3 text-right font-black text-sky-800">${d.total_infected} ราย</td>
@@ -773,12 +773,34 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
-                        tooltip: { callbacks: { label: item => ` ปี ${item.dataset.label}: ${item.parsed.y} ราย` } }
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 12, font: { size: 11 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (item) => ` ปี ${item.dataset.label}: ${item.parsed.y} ราย`
+                            }
+                        }
                     },
                     scales: {
-                        x: { title: { display: true, text: 'ระดับค่า MIC (mg/L)', font: { weight: 'bold', size: 12 } }, grid: { display: false } },
-                        y: { beginAtZero: true, title: { display: true, text: 'จำนวนตัวอย่าง (เคส)', font: { weight: 'bold', size: 12 } }, ticks: { precision: 0 } }
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'ระดับค่า MIC (mg/L)',
+                                font: { weight: 'bold', size: 12 }
+                            },
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'จำนวนตัวอย่าง (เคส)',
+                                font: { weight: 'bold', size: 12 }
+                            },
+                            ticks: { precision: 0 }
+                        }
                     }
                 }
             });
@@ -789,22 +811,22 @@
         };
 
         function initStaticCharts() {
-            // 1. กราฟสัดส่วนผลการติดเชื้อปี 2569 (รวม 19 เคส)
+            // 1. กราฟสัดส่วนผลการติดเชื้อปี 2569
             const donut2569InfCtx = document.getElementById('donut2569Infection');
             if (donut2569InfCtx) {
                 donut2569InfChart = new Chart(donut2569InfCtx, {
                     type: 'doughnut',
                     data: {
                         labels: [
-                            'หนองใน (Culture เดี่ยว)', 
-                            'หนองใน (PCR Detected)', 
-                            'หนองในเทียม (CT PCR)', 
+                            'หนองในอย่างเดียว (NG Single)', 
+                            'คลามีเดียอย่างเดียว (CT Single)', 
+                            'ติดเชื้อร่วม (CT & NG Co-inf)', 
                             'เชื้อรา (KOH/Wet)', 
                             'ตรวจไม่พบเชื้อ (Negative)'
                         ],
                         datasets: [{
-                            data: [4, 8, 4, 3, 29], // 4 + 8 + 4 + 3 = 19 เคสพบเชื้อ | 48 - 19 = 29
-                            backgroundColor: ['#0284c7', '#6366f1', '#0d9488', '#f59e0b', '#e2e8f0'],
+                            data: [10, 2, 2, 3, 29],
+                            backgroundColor: ['#0284c7', '#0d9488', '#8b5cf6', '#f59e0b', '#e2e8f0'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
                         }]
@@ -835,12 +857,12 @@
                     data: {
                         labels: [
                             'Culture (+) & PCR (+)', 
-                            'Culture (+) เดี่ยว', 
-                            'PCR (+) เดี่ยว', 
+                            'Culture (+) เท่านั้น', 
+                            'PCR (+) เท่านั้น', 
                             'ไม่พบเชื้อหนองใน'
                         ],
                         datasets: [{
-                            data: [2, 4, 6, 36], // รวมหนองใน = 2 + 4 + 6 = 12 ราย | ไม่พบ NG = 36
+                            data: [2, 4, 6, 36],
                             backgroundColor: ['#1e40af', '#38bdf8', '#8b5cf6', '#e2e8f0'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
@@ -893,36 +915,27 @@
         // ========================== 5. REAL-TIME DATA FETCH ==========================
         async function fetchRealtimeData() {
             try {
-                const response = await fetch(API_URL + "?t=" + Date.now());
+                const response = await fetch(API_URL);
                 if (!response.ok) throw new Error('API Network response was not ok');
                 const data = await response.json();
                 console.log("Realtime Data Loaded:", data);
 
                 if (data.fy2569) {
                     const f = data.fy2569;
-                    
-                    const validTotalPatients = f.total_patients || 48;
-                    const cultTested = (f.ng_culture?.tested && f.ng_culture.tested >= 12) ? f.ng_culture.tested : 12;
-                    const cultPos = (f.ng_culture?.positive && f.ng_culture.positive >= 6) ? f.ng_culture.positive : 6;
-                    
-                    const pcrTested = (f.ng_pcr?.tested && f.ng_pcr.tested >= 17) ? f.ng_pcr.tested : 17;
-                    const pcrPos = (f.ng_pcr?.positive && f.ng_pcr.positive >= 8) ? f.ng_pcr.positive : 8;
-                    const validNgOverall = f.ng_overall || 12;
-
                     DATA_SUMMARY_2569 = {
-                        total_patients: validTotalPatients,
+                        total_patients: f.total_patients || 48,
                         total_infected: f.total_infected || 19,
                         ng_culture: {
-                            tested: cultTested,
-                            pos: cultPos,
-                            rate: ((cultPos / cultTested) * 100).toFixed(1) + '%'
+                            tested: f.ng_culture?.tested || 12,
+                            pos: f.ng_culture?.positive || f.ng_culture?.pos || 6,
+                            rate: f.ng_culture?.rate || '50.0%'
                         },
                         ng_pcr: {
-                            tested: pcrTested,
-                            pos: pcrPos,
-                            rate: ((pcrPos / pcrTested) * 100).toFixed(1) + '%'
+                            tested: f.ng_pcr?.tested || 17,
+                            pos: f.ng_pcr?.positive || f.ng_pcr?.pos || 8,
+                            rate: f.ng_pcr?.rate || '47.1%'
                         },
-                        ng_overall: validNgOverall,
+                        ng_overall: f.ng_overall || 12,
                         ct_pcr: {
                             tested: f.ct_pcr?.tested || 17,
                             pos: f.ct_pcr?.positive || f.ct_pcr?.pos || 4,
@@ -935,8 +948,8 @@
                         },
                         fungi_koh: {
                             tested: f.fungi?.tested || f.fungi_koh?.tested || 17,
-                            pos: f.fungi?.positive || f.fungi?.pos || 3,
-                            rate: f.fungi?.rate || '17.6%'
+                            pos: f.fungi?.positive || f.fungi?.pos || f.fungi_koh?.pos || 3,
+                            rate: f.fungi?.rate || f.fungi_koh?.rate || '17.6%'
                         }
                     };
 
@@ -981,21 +994,23 @@
 
                     // สั่งอัปเดตกราฟ Donut ปี 2569 แบบ Live
                     if (donut2569InfChart) {
-                        const cultSingle = Math.max(0, DATA_SUMMARY_2569.ng_culture.pos - 2); // 4
-                        const pcrNG = DATA_SUMMARY_2569.ng_pcr.pos; // 8
-                        const pcrCT = DATA_SUMMARY_2569.ct_pcr.pos; // 4
-                        const fungiVal = DATA_SUMMARY_2569.fungi_koh.pos; // 3
+                        const coVal = DATA_SUMMARY_2569.coinfection.pos;
+                        const ngSingle = Math.max(0, DATA_SUMMARY_2569.ng_overall - coVal);
+                        const ctSingle = Math.max(0, DATA_SUMMARY_2569.ct_pcr.pos - coVal);
+                        const fungiVal = DATA_SUMMARY_2569.fungi_koh.pos;
                         const negativeVal = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.total_infected);
                         
-                        donut2569InfChart.data.datasets[0].data = [cultSingle, pcrNG, pcrCT, fungiVal, negativeVal];
+                        donut2569InfChart.data.datasets[0].data = [ngSingle, ctSingle, coVal, fungiVal, negativeVal];
                         donut2569InfChart.update();
                     }
 
                     if (donut2569MethodChart) {
-                        const coMethod = 2; // เคสที่บวกทั้ง 2 วิธี
-                        const cultOnly = Math.max(0, DATA_SUMMARY_2569.ng_culture.pos - coMethod); // 4
-                        const pcrOnly = Math.max(0, DATA_SUMMARY_2569.ng_pcr.pos - coMethod); // 6
-                        const noNg = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.ng_overall); // 36
+                        const cultPos = DATA_SUMMARY_2569.ng_culture.pos;
+                        const pcrPos = DATA_SUMMARY_2569.ng_pcr.pos;
+                        const coMethod = 2; // ซ้ำทั้ง 2 วิธี
+                        const cultOnly = Math.max(0, cultPos - coMethod);
+                        const pcrOnly = Math.max(0, pcrPos - coMethod);
+                        const noNg = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.ng_overall);
 
                         donut2569MethodChart.data.datasets[0].data = [coMethod, cultOnly, pcrOnly, noNg];
                         donut2569MethodChart.update();
@@ -1015,7 +1030,7 @@
             }
         }
 
-        // ฟังก์ชันสลับแท็บ (3 แท็บ)
+        // ฟังก์ชันสลับแท็บ (3 แท็บ) พร้อมสั่ง Resize กราฟ
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('tab-' + tabId);
