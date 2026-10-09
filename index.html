@@ -95,7 +95,7 @@
             <!-- 1. KPI Cards ปี 2569 -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
                 
-                <!-- ผู้รับบริการ (ติดเชื้อจริง 17 ราย, 35.4%) -->
+                <!-- ผู้รับบริการ -->
                 <div class="bg-gradient-to-br from-sky-600 via-sky-700 to-indigo-800 text-white p-4 rounded-2xl shadow-sm border border-sky-400/30 flex flex-col justify-between relative overflow-hidden">
                     <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
                     <div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="mt-3 pt-2 border-t border-white/20 text-[10.5px] text-sky-100 flex justify-between items-center">
                         <span>ติดเชื้อจริง: <strong class="text-white" id="kpi-2569-inf-sub">17 ราย</strong></span>
-                        <span class="bg-white/20 px-1.5 py-0.5 rounded text-[10px]" id="kpi-2569-rate-sub">35.4%</span>
+                        <span class="bg-white/20 px-1.5 py-0.5 rounded text-[10px]" id="kpi-2569-rate-sub">36.2%</span>
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
                 <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
                     <div class="flex items-center justify-between mb-1">
                         <h3 class="text-base font-bold text-slate-900">สัดส่วนผลการติดเชื้อ ประจำปี 2569 (N = 47)</h3>
-                        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-800" id="badge-inf-rate">พบเชื้อ 35.4%</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-sky-100 text-sky-800" id="badge-inf-rate">พบเชื้อ 36.2%</span>
                     </div>
                     <p class="text-xs text-slate-500 mb-4">จำแนกตามผู้ป่วยติดเชื้อเดี่ยว ติดเชื้อร่วม (Co-infection) และไม่พบเชื้อ</p>
                     <div class="relative w-full" style="height: 260px; min-height: 260px;">
@@ -525,23 +525,23 @@
 
         // ========================== 2. DATA REPOSITORY ==========================
         
-       // ข้อมูลเฝ้าระวังรายเดือนปี 2569 (ยอดส่งตรวจรวม 47 คน, NG 12 คน, พบเชื้อรวม 17 เคส)
+        // ข้อมูลเฝ้าระวังรายเดือนปี 2569 (ยอดส่งตรวจรวม 47 คน, NG 12 คน, พบเชื้อรวม 17 เคส)
         const MONTHLY_SURVEILLANCE_2569 = [
             { month: 'ต.ค. 68', ym: '2025-10', tested: 4, ng: 3, ct: 0, fungi: 0, total_pos: 3, pos_rate: '75.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG เพาะเชื้อ 3 เคส (CRO/CFM S)' },
             { month: 'พ.ย. 68', ym: '2025-11', tested: 1, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'ธ.ค. 68', ym: '2025-12', tested: 2, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'ม.ค. 69', ym: '2026-01', tested: 3, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'ก.พ. 69', ym: '2026-02', tested: 1, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
-            { month: 'มี.ค. 69', ym: '2026-03', tested: 6, ng: 2, ct: 1, fungi: 0, total_pos: 2, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 2 เคส (ไวต่อยาหลัก)' },
+            { month: 'มี.ค. 69', ym: '2026-03', tested: 6, ng: 2, ct: 1, fungi: 0, total_pos: 2, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 1 เคส, PCR 1 เคส (ไวต่อยาหลัก)' },
             { month: 'เม.ย. 69', ym: '2026-04', tested: 3, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '66.7%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ CT และ NG จาก Real-time PCR' },
             { month: 'พ.ค. 69', ym: '2026-05', tested: 4, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '50.0%', amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
             { month: 'มิ.ย. 69', ym: '2026-06', tested: 3, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG จาก Real-time PCR' },
             { month: 'ก.ค. 69', ym: '2026-07', tested: 6, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '16.7%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ตรวจคัดกรองกลุ่มเสี่ยง' },
-            { month: 'ส.ค. 69', ym: '2026-08', tested: 10, ng: 3, ct: 1, fungi: 2, total_pos: 5, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 2 เคส, ติดเชื้อร่วม CT/NG' },
-            { month: 'ก.ย. 69', ym: '2026-09', tested: 4, ng: 0, ct: 0, fungi: 1, total_pos: 1, pos_rate: '25.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 1 เคส' }
+            { month: 'ส.ค. 69', ym: '2026-08', tested: 10, ng: 2, ct: 1, fungi: 2, total_pos: 4, pos_rate: '40.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 2 เคส, ติดเชื้อร่วม CT/NG' },
+            { month: 'ก.ย. 69', ym: '2026-09', tested: 4, ng: 1, ct: 0, fungi: 1, total_pos: 2, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 1 เคส, เชื้อรา KOH 1 เคส' }
         ];
 
-        // ข้อมูลสรุปปี 2569: ผู้รับบริการ 47, ติดเชื้อจริง 17 (35.4%)
+        // ข้อมูลสรุปปี 2569: ผู้รับบริการ 47, ติดเชื้อจริง 17 (36.2%)
         let DATA_SUMMARY_2569 = {
             total_patients: 47,
             total_infected: 17,
@@ -555,24 +555,24 @@
 
         // ตำแหน่งสิ่งส่งตรวจปี 2569 (รวม 47 ตัวอย่าง)
         let SPECIMEN_2569_DATA = [
-            { site: 'ท่อปัสสาวะ (Urethra)', count: 26, pct: '56.2%' },
-            { site: 'ผิวหนัง (Skin / KOH)', count: 17, pct: '35.4%' },
-            { site: 'พลาสมา / เลือด (Plasma)', count: 4, pct: '8.3%' }
+            { site: 'ท่อปัสสาวะ (Urethra)', count: 26, pct: '55.3%' },
+            { site: 'ผิวหนัง (Skin / KOH)', count: 17, pct: '36.2%' },
+            { site: 'พลาสมา / เลือด (Plasma)', count: 4, pct: '8.5%' }
         ];
 
         // กลุ่มอายุปี 2569 (รวม 47 คน)
         let AGE_2569_DATA = [
-            { group: '< 20 ปี', count: 7, pct: '14.6%' },
-            { group: '20 - 29 ปี', count: 5, pct: '10.4%' },
-            { group: '30 - 39 ปี', count: 6, pct: '12.5%' },
-            { group: '40 - 49 ปี', count: 12, pct: '25.0%' },
-            { group: '50 ปีขึ้นไป', count: 17, pct: '37.5%' }
+            { group: '< 20 ปี', count: 7, pct: '14.9%' },
+            { group: '20 - 29 ปี', count: 5, pct: '10.6%' },
+            { group: '30 - 39 ปี', count: 6, pct: '12.8%' },
+            { group: '40 - 49 ปี', count: 12, pct: '25.5%' },
+            { group: '50 ปีขึ้นไป', count: 17, pct: '36.2%' }
         ];
 
         // หน่วยงานที่ส่งตรวจปี 2569 (รวม 47 เคส)
         let FACILITY_2569_DATA = [
-            { name: 'ศูนย์เวชฯ สคร.10', count: 33, pct: '70.8%' },
-            { name: 'รพ.มุกดาหาร', count: 13, pct: '27.1%' },
+            { name: 'ศูนย์เวชฯ สคร.10', count: 33, pct: '70.2%' },
+            { name: 'รพ.มุกดาหาร', count: 13, pct: '27.7%' },
             { name: 'รพ.พริ๊นซ์ อุบล', count: 1, pct: '2.1%' }
         ];
 
@@ -596,10 +596,10 @@
             { year: '2566', pen: '100%', cip: '83.3%', sc: '0.0%', tc: '50.0%', azm: '0.0%', cro: '0.0%', mean: '38.9%' },
             { year: '2567', pen: '100%', cip: '90.0%', sc: '10.0%', tc: '100%', azm: '0.0%', cro: '0.0%', mean: '50.0%' },
             { year: '2568', pen: '77.8%', cip: '100%', sc: '0.0%', tc: '85.7%', azm: '0.0%', cro: '0.0%', mean: '43.9%' },
-            { year: '2569', pen: '88.9%', cip: '88.9%', sc: '11.1%', tc: '77.8%', azm: '0.0%', cro: '0.0%', mean: '44.4%' }
+            { year: '2569', pen: '83.3%', cip: '83.3%', sc: '0.0%', tc: '66.7%', azm: '0.0%', cro: '0.0%', mean: '38.9%' }
         ];
 
-       const MIC_DATASETS = {
+        const MIC_DATASETS = {
             CRO: {
                 name: 'Ceftriaxone (CRO)',
                 breakpoint: 'ไวต่อยา (S) เมื่อ MIC ≤ 0.25 mg/L (CLSI/EUCAST)',
@@ -609,7 +609,7 @@
                     '2566': [4, 0, 1, 1, 0],
                     '2567': [2, 2, 5, 1, 0],
                     '2568': [4, 1, 0, 0, 0],
-                    '2569': [1, 1, 3, 0, 1] // 👈 แก้จาก 2 เป็น 3 (รวมได้ 6 ราย)
+                    '2569': [1, 1, 3, 0, 1] // รวม 6 ตัวอย่างที่เพาะเชื้อขึ้น
                 }
             },
             CFM: {
@@ -621,7 +621,7 @@
                     '2566': [0, 6, 0, 0],
                     '2567': [0, 9, 1, 0],
                     '2568': [0, 5, 0, 0],
-                    '2569': [0, 5, 0, 1] // 👈 แก้จาก 4 เป็น 5 (รวมได้ 6 ราย)
+                    '2569': [0, 5, 0, 1] // รวม 6 ตัวอย่างที่เพาะเชื้อขึ้น
                 }
             },
             AZM: {
@@ -633,7 +633,7 @@
                     '2566': [1, 0, 2, 3, 0],
                     '2567': [0, 0, 5, 3, 2],
                     '2568': [0, 1, 2, 2, 0],
-                    '2569': [0, 0, 2, 3, 1] // 👈 แก้จาก 2 เป็น 3 (รวมได้ 6 ราย)
+                    '2569': [0, 0, 2, 3, 1] // รวม 6 ตัวอย่างที่เพาะเชื้อขึ้น
                 }
             }
         };
@@ -662,7 +662,7 @@
 
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
-      function renderCurrentYearMonthlyTable() {
+        function renderCurrentYearMonthlyTable() {
             const tbody = document.getElementById('currentYearMonthlyTableBody');
             const tfoot = document.getElementById('currentYearMonthlyTableFoot');
             if (!tbody || !tfoot) return;
@@ -676,7 +676,6 @@
                 sumFungi += d.fungi;
                 sumTotalPos += d.total_pos;
 
-                // 👉 คำนวณเปอร์เซ็นต์อัตโนมัติรายเดือน (ไม่ใช้ค่าข้อความคงที่)
                 const monthRate = d.tested > 0 ? ((d.total_pos / d.tested) * 100).toFixed(1) + '%' : '0.0%';
                 const isAlert = d.amr_badge.includes('ดื้อยา');
 
@@ -695,7 +694,6 @@
                 `;
             }).join('');
 
-            // 👉 คำนวณเปอร์เซ็นต์ภาพรวมทั้งปี (17 / 47 = 36.2%)
             const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
 
             tfoot.innerHTML = `
@@ -785,7 +783,6 @@
             `;
         }
 
-        // ฟังก์ชันเรนเดอร์ 3 ตารางจำแนกของปี 2569
         function renderDemographic2569Tables() {
             const specBody = document.getElementById('specimen2569TableBody');
             if (specBody) {
@@ -967,14 +964,11 @@
             renderMICDistribution(drugKey);
         };
 
-        // ฟังก์ชันสร้างชาร์ตแบบเดี่ยวตัวเดียว ป้องกันการถูกสร้างซ้ำ
         function initStaticCharts() {
             // 1. กราฟ Donut สัดส่วนผลการติดเชื้อปี 2569
             const donut2569InfCanvas = document.getElementById('donut2569Infection');
             if (donut2569InfCanvas) {
-                if (donut2569InfChart) {
-                    donut2569InfChart.destroy();
-                }
+                if (donut2569InfChart) donut2569InfChart.destroy();
                 const ctx1 = donut2569InfCanvas.getContext('2d');
                 donut2569InfChart = new Chart(ctx1, {
                     type: 'doughnut',
@@ -987,7 +981,7 @@
                             'ตรวจไม่พบเชื้อ (Negative)'
                         ],
                         datasets: [{
-                            data: [10, 2, 2, 3, 31],
+                            data: [10, 2, 2, 3, 30],
                             backgroundColor: ['#0284c7', '#0d9488', '#8b5cf6', '#f59e0b', '#e2e8f0'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
@@ -1014,9 +1008,7 @@
             // 2. กราฟ Donut ประสิทธิภาพการตรวจพบหนองในแยกวิธี
             const donut2569MethodCanvas = document.getElementById('donut2569Method');
             if (donut2569MethodCanvas) {
-                if (donut2569MethodChart) {
-                    donut2569MethodChart.destroy();
-                }
+                if (donut2569MethodChart) donut2569MethodChart.destroy();
                 const ctx2 = donut2569MethodCanvas.getContext('2d');
                 donut2569MethodChart = new Chart(ctx2, {
                     type: 'doughnut',
@@ -1028,7 +1020,7 @@
                             'ไม่พบเชื้อหนองใน'
                         ],
                         datasets: [{
-                            data: [2, 4, 6, 36],
+                            data: [2, 4, 6, 35],
                             backgroundColor: ['#1e40af', '#38bdf8', '#8b5cf6', '#e2e8f0'],
                             borderWidth: 2,
                             borderColor: '#ffffff'
@@ -1055,9 +1047,7 @@
             // 3. กราฟแท่ง AMR แนวนอน
             const amrCanvas = document.getElementById('amrBarChart');
             if (amrCanvas) {
-                if (amrBarChartInstance) {
-                    amrBarChartInstance.destroy();
-                }
+                if (amrBarChartInstance) amrBarChartInstance.destroy();
                 const ctx3 = amrCanvas.getContext('2d');
                 amrBarChartInstance = new Chart(ctx3, {
                     type: 'bar',
@@ -1091,24 +1081,23 @@
                 console.log("Realtime Data Loaded:", data);
                 
                 if (data.mic_2569) {
-    MIC_DATASETS.CRO.years['2569'] = data.mic_2569.CRO;
-    MIC_DATASETS.CFM.years['2569'] = data.mic_2569.CFM;
-    MIC_DATASETS.AZM.years['2569'] = data.mic_2569.AZM;
-    updateMICChart(document.getElementById('drugSelector').value);
-}
+                    if (data.mic_2569.CRO) MIC_DATASETS.CRO.years['2569'] = data.mic_2569.CRO;
+                    if (data.mic_2569.CFM) MIC_DATASETS.CFM.years['2569'] = data.mic_2569.CFM;
+                    if (data.mic_2569.AZM) MIC_DATASETS.AZM.years['2569'] = data.mic_2569.AZM;
+                    updateMICChart(document.getElementById('drugSelector').value);
+                }
 
                 if (data.fy2569) {
                     const f = data.fy2569;
-                    
-                    const validTotalPatients = (f.total_patients && f.total_patients >= 47) ? f.total_patients : 47;
-                    const validTotalInfected = (f.total_infected && f.total_infected >= 17) ? f.total_infected : 17;
-                    const validNgOverall = (f.ng_overall && f.ng_overall >= 12) ? f.ng_overall : 12;
+                    const validTotalPatients = f.total_patients || 47;
+                    const validTotalInfected = f.total_infected || 17;
+                    const validNgOverall = f.ng_overall || 12;
 
-                    const cultTested = (f.ng_culture?.tested && f.ng_culture.tested >= 12) ? f.ng_culture.tested : 12;
-                    const cultPos = (f.ng_culture?.positive && f.ng_culture.positive >= 6) ? f.ng_culture.positive : 6;
+                    const cultTested = f.ng_culture?.tested || 12;
+                    const cultPos = f.ng_culture?.positive || f.ng_culture?.pos || 6;
                     
-                    const pcrTested = (f.ng_pcr?.tested && f.ng_pcr.tested >= 17) ? f.ng_pcr.tested : 17;
-                    const pcrPos = (f.ng_pcr?.positive && f.ng_pcr.positive >= 8) ? f.ng_pcr.positive : 8;
+                    const pcrTested = f.ng_pcr?.tested || 17;
+                    const pcrPos = f.ng_pcr?.positive || f.ng_pcr?.pos || 8;
 
                     DATA_SUMMARY_2569 = {
                         total_patients: validTotalPatients,
@@ -1180,7 +1169,7 @@
                     const fungiRate = document.getElementById('kpi-2569-fungi-rate');
                     if (fungiRate) fungiRate.innerText = DATA_SUMMARY_2569.fungi_koh.rate;
 
-                    // สั่งอัปเดตกราฟ Donut แบบ Live Data
+                    // อัปเดตกราฟ Donut สด
                     if (donut2569InfChart) {
                         const coVal = DATA_SUMMARY_2569.coinfection.pos;
                         const ngSingle = Math.max(0, DATA_SUMMARY_2569.ng_overall - coVal);
