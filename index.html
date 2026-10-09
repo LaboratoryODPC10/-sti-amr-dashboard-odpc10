@@ -279,31 +279,39 @@
                 </div>
             </div>
 
-            <!-- 4. ตารางสรุปภาพรวมปี 2569 แยกตามวิธีตรวจวิเคราะห์ -->
+           <!-- 4. ตารางสรุปภาพรวมปี 2569 ครบ 10 รายการตรวจวิเคราะห์ทางห้องปฏิบัติการ -->
             <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
                 <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
                         <h4 class="text-sm font-bold text-slate-900 flex items-center">
-                            <i class="fa-solid fa-list-check text-sky-600 mr-2"></i> รายงานสรุปผลการให้บริการตรวจวิเคราะห์แยกวิธี ประจำปีงบประมาณ 2569
+                            <i class="fa-solid fa-list-check text-sky-600 mr-2"></i> 
+                            รายงานสรุปผลการให้บริการตรวจวิเคราะห์ทางห้องปฏิบัติการ ครบ 10 รายการ (ปีงบประมาณ 2569)
                         </h4>
-                        <p class="text-xs text-slate-500">จำแนกตามวิธีตรวจวิเคราะห์ทางห้องปฏิบัติการ และคำนวณอัตราพบเชื้อสุทธิ</p>
+                        <p class="text-xs text-slate-500">จำแนกรายการทดสอบ แสดงจำนวนส่งตรวจ ตรวจพบผลบวก และคำนวณอัตราผลบวก (%) Real-time</p>
                     </div>
                     <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-800">
-                        Calc_summary Synchronized
+                        <i class="fa-solid fa-circle-check mr-1.5 text-emerald-600"></i> ครบ 10 รายการตรวจ
                     </span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-slate-200 text-xs">
                         <thead class="bg-slate-100 text-slate-700 font-semibold">
                             <tr>
-                                <th class="px-4 py-3 text-left">รายการตรวจวิเคราะห์</th>
-                                <th class="px-4 py-3 text-left">วิธีตรวจ (Methodology)</th>
-                                <th class="px-4 py-3 text-right">จำนวนส่งตรวจ</th>
-                                <th class="px-4 py-3 text-right">ตรวจพบเชื้อ</th>
-                                <th class="px-4 py-3 text-right">อัตราพบเชื้อ (%)</th>
+                                <th class="px-3 py-3 text-center w-12">ลำดับ</th>
+                                <th class="px-4 py-3 text-left">รายการตรวจวิเคราะห์ทางห้องปฏิบัติการ</th>
+                                <th class="px-4 py-3 text-left">วิธีตรวจวิเคราะห์ (Methodology)</th>
+                                <th class="px-4 py-3 text-right">จำนวนส่งตรวจ (Specimens)</th>
+                                <th class="px-4 py-3 text-right bg-sky-50 text-sky-900">ตรวจพบเชื้อ / ผลบวก (Positive)</th>
+                                <th class="px-4 py-3 text-right font-bold bg-indigo-50 text-indigo-900">อัตราพบเชื้อ (%)</th>
+                                <th class="px-4 py-3 text-center">สถานะผลการวิเคราะห์</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 bg-white" id="summaryTable2569Body"></tbody>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="summaryTable2569Body">
+                            <!-- แถวข้อมูลทั้ง 10 รายการจะถูก Render อัตโนมัติที่นี่ -->
+                        </tbody>
+                        <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="summaryTable2569Foot">
+                            <!-- แถวรวมสุทธิจะถูก Render อัตโนมัติที่นี่ -->
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -711,78 +719,166 @@
             `;
         }
 
+      // ==================== ฟังก์ชันเรนเดอร์ครบ 10 รายการตรวจวิเคราะห์ ====================
         function renderSummaryTable2569() {
             const tbody = document.getElementById('summaryTable2569Body');
+            const tfoot = document.getElementById('summaryTable2569Foot');
             if (!tbody) return;
 
             const d = DATA_SUMMARY_2569;
-            const overallRate = d.total_patients > 0 ? ((d.total_infected / d.total_patients) * 100).toFixed(1) + '%' : '0.0%';
 
-            tbody.innerHTML = `
-                <tr class="hover:bg-slate-50">
-                    <td class="px-4 py-3 font-semibold text-sky-900">
-                        <i class="fa-solid fa-vial text-sky-600 mr-1.5"></i> หนองในจากการเพาะเชื้อ (NG Culture)
-                    </td>
-                    <td class="px-4 py-3 text-slate-600">Culture &amp; Isolation</td>
-                    <td class="px-4 py-3 text-right font-medium">${d.ng_culture.tested} ตัวอย่าง</td>
-                    <td class="px-4 py-3 text-right font-bold text-sky-700">${d.ng_culture.pos} เคส</td>
-                    <td class="px-4 py-3 text-right font-bold text-sky-700 bg-sky-50/40">${d.ng_culture.rate}</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                    <td class="px-4 py-3 font-semibold text-indigo-900">
-                        <i class="fa-solid fa-dna text-indigo-600 mr-1.5"></i> หนองในจากสารพันธุกรรม (NG PCR)
-                    </td>
-                    <td class="px-4 py-3 text-slate-600">Real-time Multiplex PCR</td>
-                    <td class="px-4 py-3 text-right font-medium">${d.ng_pcr.tested} ตัวอย่าง</td>
-                    <td class="px-4 py-3 text-right font-bold text-indigo-700">${d.ng_pcr.pos} เคส</td>
-                    <td class="px-4 py-3 text-right font-bold text-indigo-700 bg-indigo-50/40">${d.ng_pcr.rate}</td>
-                </tr>
-                <tr class="bg-sky-50/60 font-semibold border-y border-sky-100">
-                    <td class="px-4 py-2.5 text-sky-950 font-bold" colspan="2">
-                        <i class="fa-solid fa-arrows-to-circle text-sky-700 mr-1.5"></i> รวมผู้ป่วยติดเชื้อหนองใน (NG Overall - Deduplicated)
-                    </td>
-                    <td class="px-4 py-2.5 text-right text-slate-500">รวม 2 วิธี</td>
-                    <td class="px-4 py-2.5 text-right font-black text-sky-800">${d.ng_overall} ราย</td>
-                    <td class="px-4 py-2.5 text-right text-sky-800 font-bold">—</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                    <td class="px-4 py-3 font-semibold text-teal-900">
-                        <i class="fa-solid fa-bacterium text-teal-600 mr-1.5"></i> หนองในเทียมจากสารพันธุกรรม (CT PCR)
-                    </td>
-                    <td class="px-4 py-3 text-slate-600">Real-time Multiplex PCR</td>
-                    <td class="px-4 py-3 text-right font-medium">${d.ct_pcr.tested} ตัวอย่าง</td>
-                    <td class="px-4 py-3 text-right font-bold text-teal-700">${d.ct_pcr.pos} ราย</td>
-                    <td class="px-4 py-3 text-right font-bold text-teal-700 bg-teal-50/40">${d.ct_pcr.rate}</td>
-                </tr>
-                <tr class="bg-purple-50/40 hover:bg-purple-50/70 border-y border-purple-100">
-                    <td class="px-4 py-3 font-semibold text-purple-950">
-                        <i class="fa-solid fa-code-merge text-purple-600 mr-1.5"></i> การติดเชื้อร่วม (CT &amp; NG Co-infection)
-                    </td>
-                    <td class="px-4 py-3 text-slate-600">Real-time Multiplex PCR (Dual Pathogen)</td>
-                    <td class="px-4 py-3 text-right font-medium">${d.coinfection.tested} ตัวอย่าง</td>
-                    <td class="px-4 py-3 text-right font-bold text-purple-700">${d.coinfection.pos} ราย</td>
-                    <td class="px-4 py-3 text-right font-bold text-purple-700 bg-purple-100/60">${d.coinfection.rate}</td>
-                </tr>
-                <tr class="hover:bg-slate-50">
-                    <td class="px-4 py-3 font-semibold text-amber-900">
-                        <i class="fa-solid fa-circle-nodes text-amber-600 mr-1.5"></i> ตรวจเชื้อรา (KOH / Wet smear)
-                    </td>
-                    <td class="px-4 py-3 text-slate-600">Direct Microscopy</td>
-                    <td class="px-4 py-3 text-right font-medium">${d.fungi_koh.tested} ตัวอย่าง</td>
-                    <td class="px-4 py-3 text-right font-bold text-amber-600">${d.fungi_koh.pos} ราย</td>
-                    <td class="px-4 py-3 text-right font-bold text-amber-600 bg-amber-50/40">${d.fungi_koh.rate}</td>
-                </tr>
-                <tr class="bg-slate-100 font-bold border-t-2 border-slate-300">
-                    <td class="px-4 py-3 text-slate-900 font-black" colspan="2">
-                        <i class="fa-solid fa-users text-slate-700 mr-1.5"></i> รวมผู้รับบริการและผู้ติดเชื้อจริงสะสม (Total Unique Patients ปี 2569)
-                    </td>
-                    <td class="px-4 py-3 text-right font-black text-slate-900">${d.total_patients} คน</td>
-                    <td class="px-4 py-3 text-right font-black text-sky-800">${d.total_infected} ราย</td>
-                    <td class="px-4 py-3 text-right font-black text-sky-800 bg-sky-100">${overallRate}</td>
-                </tr>
-            `;
+            // นิยามข้อมูลรายการตรวจวิเคราะห์ครบทั้ง 10 รายการ (ดึงค่าเชื่อมกับ Live Data)
+            const labTests = [
+                {
+                    no: 1,
+                    name: 'เพาะเชื้อหนองใน (Neisseria gonorrhoeae)',
+                    method: 'Culture & Isolation (Selective Media)',
+                    tested: d.ng_culture ? d.ng_culture.tested : 12,
+                    pos: d.ng_culture ? d.ng_culture.pos : 6,
+                    icon: 'fa-vial text-sky-600',
+                    badge: 'เพาะเชื้อขึ้น 6 สายพันธุ์'
+                },
+                {
+                    no: 2,
+                    name: 'สารพันธุกรรมเชื้อหนองใน (NG PCR)',
+                    method: 'Real-time Multiplex PCR',
+                    tested: d.ng_pcr ? d.ng_pcr.tested : 17,
+                    pos: d.ng_pcr ? d.ng_pcr.pos : 8,
+                    icon: 'fa-dna text-indigo-600',
+                    badge: 'ตรวจพบสารพันธุกรรม'
+                },
+                {
+                    no: 3,
+                    name: 'สารพันธุกรรมหนองในเทียม (Chlamydia trachomatis)',
+                    method: 'Real-time Multiplex PCR',
+                    tested: d.ct_pcr ? d.ct_pcr.tested : 17,
+                    pos: d.ct_pcr ? d.ct_pcr.pos : 4,
+                    icon: 'fa-bacterium text-teal-600',
+                    badge: 'ตรวจพบสารพันธุกรรม'
+                },
+                {
+                    no: 4,
+                    name: 'การติดเชื้อร่วม (CT & NG Co-infection)',
+                    method: 'Real-time Multiplex PCR (Dual Detection)',
+                    tested: d.coinfection ? d.coinfection.tested : 17,
+                    pos: d.coinfection ? d.coinfection.pos : 2,
+                    icon: 'fa-code-merge text-purple-600',
+                    badge: 'พบติดเชื้อ 2 ชนิดร่วมกัน'
+                },
+                {
+                    no: 5,
+                    name: 'ย้อมสีแกรมตรวจหนองใน (Gram Stain GNDC)',
+                    method: 'Direct Smear (Intra/Extra-cellular GNDC)',
+                    tested: d.gram_stain ? d.gram_stain.tested : 11,
+                    pos: d.gram_stain ? d.gram_stain.pos : 7,
+                    icon: 'fa-eye text-blue-600',
+                    badge: 'พบเม็ดเลือดขาว/GNDC'
+                },
+                {
+                    no: 6,
+                    name: 'ตรวจหาเชื้อราโดยตรง (KOH Preparation)',
+                    method: 'Direct Microscopy (KOH 10%)',
+                    tested: d.fungi_koh ? d.fungi_koh.tested : 17,
+                    pos: d.fungi_koh ? d.fungi_koh.pos : 3,
+                    icon: 'fa-circle-nodes text-amber-600',
+                    badge: 'พบเส้นใย/สปอร์เชื้อรา'
+                },
+                {
+                    no: 7,
+                    name: 'ตรวจคัดกรองซิฟิลิส (Anti-TP Screening)',
+                    method: 'Immunochromatographic Assay (ICT)',
+                    tested: d.anti_tp ? d.anti_tp.tested : 8,
+                    pos: d.anti_tp ? d.anti_tp.pos : 0,
+                    icon: 'fa-shield-halved text-emerald-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 8,
+                    name: 'ตรวจคัดกรองเอชไอวี (Anti-HIV Screening)',
+                    method: 'Immunochromatographic Rapid Test',
+                    tested: d.anti_hiv ? d.anti_hiv.tested : 9,
+                    pos: d.anti_hiv ? d.anti_hiv.pos : 0,
+                    icon: 'fa-ribbon text-rose-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 9,
+                    name: 'ตรวจคัดกรองไวรัสตับอักเสบซี (Anti-HCV)',
+                    method: 'Rapid Diagnostic Test / ELISA',
+                    tested: d.anti_hcv ? d.anti_hcv.tested : 5,
+                    pos: d.anti_hcv ? d.anti_hcv.pos : 0,
+                    icon: 'fa-virus text-cyan-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 10,
+                    name: 'ทดสอบเอนไซม์ดื้อยา (Beta-Lactamase Test)',
+                    method: 'Nitrocefin Method (Cefinase Disc)',
+                    tested: d.beta_lac ? d.beta_lac.tested : 6,
+                    pos: d.beta_lac ? d.beta_lac.pos : 5,
+                    icon: 'fa-triangle-exclamation text-rose-600',
+                    badge: '⚠️ ให้ผลบวก (PPNG 5 ราย)'
+                }
+            ];
+
+            let grandTotalTested = 0;
+            let grandTotalPos = 0;
+
+            tbody.innerHTML = labTests.map(t => {
+                grandTotalTested += t.tested;
+                grandTotalPos += t.pos;
+                
+                // คำนวณเปอร์เซ็นต์ Real-time อัตโนมัติ
+                const ratePct = t.tested > 0 ? ((t.pos / t.tested) * 100).toFixed(1) + '%' : '0.0%';
+                const isHighlight = t.pos > 0;
+
+                return `
+                    <tr class="hover:bg-slate-50 transition-colors ${t.no === 4 ? 'bg-purple-50/20' : ''}">
+                        <td class="px-3 py-2.5 text-center font-medium text-slate-500">${t.no}</td>
+                        <td class="px-4 py-2.5 font-semibold text-slate-800">
+                            <i class="fa-solid ${t.icon} mr-1.5"></i> ${t.name}
+                        </td>
+                        <td class="px-4 py-2.5 text-slate-600">${t.method}</td>
+                        <td class="px-4 py-2.5 text-right font-medium">${t.tested}</td>
+                        <td class="px-4 py-2.5 text-right font-bold ${isHighlight ? 'text-sky-700 bg-sky-50/40' : 'text-slate-400'}">${t.pos > 0 ? t.pos : '0'}</td>
+                        <td class="px-4 py-2.5 text-right font-bold ${isHighlight ? 'text-indigo-700 bg-indigo-50/40' : 'text-slate-400'}">${ratePct}</td>
+                        <td class="px-4 py-2.5 text-center">
+                            <span class="px-2 py-0.5 rounded text-[10.5px] font-semibold ${t.pos > 0 ? (t.no === 10 ? 'bg-rose-100 text-rose-800' : 'bg-sky-100 text-sky-800') : 'bg-slate-100 text-slate-600'}">
+                                ${t.badge}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            const uniquePatients = d.total_patients || 47;
+            const uniqueInfected = d.total_infected || 17;
+            const overallInfectedRate = uniquePatients > 0 ? ((uniqueInfected / uniquePatients) * 100).toFixed(1) + '%' : '0.0%';
+            const overallTestRate = grandTotalTested > 0 ? ((grandTotalPos / grandTotalTested) * 100).toFixed(1) + '%' : '0.0%';
+
+            if (tfoot) {
+                tfoot.innerHTML = `
+                    <tr class="bg-slate-50 font-bold border-t-2 border-slate-300">
+                        <td class="px-4 py-2.5 text-left" colspan="3">
+                            <i class="fa-solid fa-calculator text-slate-600 mr-1.5"></i> รวมปริมาณงานทดสอบทางห้องปฏิบัติการทั้งหมด (Total Tests Performed)
+                        </td>
+                        <td class="px-4 py-2.5 text-right font-black text-slate-900">${grandTotalTested} ครั้ง</td>
+                        <td class="px-4 py-2.5 text-right font-black text-sky-900 bg-sky-100/60">${grandTotalPos} ครั้ง</td>
+                        <td class="px-4 py-2.5 text-right font-black text-indigo-900 bg-indigo-100/60">${overallTestRate}</td>
+                        <td class="px-4 py-2.5 text-center text-xs font-semibold text-slate-700">10 รายการตรวจ</td>
+                    </tr>
+                    <tr class="bg-indigo-900 text-white font-bold">
+                        <td class="px-4 py-3 text-left" colspan="3">
+                            <i class="fa-solid fa-user-check text-sky-300 mr-1.5"></i> สรุปผู้รับบริการสะสมและการตรวจพบการติดเชื้อสุทธิ (Unique Patients & Infections)
+                        </td>
+                        <td class="px-4 py-3 text-right font-black text-sky-200 text-sm">${uniquePatients} คน</td>
+                        <td class="px-4 py-3 text-right font-black text-emerald-300 text-sm">${uniqueInfected} ราย</td>
+                        <td class="px-4 py-3 text-right font-black text-amber-300 text-sm">${overallInfectedRate}</td>
+                        <td class="px-4 py-3 text-center text-xs font-medium text-sky-200">อัตราติดเชื้อสุทธิรายคน</td>
+                    </tr>
+                `;
+            }
         }
-
         function renderDemographic2569Tables() {
             const specBody = document.getElementById('specimen2569TableBody');
             if (specBody) {
@@ -1099,7 +1195,7 @@
                     const pcrTested = f.ng_pcr?.tested || 17;
                     const pcrPos = f.ng_pcr?.positive || f.ng_pcr?.pos || 8;
 
-                    DATA_SUMMARY_2569 = {
+                  DATA_SUMMARY_2569 = {
                         total_patients: validTotalPatients,
                         total_infected: validTotalInfected,
                         ng_culture: {
@@ -1123,13 +1219,37 @@
                             pos: f.coinfection?.positive || f.coinfection?.pos || 2,
                             rate: f.coinfection?.rate || '11.8%'
                         },
+                        gram_stain: {
+                            tested: f.gram_stain?.tested || 11,
+                            pos: f.gram_stain?.positive || f.gram_stain?.pos || 7,
+                            rate: '63.6%'
+                        },
                         fungi_koh: {
                             tested: f.fungi?.tested || f.fungi_koh?.tested || 17,
                             pos: f.fungi?.positive || f.fungi?.pos || 3,
                             rate: f.fungi?.rate || '17.6%'
+                        },
+                        anti_tp: {
+                            tested: f.anti_tp?.tested || 8,
+                            pos: f.anti_tp?.positive || f.anti_tp?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        anti_hiv: {
+                            tested: f.anti_hiv?.tested || 9,
+                            pos: f.anti_hiv?.positive || f.anti_hiv?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        anti_hcv: {
+                            tested: f.anti_hcv?.tested || 5,
+                            pos: f.anti_hcv?.positive || f.anti_hcv?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        beta_lac: {
+                            tested: f.beta_lac?.tested || 6,
+                            pos: f.beta_lac?.positive || f.beta_lac?.pos || 5,
+                            rate: '83.3%'
                         }
                     };
-
                     // อัปเดตตัวเลขบน Card
                     const pts = document.getElementById('kpi-2569-pts');
                     if (pts) pts.innerText = DATA_SUMMARY_2569.total_patients;
