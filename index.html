@@ -244,7 +244,7 @@
                 </div>
             </div>
             
-            <!-- 3. ตารางเฝ้าระวังรายเดือน 2569 ครบทั้ง 10 รายการตรวจวิเคราะห์ -->
+          <!-- 3. ตารางเฝ้าระวังรายเดือน 2569 หัวตาราง 2 บรรทัดแบบโปร่งตา -->
             <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
                 <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
@@ -255,34 +255,52 @@
                         <p class="text-xs text-slate-500">จำแนกผลบวกตามรายการตรวจวิเคราะห์ทางห้องปฏิบัติการครบทั้ง 10 รายการรายเดือน</p>
                     </div>
                     <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-sky-100 text-sky-800">
-                        <i class="fa-solid fa-list-ol mr-1"></i> ครบ 10 รายการตรวจทางห้องปฏิบัติการ
+                        <i class="fa-solid fa-list-check mr-1.5"></i> 10 รายการตรวจวิเคราะห์
                     </span>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-slate-200 text-xs">
-                        <thead class="bg-slate-100 text-slate-700 font-semibold">
-                            <tr>
-                                <th class="px-2.5 py-3 text-left sticky left-0 bg-slate-100 z-10 whitespace-nowrap">เดือน / ปี</th>
-                                <th class="px-2 py-3 text-right">ส่งตรวจ (คน)</th>
-                                <!-- ครบ 10 รายการตรวจวิเคราะห์ -->
-                                <th class="px-2 py-3 text-right bg-sky-50 text-sky-900" title="หนองในจากการเพาะเชื้อ">1. NG Cult</th>
-                                <th class="px-2 py-3 text-right bg-sky-50 text-sky-900" title="หนองในจาก Real-time PCR">2. NG PCR</th>
-                                <th class="px-2 py-3 text-right bg-teal-50 text-teal-900" title="หนองในเทียมจาก Real-time PCR">3. CT PCR</th>
-                                <th class="px-2 py-3 text-right bg-purple-50 text-purple-900" title="ติดเชื้อร่วม CT & NG Co-infection">4. Co-inf</th>
-                                <th class="px-2 py-3 text-right bg-blue-50 text-blue-900" title="ย้อมสีแกรม GNDC Intra/Extra-cellular">5. Gram</th>
-                                <th class="px-2 py-3 text-right bg-amber-50 text-amber-900" title="ตรวจเชื้อรา KOH Preparation">6. KOH</th>
-                                <th class="px-2 py-3 text-right bg-emerald-50 text-emerald-900" title="คัดกรองซิฟิลิส Anti-TP">7. Anti-TP</th>
-                                <th class="px-2 py-3 text-right bg-rose-50 text-rose-900" title="คัดกรองเอชไอวี Anti-HIV">8. HIV</th>
-                                <th class="px-2 py-3 text-right bg-cyan-50 text-cyan-900" title="คัดกรองไวรัสตับอักเสบซี Anti-HCV">9. HCV</th>
-                                <th class="px-2 py-3 text-right bg-rose-50 text-rose-900" title="ทดสอบเอนไซม์ดื้อยา Beta-Lactamase">10. β-Lac</th>
-                                <!-- สรุปรวมรายเดือน -->
-                                <th class="px-2.5 py-3 text-right font-black text-slate-900 bg-slate-200/70">รวมบวก (เคส)</th>
-                                <th class="px-2.5 py-3 text-right font-bold bg-indigo-50 text-indigo-900">อัตราพบเชื้อ (%)</th>
-                                <th class="px-3 py-3 text-center whitespace-nowrap">สถานะ AMR</th>
-                                <th class="px-3 py-3 text-left min-w-[170px]">บันทึกทางระบาดวิทยา</th>
+                    <table class="min-w-full border-collapse text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                            <!-- บรรทัดที่ 1: กลุ่มหมวดหมู่หลัก -->
+                            <tr class="border-b border-slate-200 text-slate-600">
+                                <th rowspan="2" class="px-3.5 py-3 text-left sticky left-0 bg-slate-100 z-10 whitespace-nowrap border-r border-slate-200">
+                                    เดือน / ปี
+                                </th>
+                                <th rowspan="2" class="px-3 py-3 text-right whitespace-nowrap border-r border-slate-200 bg-slate-50">
+                                    ส่งตรวจ<br><span class="text-[10px] font-normal text-slate-400">(คน)</span>
+                                </th>
+                                <th colspan="10" class="py-2 text-center bg-sky-50/80 text-sky-900 border-r border-slate-200 tracking-wide font-bold">
+                                    ผลการตรวจทางห้องปฏิบัติการ (ตรวจพบผลบวก)
+                                </th>
+                                <th colspan="2" class="py-2 text-center bg-indigo-50/80 text-indigo-900 border-r border-slate-200 tracking-wide font-bold">
+                                    สรุปผลบวกรวม
+                                </th>
+                                <th rowspan="2" class="px-3.5 py-3 text-center whitespace-nowrap border-r border-slate-200">
+                                    สถานะ AMR<br><span class="text-[10px] font-normal text-slate-400">(CRO / CFM)</span>
+                                </th>
+                                <th rowspan="2" class="px-4 py-3 text-left min-w-[200px]">
+                                    บันทึกทางระบาดวิทยา
+                                </th>
+                            </tr>
+
+                            <!-- บรรทัดที่ 2: ชื่อรายการตรวจย่อย (ไม่มีตัวเลขนำหน้า + ข้อความสั้นกระชับ) -->
+                            <tr class="bg-slate-50/60 text-slate-600 text-[11px]">
+                                <th class="px-2.5 py-2 text-right bg-sky-50 text-sky-900 font-semibold" title="หนองในจากการเพาะเชื้อ">NG Cult</th>
+                                <th class="px-2.5 py-2 text-right bg-sky-50 text-sky-900 font-semibold" title="หนองในจาก Real-time PCR">NG PCR</th>
+                                <th class="px-2.5 py-2 text-right bg-teal-50 text-teal-900 font-semibold" title="หนองในเทียมจาก Real-time PCR">CT PCR</th>
+                                <th class="px-2.5 py-2 text-right bg-purple-50 text-purple-900 font-semibold" title="ติดเชื้อร่วม CT & NG Co-infection">Co-inf</th>
+                                <th class="px-2.5 py-2 text-right bg-blue-50 text-blue-900 font-semibold" title="ย้อมสีแกรม GNDC">Gram</th>
+                                <th class="px-2.5 py-2 text-right bg-amber-50 text-amber-900 font-semibold" title="ตรวจเชื้อรา KOH">KOH</th>
+                                <th class="px-2.5 py-2 text-right bg-emerald-50 text-emerald-900 font-semibold" title="คัดกรองซิฟิลิส Anti-TP">Anti-TP</th>
+                                <th class="px-2.5 py-2 text-right bg-rose-50 text-rose-900 font-semibold" title="คัดกรองเอชไอวี Anti-HIV">HIV</th>
+                                <th class="px-2.5 py-2 text-right bg-cyan-50 text-cyan-900 font-semibold" title="คัดกรองไวรัสตับอักเสบซี Anti-HCV">HCV</th>
+                                <th class="px-2.5 py-2 text-right bg-rose-50 text-rose-900 font-semibold border-r border-slate-200" title="ทดสอบเอนไซม์ดื้อยา Beta-Lactamase">β-Lac</th>
+                                
+                                <th class="px-3 py-2 text-right font-bold text-slate-900 bg-indigo-50/50">รวมบวก</th>
+                                <th class="px-3 py-2 text-right font-bold text-indigo-700 bg-indigo-50/70 border-r border-slate-200">อัตราพบ (%)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 bg-white" id="currentYearMonthlyTableBody"></tbody>
+                        <tbody class="divide-y divide-slate-100 bg-white" id="currentYearMonthlyTableBody"></tbody>
                         <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="currentYearMonthlyTableFoot"></tfoot>
                     </table>
                 </div>
@@ -680,7 +698,7 @@
 
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
-        function renderCurrentYearMonthlyTable() {
+       function renderCurrentYearMonthlyTable() {
             const tbody = document.getElementById('currentYearMonthlyTableBody');
             const tfoot = document.getElementById('currentYearMonthlyTableFoot');
             if (!tbody || !tfoot) return;
@@ -706,27 +724,53 @@
 
                 const monthRate = d.tested > 0 ? ((d.total_pos / d.tested) * 100).toFixed(1) + '%' : '0.0%';
                 const isAlert = d.amr_badge && d.amr_badge.includes('ดื้อยา');
-                const fmt = val => (val > 0 ? val : '-');
+                const fmt = val => (val > 0 ? val : '<span class="text-slate-300">-</span>');
 
                 return `
                     <tr class="hover:bg-slate-50 transition-colors ${isAlert ? 'bg-rose-50/40' : ''}">
-                        <td class="px-2.5 py-2.5 font-bold text-slate-900 sticky left-0 bg-white z-10 whitespace-nowrap">${d.month}</td>
-                        <td class="px-2 py-2.5 text-right font-medium text-slate-700">${d.tested}</td>
-                        <td class="px-2 py-2.5 text-right bg-sky-50/40 text-sky-800 font-bold">${fmt(d.ng_cult)}</td>
-                        <td class="px-2 py-2.5 text-right bg-sky-50/40 text-sky-800 font-bold">${fmt(d.ng_pcr)}</td>
-                        <td class="px-2 py-2.5 text-right bg-teal-50/40 text-teal-800 font-bold">${fmt(d.ct_pcr)}</td>
-                        <td class="px-2 py-2.5 text-right bg-purple-50/40 text-purple-800 font-bold">${fmt(d.co_inf)}</td>
-                        <td class="px-2 py-2.5 text-right bg-blue-50/40 text-blue-800 font-bold">${fmt(d.gram)}</td>
-                        <td class="px-2 py-2.5 text-right bg-amber-50/40 text-amber-800 font-bold">${fmt(d.koh)}</td>
-                        <td class="px-2 py-2.5 text-right bg-emerald-50/40 text-emerald-800 font-bold">${fmt(d.tp)}</td>
-                        <td class="px-2 py-2.5 text-right bg-rose-50/40 text-rose-800 font-bold">${fmt(d.hiv)}</td>
-                        <td class="px-2 py-2.5 text-right bg-cyan-50/40 text-cyan-800 font-bold">${fmt(d.hcv)}</td>
-                        <td class="px-2 py-2.5 text-right bg-rose-50/40 text-rose-800 font-bold">${fmt(d.beta_lac)}</td>
-                        <td class="px-2.5 py-2.5 text-right font-black text-slate-900 bg-slate-100/60">${fmt(d.total_pos)}</td>
-                        <td class="px-2.5 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${monthRate}</td>
-                        <td class="px-3 py-2.5 text-center text-xs font-semibold whitespace-nowrap">${d.amr_badge}</td>
-                        <td class="px-3 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
+                        <td class="px-3.5 py-2.5 font-bold text-slate-900 sticky left-0 bg-white z-10 whitespace-nowrap border-r border-slate-100">${d.month}</td>
+                        <td class="px-3 py-2.5 text-right font-medium text-slate-700 border-r border-slate-100 bg-slate-50/30">${d.tested}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-sky-50/30 text-sky-800 font-semibold">${fmt(d.ng_cult)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-sky-50/30 text-sky-800 font-semibold">${fmt(d.ng_pcr)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-teal-50/30 text-teal-800 font-semibold">${fmt(d.ct_pcr)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-purple-50/30 text-purple-800 font-semibold">${fmt(d.co_inf)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-blue-50/30 text-blue-800 font-semibold">${fmt(d.gram)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-amber-50/30 text-amber-800 font-semibold">${fmt(d.koh)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-emerald-50/30 text-emerald-800 font-semibold">${fmt(d.tp)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-rose-50/30 text-rose-800 font-semibold">${fmt(d.hiv)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-cyan-50/30 text-cyan-800 font-semibold">${fmt(d.hcv)}</td>
+                        <td class="px-2.5 py-2.5 text-right bg-rose-50/30 text-rose-800 font-semibold border-r border-slate-100">${fmt(d.beta_lac)}</td>
+                        <td class="px-3 py-2.5 text-right font-black text-slate-900 bg-indigo-50/30">${fmt(d.total_pos)}</td>
+                        <td class="px-3 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50 border-r border-slate-100">${monthRate}</td>
+                        <td class="px-3.5 py-2.5 text-center text-xs font-semibold whitespace-nowrap border-r border-slate-100">${d.amr_badge}</td>
+                        <td class="px-4 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
                     </tr>
+                `;
+            }).join('');
+
+            const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
+
+            tfoot.innerHTML = `
+                <tr>
+                    <td class="px-3.5 py-3 sticky left-0 bg-slate-100 z-10 whitespace-nowrap border-r border-slate-200">รวมทั้งสิ้น (FY 2569)</td>
+                    <td class="px-3 py-3 text-right font-black border-r border-slate-200 bg-slate-200/50">${sumTested}</td>
+                    <td class="px-2.5 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNGCult}</td>
+                    <td class="px-2.5 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNGPcr}</td>
+                    <td class="px-2.5 py-3 text-right bg-teal-100 text-teal-900 font-black">${sumCTPcr}</td>
+                    <td class="px-2.5 py-3 text-right bg-purple-100 text-purple-900 font-black">${sumCoInf}</td>
+                    <td class="px-2.5 py-3 text-right bg-blue-100 text-blue-900 font-black">${sumGram}</td>
+                    <td class="px-2.5 py-3 text-right bg-amber-100 text-amber-900 font-black">${sumKoh}</td>
+                    <td class="px-2.5 py-3 text-right bg-emerald-100 text-emerald-900 font-black">${sumTp}</td>
+                    <td class="px-2.5 py-3 text-right bg-rose-100 text-rose-900 font-black">${sumHiv}</td>
+                    <td class="px-2.5 py-3 text-right bg-cyan-100 text-cyan-900 font-black">${sumHcv}</td>
+                    <td class="px-2.5 py-3 text-right bg-rose-100 text-rose-900 font-black border-r border-slate-200">${sumBetaLac}</td>
+                    <td class="px-3 py-3 text-right font-black text-slate-900 bg-indigo-100">${sumTotalPos}</td>
+                    <td class="px-3 py-3 text-right bg-indigo-100 text-indigo-900 font-black border-r border-slate-200">${overallRate}</td>
+                    <td class="px-3.5 py-3 text-center text-rose-700 font-bold whitespace-nowrap border-r border-slate-200">⚠️ ดื้อยา 1 เคส (พ.ค. 69)</td>
+                    <td class="px-4 py-3 text-rose-700 text-[11px]">✓ เฝ้าระวัง MIC Shift</td>
+                </tr>
+            `;
+        }
                 `;
             }).join('');
 
