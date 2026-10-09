@@ -234,4 +234,1181 @@
                 <!-- วงที่ 2: สัดส่วนการตรวจพบหนองในแยกวิธี ปี 2569 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
                     <div class="flex items-center justify-between mb-1">
-                        <h3 class="text-base font-bold text-slate-900">ประสิทธิภาพการตรวจพบหนองใน
+                        <h3 class="text-base font-bold text-slate-900">ประสิทธิภาพการตรวจพบหนองในแยกวิธี (NG Yield)</h3>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-100 text-indigo-800" id="badge-ng-yield">รวม 12 ราย</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">เปรียบเทียบการตรวจพบระหว่างการเพาะเชื้อ (Culture) และสารพันธุกรรม (PCR)</p>
+                    <div class="relative w-full" style="height: 260px; min-height: 260px;">
+                        <canvas id="donut2569Method"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. ตารางเฝ้าระวังรายเดือน 2569 ครบทั้ง 10 รายการตรวจวิเคราะห์ -->
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900 flex items-center">
+                            <i class="fa-solid fa-calendar-check text-sky-600 mr-2"></i>
+                            สรุปสถานการณ์การเฝ้าระวังโรคติดต่อทางเพศสัมพันธ์และเชื้อดื้อยารายเดือน (ต.ค. 2568 – ก.ย. 2569)
+                        </h4>
+                        <p class="text-xs text-slate-500">จำแนกผลบวกตามรายการตรวจวิเคราะห์ทางห้องปฏิบัติการครบทั้ง 10 รายการรายเดือน</p>
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-sky-100 text-sky-800">
+                        <i class="fa-solid fa-list-ol mr-1"></i> ครบ 10 รายการตรวจทางห้องปฏิบัติการ
+                    </span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="px-2.5 py-3 text-left sticky left-0 bg-slate-100 z-10 whitespace-nowrap">เดือน / ปี</th>
+                                <th class="px-2 py-3 text-right">ส่งตรวจ (คน)</th>
+                                <!-- ครบ 10 รายการตรวจวิเคราะห์ -->
+                                <th class="px-2 py-3 text-right bg-sky-50 text-sky-900" title="หนองในจากการเพาะเชื้อ">1. NG Cult</th>
+                                <th class="px-2 py-3 text-right bg-sky-50 text-sky-900" title="หนองในจาก Real-time PCR">2. NG PCR</th>
+                                <th class="px-2 py-3 text-right bg-teal-50 text-teal-900" title="หนองในเทียมจาก Real-time PCR">3. CT PCR</th>
+                                <th class="px-2 py-3 text-right bg-purple-50 text-purple-900" title="ติดเชื้อร่วม CT & NG Co-infection">4. Co-inf</th>
+                                <th class="px-2 py-3 text-right bg-blue-50 text-blue-900" title="ย้อมสีแกรม GNDC Intra/Extra-cellular">5. Gram</th>
+                                <th class="px-2 py-3 text-right bg-amber-50 text-amber-900" title="ตรวจเชื้อรา KOH Preparation">6. KOH</th>
+                                <th class="px-2 py-3 text-right bg-emerald-50 text-emerald-900" title="คัดกรองซิฟิลิส Anti-TP">7. Anti-TP</th>
+                                <th class="px-2 py-3 text-right bg-rose-50 text-rose-900" title="คัดกรองเอชไอวี Anti-HIV">8. HIV</th>
+                                <th class="px-2 py-3 text-right bg-cyan-50 text-cyan-900" title="คัดกรองไวรัสตับอักเสบซี Anti-HCV">9. HCV</th>
+                                <th class="px-2 py-3 text-right bg-rose-50 text-rose-900" title="ทดสอบเอนไซม์ดื้อยา Beta-Lactamase">10. β-Lac</th>
+                                <!-- สรุปรวมรายเดือน -->
+                                <th class="px-2.5 py-3 text-right font-black text-slate-900 bg-slate-200/70">รวมบวก (เคส)</th>
+                                <th class="px-2.5 py-3 text-right font-bold bg-indigo-50 text-indigo-900">อัตราพบเชื้อ (%)</th>
+                                <th class="px-3 py-3 text-center whitespace-nowrap">สถานะ AMR</th>
+                                <th class="px-3 py-3 text-left min-w-[170px]">บันทึกทางระบาดวิทยา</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="currentYearMonthlyTableBody"></tbody>
+                        <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="currentYearMonthlyTableFoot"></tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4. ตารางสรุปภาพรวมปี 2569 ครบ 10 รายการตรวจวิเคราะห์ทางห้องปฏิบัติการ -->
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900 flex items-center">
+                            <i class="fa-solid fa-list-check text-sky-600 mr-2"></i> 
+                            รายงานสรุปผลการให้บริการตรวจวิเคราะห์ทางห้องปฏิบัติการ ครบ 10 รายการ (ปีงบประมาณ 2569)
+                        </h4>
+                        <p class="text-xs text-slate-500">จำแนกรายการทดสอบ แสดงจำนวนส่งตรวจ ตรวจพบผลบวก และคำนวณอัตราผลบวก (%) Real-time</p>
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-800">
+                        <i class="fa-solid fa-circle-check mr-1.5 text-emerald-600"></i> ครบ 10 รายการตรวจ
+                    </span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="px-3 py-3 text-center w-12">ลำดับ</th>
+                                <th class="px-4 py-3 text-left">รายการตรวจวิเคราะห์ทางห้องปฏิบัติการ</th>
+                                <th class="px-4 py-3 text-left">วิธีตรวจวิเคราะห์ (Methodology)</th>
+                                <th class="px-4 py-3 text-right">จำนวนส่งตรวจ (Specimens)</th>
+                                <th class="px-4 py-3 text-right bg-sky-50 text-sky-900">ตรวจพบเชื้อ / ผลบวก (Positive)</th>
+                                <th class="px-4 py-3 text-right font-bold bg-indigo-50 text-indigo-900">อัตราพบเชื้อ (%)</th>
+                                <th class="px-4 py-3 text-center">สถานะผลการวิเคราะห์</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="summaryTable2569Body"></tbody>
+                        <tfoot class="bg-slate-100 font-bold border-t-2 border-slate-300 text-slate-900" id="summaryTable2569Foot"></tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 5. ตารางจำแนก 3 มิติ: สิ่งส่งตรวจ / กลุ่มอายุ / หน่วยงานส่งตรวจ ปี 2569 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- ตารางตำแหน่งสิ่งส่งตรวจ ปี 2569 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-vial-virus text-sky-600 mr-1.5"></i> ตำแหน่งสิ่งส่งตรวจ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full">N = 47</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">ตำแหน่ง</th>
+                                        <th class="py-2 text-right">จำนวน</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="specimen2569TableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ตารางการกระจายตามกลุ่มอายุ ปี 2569 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-user-group text-indigo-600 mr-1.5"></i> การกระจายตามกลุ่มอายุ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">N = 47</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">กลุ่มอายุ</th>
+                                        <th class="py-2 text-right">จำนวน</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="age2569TableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ตารางหน่วยงานที่ส่งตรวจ ปี 2569 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-900 flex items-center">
+                                <i class="fa-solid fa-hospital text-teal-600 mr-1.5"></i> หน่วยงานที่ส่งตรวจ 69
+                            </h4>
+                            <span class="text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">N = 47</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-slate-200 text-xs">
+                                <thead class="bg-slate-50 text-slate-700 font-semibold">
+                                    <tr>
+                                        <th class="py-2 text-left">หน่วยงานส่งตรวจ</th>
+                                        <th class="py-2 text-right">เคส</th>
+                                        <th class="py-2 text-right">สัดส่วน</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="facility2569TableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== TAB 2: เฝ้าระวังเชื้อดื้อยา (AMR & MIC) ==================== -->
+        <section id="section-amr" class="space-y-8 hidden">
+            
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
+                <h3 class="text-base font-bold text-slate-900 mb-1">สถานการณ์ความไวต่อยาของเชื้อหนองใน (AMR Profile สะสม)</h3>
+                <p class="text-xs text-slate-500 mb-4">อัตราส่วนไวต่อยา (S) และดื้อยา (R) ต่อยาต้านจุลชีพ 6 ชนิดหลักจากฐานข้อมูล</p>
+                <div class="relative w-full" style="height: 320px; min-height: 320px;">
+                    <canvas id="amrBarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900">ตารางอัตราการดื้อยาต้านจุลชีพรายปี (พ.ศ. 2559 - 2569)</h4>
+                        <p class="text-xs text-slate-500">ร้อยละการดื้อยาต้านจุลชีพ 6 ชนิดและค่าเฉลี่ยดื้อยารวม (Mean AMR)</p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="px-3 py-3 text-left">ปี พ.ศ.</th>
+                                <th class="px-3 py-3 text-right">Penicillin</th>
+                                <th class="px-3 py-3 text-right">Ciprofloxacin</th>
+                                <th class="px-3 py-3 text-right">Spectinomycin</th>
+                                <th class="px-3 py-3 text-right">Tetracycline</th>
+                                <th class="px-3 py-3 text-right">Azithromycin</th>
+                                <th class="px-3 py-3 text-right">Ceftriaxone</th>
+                                <th class="px-3 py-3 text-right font-bold bg-amber-50 text-amber-900">เฉลี่ย 6 ชนิด</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="amrYearlyTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-shadow">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 flex items-center">
+                            <i class="fa-solid fa-chart-column text-sky-600 mr-2"></i>
+                            การแจกแจงความถี่ค่า MIC ย้อนหลัง 5 ปี (พ.ศ. 2565 - 2569)
+                        </h3>
+                        <p class="text-xs text-slate-500">ติดตามการกระจายตัวของค่า MIC และเฝ้าระวังการขยับสูงขึ้นของเชื้อ Neisseria gonorrhoeae (MIC Creep)</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label for="drugSelector" class="text-xs font-semibold text-slate-600">เลือกยาต้านจุลชีพ:</label>
+                        <select id="drugSelector" onchange="updateMICChart(this.value)" class="text-xs font-medium bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                            <option value="CRO">Ceftriaxone (CRO) - ยาฉีดหลัก</option>
+                            <option value="CFM">Cefixime (CFM) - ยากินหลัก</option>
+                            <option value="AZM">Azithromycin (AZM) - ยาร่วมรักษา</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="micInfoBanner" class="mb-4 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg flex flex-wrap justify-between items-center text-xs text-slate-600">
+                    <div>
+                        <strong>เกณฑ์มาตรฐาน (Breakpoint):</strong> <span id="breakpointText" class="text-emerald-700 font-bold">ไวต่อยา (S) เมื่อ MIC ≤ 0.25 mg/L</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500">
+                        *หากแท่งกราฟปีหลังๆ ขยับตัวไปทางขวา แสดงว่าเกิดการลดความไวของเชื้อในพื้นที่
+                    </div>
+                </div>
+
+                <div class="relative w-full" style="height: 320px; min-height: 320px;">
+                    <canvas id="micDistributionChart"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== TAB 3: ประกันคุณภาพ (EQA) ==================== -->
+        <section id="section-eqa" class="space-y-8 hidden">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">รอบประเมิน EQA ทั้งหมด</span>
+                    <div class="mt-2 text-3xl font-bold text-slate-900">31 รอบ</div>
+                    <p class="mt-1 text-xs text-slate-500">ตามตารางโปรแกรม EQA</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">รอบที่ผ่านเกณฑ์</span>
+                    <div class="mt-2 text-3xl font-bold text-emerald-600">30 รอบ</div>
+                    <p class="mt-1 text-xs text-slate-500">อัตราผ่านเกณฑ์เฉลี่ย 100% (รอบที่ประกาศผล)</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">ระดับดีเยี่ยม (Excellent)</span>
+                    <div class="mt-2 text-3xl font-bold text-indigo-600">28 รอบ</div>
+                    <p class="mt-1 text-xs text-slate-500">คิดเป็น 93.3% ของรอบที่ประกาศผล</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 card-shadow">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">การรับรองคุณภาพ</span>
+                    <div class="mt-2 text-3xl font-bold text-sky-600">ISO 15189</div>
+                    <p class="mt-1 text-xs text-slate-500">Quality Compliance 100%</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900">ตารางสรุปผลการประเมินคุณภาพภายนอกห้องปฏิบัติการ (EQA Programs)</h4>
+                        <p class="text-xs text-slate-500">ข้อมูลสรุปจำนวนรอบและอัตราผ่านเกณฑ์</p>
+                    </div>
+                    <span class="text-xs font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">ผ่านเกณฑ์ 100%</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-xs">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="px-4 py-3 text-left">โปรแกรม EQA</th>
+                                <th class="px-4 py-3 text-right">จำนวนรอบทดสอบ</th>
+                                <th class="px-4 py-3 text-right">ผ่านเกณฑ์</th>
+                                <th class="px-4 py-3 text-right">ไม่ผ่านเกณฑ์</th>
+                                <th class="px-4 py-3 text-right">อัตราผ่านเกณฑ์ (%)</th>
+                                <th class="px-4 py-3 text-left">สถานะการประเมิน</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white" id="eqaTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+        <p>© 2569 กลุ่มห้องปฏิบัติการทางการแพทย์ด้านควบคุมโรค สำนักงานป้องกันควบคุมโรคที่ 10 จังหวัดอุบลราชธานี</p>
+        <p class="mt-1">ระบบสารสนเทศข้อมูลเฝ้าระวังทางห้องปฏิบัติการโรคติดต่อทางเพศสัมพันธ์และการดื้อยาต้านจุลชีพ</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // ========================== 1. API CONFIGURATION ==========================
+        const API_URL = "https://script.google.com/macros/s/AKfycbxsOfJtUhtTnf75mB42LhaEHrT8iZgHkra_3vk5rKt1x4mh6DLFccWGm6oO4av1zw/exec";
+
+        // ========================== 2. DATA REPOSITORY ==========================
+        
+        // ข้อมูลเฝ้าระวังรายเดือนปี 2569 ครบทั้ง 10 รายการตรวจ
+        const MONTHLY_SURVEILLANCE_2569 = [
+            { month: 'ต.ค. 68', ym: '2025-10', tested: 4, ng_cult: 3, ng_pcr: 0, ct_pcr: 0, co_inf: 0, gram: 1, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 3, total_pos: 3, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG เพาะเชื้อ 3 เคส (CRO/CFM S)' },
+            { month: 'พ.ย. 68', ym: '2025-11', tested: 1, ng_cult: 0, ng_pcr: 0, ct_pcr: 0, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 0, amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
+            { month: 'ธ.ค. 68', ym: '2025-12', tested: 2, ng_cult: 0, ng_pcr: 0, ct_pcr: 0, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 0, amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
+            { month: 'ม.ค. 69', ym: '2026-01', tested: 3, ng_cult: 0, ng_pcr: 0, ct_pcr: 0, co_inf: 0, gram: 3, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 0, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเม็ดเลือดขาว/GNDC ในสเมียร์' },
+            { month: 'ก.พ. 69', ym: '2026-02', tested: 1, ng_cult: 0, ng_pcr: 0, ct_pcr: 0, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 0, amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
+            { month: 'มี.ค. 69', ym: '2026-03', tested: 6, ng_cult: 1, ng_pcr: 1, ct_pcr: 1, co_inf: 0, gram: 2, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 1, total_pos: 2, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 1 เคส, PCR 1 เคส' },
+            { month: 'เม.ย. 69', ym: '2026-04', tested: 3, ng_cult: 0, ng_pcr: 1, ct_pcr: 1, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 2, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ CT และ NG จาก Real-time PCR' },
+            { month: 'พ.ค. 69', ym: '2026-05', tested: 4, ng_cult: 1, ng_pcr: 1, ct_pcr: 1, co_inf: 0, gram: 1, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 1, total_pos: 2, amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
+            { month: 'มิ.ย. 69', ym: '2026-06', tested: 3, ng_cult: 0, ng_pcr: 1, ct_pcr: 0, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 1, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG จาก Real-time PCR' },
+            { month: 'ก.ค. 69', ym: '2026-07', tested: 6, ng_cult: 0, ng_pcr: 1, ct_pcr: 0, co_inf: 0, gram: 0, koh: 0, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 1, amr_badge: '🟢 ไวต่อยาปกติ', note: 'ตรวจคัดกรองกลุ่มเสี่ยง' },
+            { month: 'ส.ค. 69', ym: '2026-08', tested: 10, ng_cult: 0, ng_pcr: 2, ct_pcr: 1, co_inf: 1, gram: 0, koh: 2, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 4, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 2 เคส, ติดเชื้อร่วม CT/NG' },
+            { month: 'ก.ย. 69', ym: '2026-09', tested: 4, ng_cult: 1, ng_pcr: 1, ct_pcr: 0, co_inf: 1, gram: 0, koh: 1, tp: 0, hiv: 0, hcv: 0, beta_lac: 0, total_pos: 2, amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 1 เคส, เชื้อรา KOH 1 เคส' }
+        ];
+
+        // ข้อมูลสรุปปี 2569
+        let DATA_SUMMARY_2569 = {
+            total_patients: 47,
+            total_infected: 17,
+            ng_culture: { tested: 12, pos: 6, rate: '50.0%' },
+            ng_pcr: { tested: 17, pos: 8, rate: '47.1%' },
+            ng_overall: 12,
+            ct_pcr: { tested: 17, pos: 4, rate: '23.5%' },
+            coinfection: { tested: 17, pos: 2, rate: '11.8%' },
+            gram_stain: { tested: 11, pos: 7, rate: '63.6%' },
+            fungi_koh: { tested: 17, pos: 3, rate: '17.6%' },
+            anti_tp: { tested: 8, pos: 0, rate: '0.0%' },
+            anti_hiv: { tested: 9, pos: 0, rate: '0.0%' },
+            anti_hcv: { tested: 5, pos: 0, rate: '0.0%' },
+            beta_lac: { tested: 6, pos: 5, rate: '83.3%' }
+        };
+
+        // ตำแหน่งสิ่งส่งตรวจปี 2569
+        let SPECIMEN_2569_DATA = [
+            { site: 'ท่อปัสสาวะ (Urethra)', count: 26, pct: '55.3%' },
+            { site: 'ผิวหนัง (Skin / KOH)', count: 17, pct: '36.2%' },
+            { site: 'พลาสมา / เลือด (Plasma)', count: 4, pct: '8.5%' }
+        ];
+
+        // กลุ่มอายุปี 2569
+        let AGE_2569_DATA = [
+            { group: '< 20 ปี', count: 7, pct: '14.9%' },
+            { group: '20 - 29 ปี', count: 5, pct: '10.6%' },
+            { group: '30 - 39 ปี', count: 6, pct: '12.8%' },
+            { group: '40 - 49 ปี', count: 12, pct: '25.5%' },
+            { group: '50 ปีขึ้นไป', count: 17, pct: '36.2%' }
+        ];
+
+        // หน่วยงานที่ส่งตรวจปี 2569
+        let FACILITY_2569_DATA = [
+            { name: 'ศูนย์เวชฯ สคร.10', count: 33, pct: '70.2%' },
+            { name: 'รพ.มุกดาหาร', count: 13, pct: '27.7%' },
+            { name: 'รพ.พริ๊นซ์ อุบล', count: 1, pct: '2.1%' }
+        ];
+
+        const AMR_DRUGS = [
+            { drug: 'Ceftriaxone (CRO)', tested: 149, s: 148, r: 0, r_pct: 0.0 },
+            { drug: 'Azithromycin (AZM)', tested: 149, s: 148, r: 0, r_pct: 0.0 },
+            { drug: 'Spectinomycin (SC)', tested: 151, s: 128, r: 21, r_pct: 13.9 },
+            { drug: 'Tetracycline (TC)', tested: 122, s: 14, r: 93, r_pct: 76.2 },
+            { drug: 'Ciprofloxacin (CIP)', tested: 104, s: 0, r: 88, r_pct: 84.6 },
+            { drug: 'Penicillin (PEN)', tested: 136, s: 0, r: 117, r_pct: 86.0 }
+        ];
+
+        const AMR_YEARLY = [
+            { year: '2559', pen: '100%', cip: '61.9%', sc: '0.0%', tc: '0.0%', azm: '0.0%', cro: '0.0%', mean: '27.0%' },
+            { year: '2560', pen: '100%', cip: '92.3%', sc: '0.0%', tc: '0.0%', azm: '0.0%', cro: '0.0%', mean: '32.1%' },
+            { year: '2561', pen: '75.0%', cip: '100%', sc: '66.7%', tc: '100%', azm: '0.0%', cro: '0.0%', mean: '56.9%' },
+            { year: '2562', pen: '100%', cip: '100%', sc: '20.0%', tc: '92.9%', azm: '0.0%', cro: '0.0%', mean: '52.1%' },
+            { year: '2563', pen: '77.3%', cip: '90.9%', sc: '13.6%', tc: '86.4%', azm: '0.0%', cro: '0.0%', mean: '44.7%' },
+            { year: '2564', pen: '87.5%', cip: '93.8%', sc: '0.0%', tc: '87.5%', azm: '0.0%', cro: '0.0%', mean: '44.8%' },
+            { year: '2565', pen: '100%', cip: '95.5%', sc: '0.0%', tc: '90.9%', azm: '0.0%', cro: '0.0%', mean: '47.7%' },
+            { year: '2566', pen: '100%', cip: '83.3%', sc: '0.0%', tc: '50.0%', azm: '0.0%', cro: '0.0%', mean: '38.9%' },
+            { year: '2567', pen: '100%', cip: '90.0%', sc: '10.0%', tc: '100%', azm: '0.0%', cro: '0.0%', mean: '50.0%' },
+            { year: '2568', pen: '77.8%', cip: '100%', sc: '0.0%', tc: '85.7%', azm: '0.0%', cro: '0.0%', mean: '43.9%' },
+            { year: '2569', pen: '83.3%', cip: '83.3%', sc: '0.0%', tc: '66.7%', azm: '0.0%', cro: '0.0%', mean: '38.9%' }
+        ];
+
+        const MIC_DATASETS = {
+            CRO: {
+                name: 'Ceftriaxone (CRO)',
+                breakpoint: 'ไวต่อยา (S) เมื่อ MIC ≤ 0.25 mg/L (CLSI/EUCAST)',
+                levels: ['0.002', '0.003', '0.004', '0.008', '≥0.020'],
+                years: {
+                    '2565': [14, 0, 8, 0, 0],
+                    '2566': [4, 0, 1, 1, 0],
+                    '2567': [2, 2, 5, 1, 0],
+                    '2568': [4, 1, 0, 0, 0],
+                    '2569': [1, 1, 3, 0, 1]
+                }
+            },
+            CFM: {
+                name: 'Cefixime (CFM)',
+                breakpoint: 'ไวต่อยา (S) เมื่อ MIC ≤ 0.25 mg/L (CLSI/EUCAST)',
+                levels: ['0.006', '0.016', '0.064', '≥0.125'],
+                years: {
+                    '2565': [0, 22, 0, 0],
+                    '2566': [0, 6, 0, 0],
+                    '2567': [0, 9, 1, 0],
+                    '2568': [0, 5, 0, 0],
+                    '2569': [0, 5, 0, 1]
+                }
+            },
+            AZM: {
+                name: 'Azithromycin (AZM)',
+                breakpoint: 'สายพันธุ์ปกติ (Wild Type) เมื่อ MIC ≤ 1.0 mg/L',
+                levels: ['0.016', '0.032', '0.047', '0.064', '≥0.094'],
+                years: {
+                    '2565': [0, 2, 6, 14, 0],
+                    '2566': [1, 0, 2, 3, 0],
+                    '2567': [0, 0, 5, 3, 2],
+                    '2568': [0, 1, 2, 2, 0],
+                    '2569': [0, 0, 2, 3, 1]
+                }
+            }
+        };
+
+        const YEAR_COLORS = {
+            '2565': '#94a3b8',
+            '2566': '#38bdf8',
+            '2567': '#0284c7',
+            '2568': '#0369a1',
+            '2569': '#e11d48'
+        };
+
+        const EQA_PROGRAMS = [
+            { prog: 'Gram stain', rounds: 9, pass: 9, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' },
+            { prog: 'Syphilis Serology', rounds: 6, pass: 6, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' },
+            { prog: 'GC Culture', rounds: 6, pass: 5, fail: 0, rate: '100.0%', status: 'ปิดรอบ 5 / รอสรุป 1' },
+            { prog: 'PCR For Malaria', rounds: 5, pass: 5, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' },
+            { prog: 'Slide proficiency Malaria', rounds: 1, pass: 1, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' },
+            { prog: 'Slide proficiency Microfilaria', rounds: 1, pass: 1, fail: 0, rate: '100.0%', status: 'ปิดรอบสมบูรณ์' }
+        ];
+
+        let donut2569InfChart = null;
+        let donut2569MethodChart = null;
+        let micChartInstance = null;
+        let amrBarChartInstance = null;
+
+        // ========================== 3. RENDERING FUNCTIONS ==========================
+        
+        function renderCurrentYearMonthlyTable() {
+            const tbody = document.getElementById('currentYearMonthlyTableBody');
+            const tfoot = document.getElementById('currentYearMonthlyTableFoot');
+            if (!tbody || !tfoot) return;
+
+            let sumTested = 0;
+            let sumNGCult = 0, sumNGPcr = 0, sumCTPcr = 0, sumCoInf = 0, sumGram = 0;
+            let sumKoh = 0, sumTp = 0, sumHiv = 0, sumHcv = 0, sumBetaLac = 0;
+            let sumTotalPos = 0;
+
+            tbody.innerHTML = MONTHLY_SURVEILLANCE_2569.map(d => {
+                sumTested += d.tested || 0;
+                sumNGCult += d.ng_cult || 0;
+                sumNGPcr += d.ng_pcr || 0;
+                sumCTPcr += d.ct_pcr || 0;
+                sumCoInf += d.co_inf || 0;
+                sumGram += d.gram || 0;
+                sumKoh += d.koh || 0;
+                sumTp += d.tp || 0;
+                sumHiv += d.hiv || 0;
+                sumHcv += d.hcv || 0;
+                sumBetaLac += d.beta_lac || 0;
+                sumTotalPos += d.total_pos || 0;
+
+                const monthRate = d.tested > 0 ? ((d.total_pos / d.tested) * 100).toFixed(1) + '%' : '0.0%';
+                const isAlert = d.amr_badge && d.amr_badge.includes('ดื้อยา');
+                const fmt = val => (val > 0 ? val : '-');
+
+                return `
+                    <tr class="hover:bg-slate-50 transition-colors ${isAlert ? 'bg-rose-50/40' : ''}">
+                        <td class="px-2.5 py-2.5 font-bold text-slate-900 sticky left-0 bg-white z-10 whitespace-nowrap">${d.month}</td>
+                        <td class="px-2 py-2.5 text-right font-medium text-slate-700">${d.tested}</td>
+                        <td class="px-2 py-2.5 text-right bg-sky-50/40 text-sky-800 font-bold">${fmt(d.ng_cult)}</td>
+                        <td class="px-2 py-2.5 text-right bg-sky-50/40 text-sky-800 font-bold">${fmt(d.ng_pcr)}</td>
+                        <td class="px-2 py-2.5 text-right bg-teal-50/40 text-teal-800 font-bold">${fmt(d.ct_pcr)}</td>
+                        <td class="px-2 py-2.5 text-right bg-purple-50/40 text-purple-800 font-bold">${fmt(d.co_inf)}</td>
+                        <td class="px-2 py-2.5 text-right bg-blue-50/40 text-blue-800 font-bold">${fmt(d.gram)}</td>
+                        <td class="px-2 py-2.5 text-right bg-amber-50/40 text-amber-800 font-bold">${fmt(d.koh)}</td>
+                        <td class="px-2 py-2.5 text-right bg-emerald-50/40 text-emerald-800 font-bold">${fmt(d.tp)}</td>
+                        <td class="px-2 py-2.5 text-right bg-rose-50/40 text-rose-800 font-bold">${fmt(d.hiv)}</td>
+                        <td class="px-2 py-2.5 text-right bg-cyan-50/40 text-cyan-800 font-bold">${fmt(d.hcv)}</td>
+                        <td class="px-2 py-2.5 text-right bg-rose-50/40 text-rose-800 font-bold">${fmt(d.beta_lac)}</td>
+                        <td class="px-2.5 py-2.5 text-right font-black text-slate-900 bg-slate-100/60">${fmt(d.total_pos)}</td>
+                        <td class="px-2.5 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${monthRate}</td>
+                        <td class="px-3 py-2.5 text-center text-xs font-semibold whitespace-nowrap">${d.amr_badge}</td>
+                        <td class="px-3 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
+
+            tfoot.innerHTML = `
+                <tr>
+                    <td class="px-2.5 py-3 sticky left-0 bg-slate-100 z-10 whitespace-nowrap">รวมทั้งสิ้น (FY 2569)</td>
+                    <td class="px-2 py-3 text-right font-black">${sumTested}</td>
+                    <td class="px-2 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNGCult}</td>
+                    <td class="px-2 py-3 text-right bg-sky-100 text-sky-900 font-black">${sumNGPcr}</td>
+                    <td class="px-2 py-3 text-right bg-teal-100 text-teal-900 font-black">${sumCTPcr}</td>
+                    <td class="px-2 py-3 text-right bg-purple-100 text-purple-900 font-black">${sumCoInf}</td>
+                    <td class="px-2 py-3 text-right bg-blue-100 text-blue-900 font-black">${sumGram}</td>
+                    <td class="px-2 py-3 text-right bg-amber-100 text-amber-900 font-black">${sumKoh}</td>
+                    <td class="px-2 py-3 text-right bg-emerald-100 text-emerald-900 font-black">${sumTp}</td>
+                    <td class="px-2 py-3 text-right bg-rose-100 text-rose-900 font-black">${sumHiv}</td>
+                    <td class="px-2 py-3 text-right bg-cyan-100 text-cyan-900 font-black">${sumHcv}</td>
+                    <td class="px-2 py-3 text-right bg-rose-100 text-rose-900 font-black">${sumBetaLac}</td>
+                    <td class="px-2.5 py-3 text-right font-black text-slate-900 bg-slate-200">${sumTotalPos}</td>
+                    <td class="px-2.5 py-3 text-right bg-indigo-100 text-indigo-900 font-black">${overallRate}</td>
+                    <td class="px-3 py-3 text-center text-rose-700 font-bold whitespace-nowrap">⚠️ ดื้อยา 1 เคส (พ.ค. 69)</td>
+                    <td class="px-3 py-3 text-rose-700 text-[11px]">✓ เฝ้าระวัง MIC Shift</td>
+                </tr>
+            `;
+        }
+
+        // ==================== ฟังก์ชันเรนเดอร์ครบ 10 รายการตรวจวิเคราะห์ ====================
+        function renderSummaryTable2569() {
+            const tbody = document.getElementById('summaryTable2569Body');
+            const tfoot = document.getElementById('summaryTable2569Foot');
+            if (!tbody) return;
+
+            const d = DATA_SUMMARY_2569;
+
+            const labTests = [
+                {
+                    no: 1,
+                    name: 'เพาะเชื้อหนองใน (Neisseria gonorrhoeae)',
+                    method: 'Culture & Isolation (Selective Media)',
+                    tested: d.ng_culture ? d.ng_culture.tested : 12,
+                    pos: d.ng_culture ? d.ng_culture.pos : 6,
+                    icon: 'fa-vial text-sky-600',
+                    badge: 'เพาะเชื้อขึ้น 6 สายพันธุ์'
+                },
+                {
+                    no: 2,
+                    name: 'สารพันธุกรรมเชื้อหนองใน (NG PCR)',
+                    method: 'Real-time Multiplex PCR',
+                    tested: d.ng_pcr ? d.ng_pcr.tested : 17,
+                    pos: d.ng_pcr ? d.ng_pcr.pos : 8,
+                    icon: 'fa-dna text-indigo-600',
+                    badge: 'ตรวจพบสารพันธุกรรม'
+                },
+                {
+                    no: 3,
+                    name: 'สารพันธุกรรมหนองในเทียม (Chlamydia trachomatis)',
+                    method: 'Real-time Multiplex PCR',
+                    tested: d.ct_pcr ? d.ct_pcr.tested : 17,
+                    pos: d.ct_pcr ? d.ct_pcr.pos : 4,
+                    icon: 'fa-bacterium text-teal-600',
+                    badge: 'ตรวจพบสารพันธุกรรม'
+                },
+                {
+                    no: 4,
+                    name: 'การติดเชื้อร่วม (CT & NG Co-infection)',
+                    method: 'Real-time Multiplex PCR (Dual Detection)',
+                    tested: d.coinfection ? d.coinfection.tested : 17,
+                    pos: d.coinfection ? d.coinfection.pos : 2,
+                    icon: 'fa-code-merge text-purple-600',
+                    badge: 'พบติดเชื้อ 2 ชนิดร่วมกัน'
+                },
+                {
+                    no: 5,
+                    name: 'ย้อมสีแกรมตรวจหนองใน (Gram Stain GNDC)',
+                    method: 'Direct Smear (Intra/Extra-cellular GNDC)',
+                    tested: d.gram_stain ? d.gram_stain.tested : 11,
+                    pos: d.gram_stain ? d.gram_stain.pos : 7,
+                    icon: 'fa-eye text-blue-600',
+                    badge: 'พบเม็ดเลือดขาว/GNDC'
+                },
+                {
+                    no: 6,
+                    name: 'ตรวจหาเชื้อราโดยตรง (KOH Preparation)',
+                    method: 'Direct Microscopy (KOH 10%)',
+                    tested: d.fungi_koh ? d.fungi_koh.tested : 17,
+                    pos: d.fungi_koh ? d.fungi_koh.pos : 3,
+                    icon: 'fa-circle-nodes text-amber-600',
+                    badge: 'พบเส้นใย/สปอร์เชื้อรา'
+                },
+                {
+                    no: 7,
+                    name: 'ตรวจคัดกรองซิฟิลิส (Anti-TP Screening)',
+                    method: 'Immunochromatographic Assay (ICT)',
+                    tested: d.anti_tp ? d.anti_tp.tested : 8,
+                    pos: d.anti_tp ? d.anti_tp.pos : 0,
+                    icon: 'fa-shield-halved text-emerald-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 8,
+                    name: 'ตรวจคัดกรองเอชไอวี (Anti-HIV Screening)',
+                    method: 'Immunochromatographic Rapid Test',
+                    tested: d.anti_hiv ? d.anti_hiv.tested : 9,
+                    pos: d.anti_hiv ? d.anti_hiv.pos : 0,
+                    icon: 'fa-ribbon text-rose-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 9,
+                    name: 'ตรวจคัดกรองไวรัสตับอักเสบซี (Anti-HCV)',
+                    method: 'Rapid Diagnostic Test',
+                    tested: d.anti_hcv ? d.anti_hcv.tested : 5,
+                    pos: d.anti_hcv ? d.anti_hcv.pos : 0,
+                    icon: 'fa-virus text-cyan-600',
+                    badge: 'Non-reactive ทั้งหมด'
+                },
+                {
+                    no: 10,
+                    name: 'ทดสอบเอนไซม์ดื้อยา (Beta-Lactamase Test)',
+                    method: 'Nitrocefin Method (Cefinase Disc)',
+                    tested: d.beta_lac ? d.beta_lac.tested : 6,
+                    pos: d.beta_lac ? d.beta_lac.pos : 5,
+                    icon: 'fa-triangle-exclamation text-rose-600',
+                    badge: '⚠️ ให้ผลบวก (PPNG 5 ราย)'
+                }
+            ];
+
+            let grandTotalTested = 0;
+            let grandTotalPos = 0;
+
+            tbody.innerHTML = labTests.map(t => {
+                grandTotalTested += t.tested;
+                grandTotalPos += t.pos;
+                
+                const ratePct = t.tested > 0 ? ((t.pos / t.tested) * 100).toFixed(1) + '%' : '0.0%';
+                const isHighlight = t.pos > 0;
+
+                return `
+                    <tr class="hover:bg-slate-50 transition-colors ${t.no === 4 ? 'bg-purple-50/20' : ''}">
+                        <td class="px-3 py-2.5 text-center font-medium text-slate-500">${t.no}</td>
+                        <td class="px-4 py-2.5 font-semibold text-slate-800">
+                            <i class="fa-solid ${t.icon} mr-1.5"></i> ${t.name}
+                        </td>
+                        <td class="px-4 py-2.5 text-slate-600">${t.method}</td>
+                        <td class="px-4 py-2.5 text-right font-medium">${t.tested}</td>
+                        <td class="px-4 py-2.5 text-right font-bold ${isHighlight ? 'text-sky-700 bg-sky-50/40' : 'text-slate-400'}">${t.pos > 0 ? t.pos : '0'}</td>
+                        <td class="px-4 py-2.5 text-right font-bold ${isHighlight ? 'text-indigo-700 bg-indigo-50/40' : 'text-slate-400'}">${ratePct}</td>
+                        <td class="px-4 py-2.5 text-center">
+                            <span class="px-2 py-0.5 rounded text-[10.5px] font-semibold ${t.pos > 0 ? (t.no === 10 ? 'bg-rose-100 text-rose-800' : 'bg-sky-100 text-sky-800') : 'bg-slate-100 text-slate-600'}">
+                                ${t.badge}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            const uniquePatients = d.total_patients || 47;
+            const uniqueInfected = d.total_infected || 17;
+            const overallInfectedRate = uniquePatients > 0 ? ((uniqueInfected / uniquePatients) * 100).toFixed(1) + '%' : '0.0%';
+            const overallTestRate = grandTotalTested > 0 ? ((grandTotalPos / grandTotalTested) * 100).toFixed(1) + '%' : '0.0%';
+
+            if (tfoot) {
+                tfoot.innerHTML = `
+                    <tr class="bg-slate-50 font-bold border-t-2 border-slate-300">
+                        <td class="px-4 py-2.5 text-left" colspan="3">
+                            <i class="fa-solid fa-calculator text-slate-600 mr-1.5"></i> รวมปริมาณงานทดสอบทางห้องปฏิบัติการทั้งหมด (Total Tests Performed)
+                        </td>
+                        <td class="px-4 py-2.5 text-right font-black text-slate-900">${grandTotalTested} ครั้ง</td>
+                        <td class="px-4 py-2.5 text-right font-black text-sky-900 bg-sky-100/60">${grandTotalPos} ครั้ง</td>
+                        <td class="px-4 py-2.5 text-right font-black text-indigo-900 bg-indigo-100/60">${overallTestRate}</td>
+                        <td class="px-4 py-2.5 text-center text-xs font-semibold text-slate-700">10 รายการตรวจ</td>
+                    </tr>
+                    <tr class="bg-indigo-900 text-white font-bold">
+                        <td class="px-4 py-3 text-left" colspan="3">
+                            <i class="fa-solid fa-user-check text-sky-300 mr-1.5"></i> สรุปผู้รับบริการสะสมและการตรวจพบการติดเชื้อสุทธิ (Unique Patients & Infections)
+                        </td>
+                        <td class="px-4 py-3 text-right font-black text-sky-200 text-sm">${uniquePatients} คน</td>
+                        <td class="px-4 py-3 text-right font-black text-emerald-300 text-sm">${uniqueInfected} ราย</td>
+                        <td class="px-4 py-3 text-right font-black text-amber-300 text-sm">${overallInfectedRate}</td>
+                        <td class="px-4 py-3 text-center text-xs font-medium text-sky-200">อัตราติดเชื้อสุทธิรายคน</td>
+                    </tr>
+                `;
+            }
+        }
+
+        function renderDemographic2569Tables() {
+            const specBody = document.getElementById('specimen2569TableBody');
+            if (specBody) {
+                const totalSpec = SPECIMEN_2569_DATA.reduce((sum, item) => sum + item.count, 0);
+                specBody.innerHTML = SPECIMEN_2569_DATA.map(s => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-2 text-slate-800 font-medium">${s.site}</td>
+                        <td class="py-2 text-right font-bold text-sky-700">${s.count}</td>
+                        <td class="py-2 text-right text-slate-500">${s.pct}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="font-bold bg-slate-50 border-t border-slate-200">
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalSpec}</td>
+                        <td class="py-2 text-right">100.0%</td>
+                    </tr>
+                `;
+            }
+
+            const ageBody = document.getElementById('age2569TableBody');
+            if (ageBody) {
+                const totalAge = AGE_2569_DATA.reduce((sum, item) => sum + item.count, 0);
+                ageBody.innerHTML = AGE_2569_DATA.map(a => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-2 text-slate-800 font-medium">${a.group}</td>
+                        <td class="py-2 text-right font-bold text-indigo-700">${a.count}</td>
+                        <td class="py-2 text-right text-slate-500">${a.pct}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="font-bold bg-slate-50 border-t border-slate-200">
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalAge}</td>
+                        <td class="py-2 text-right">100.0%</td>
+                    </tr>
+                `;
+            }
+
+            const facBody = document.getElementById('facility2569TableBody');
+            if (facBody) {
+                const totalFac = FACILITY_2569_DATA.reduce((sum, item) => sum + item.count, 0);
+                facBody.innerHTML = FACILITY_2569_DATA.map(f => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-2 text-slate-800 font-medium truncate max-w-[130px]" title="${f.name}">${f.name}</td>
+                        <td class="py-2 text-right font-bold text-teal-700">${f.count}</td>
+                        <td class="py-2 text-right text-slate-500">${f.pct}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="font-bold bg-slate-50 border-t border-slate-200">
+                        <td class="py-2">รวมทั้งหมด</td>
+                        <td class="py-2 text-right font-black text-slate-900">${totalFac}</td>
+                        <td class="py-2 text-right">100.0%</td>
+                    </tr>
+                `;
+            }
+        }
+
+        function renderStandardTables() {
+            const amrBody = document.getElementById('amrYearlyTableBody');
+            if (amrBody) {
+                amrBody.innerHTML = AMR_YEARLY.map(y => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="px-3 py-2 font-bold text-slate-900">${y.year}</td>
+                        <td class="px-3 py-2 text-right">${y.pen}</td>
+                        <td class="px-3 py-2 text-right">${y.cip}</td>
+                        <td class="px-3 py-2 text-right">${y.sc}</td>
+                        <td class="px-3 py-2 text-right">${y.tc}</td>
+                        <td class="px-3 py-2 text-right text-emerald-600">${y.azm}</td>
+                        <td class="px-3 py-2 text-right text-emerald-600">${y.cro}</td>
+                        <td class="px-3 py-2 text-right font-bold bg-amber-50/50 text-amber-900">${y.mean}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="bg-slate-100 font-bold border-t-2 border-slate-300">
+                        <td class="px-3 py-2">ภาพรวมสะสม</td>
+                        <td class="px-3 py-2 text-right">92.3%</td>
+                        <td class="px-3 py-2 text-right">93.6%</td>
+                        <td class="px-3 py-2 text-right">14.0%</td>
+                        <td class="px-3 py-2 text-right">82.8%</td>
+                        <td class="px-3 py-2 text-right text-emerald-700">0.0%</td>
+                        <td class="px-3 py-2 text-right text-emerald-700">0.0%</td>
+                        <td class="px-3 py-2 text-right bg-amber-100 text-amber-900">47.1%</td>
+                    </tr>
+                `;
+            }
+
+            const eqaBody = document.getElementById('eqaTableBody');
+            if (eqaBody) {
+                eqaBody.innerHTML = EQA_PROGRAMS.map(e => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="px-4 py-3 font-semibold text-slate-800">${e.prog}</td>
+                        <td class="px-4 py-3 text-right font-medium">${e.rounds}</td>
+                        <td class="px-4 py-3 text-right font-bold text-emerald-600">${e.pass}</td>
+                        <td class="px-4 py-3 text-right text-slate-400">${e.fail}</td>
+                        <td class="px-4 py-3 text-right font-bold text-emerald-700">${e.rate}</td>
+                        <td class="px-4 py-3 text-slate-600">${e.status}</td>
+                    </tr>
+                `).join('') + `
+                    <tr class="bg-slate-50 font-bold border-t-2 border-slate-300">
+                        <td class="px-4 py-3">รวมทั้งหมด</td>
+                        <td class="px-4 py-3 text-right">31</td>
+                        <td class="px-4 py-3 text-right text-emerald-600">30</td>
+                        <td class="px-4 py-3 text-right text-slate-400">0</td>
+                        <td class="px-4 py-3 text-right text-emerald-700 font-black">100.0%</td>
+                        <td class="px-4 py-3 text-emerald-700">✓ ISO 15189 Compliant</td>
+                    </tr>
+                `;
+            }
+        }
+
+        // ========================== 4. CHART.JS VISUALIZATIONS ==========================
+        Chart.defaults.font.family = "'Sarabun', 'Inter', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        function renderMICDistribution(drugKey) {
+            const dataConfig = MIC_DATASETS[drugKey];
+            const bpText = document.getElementById('breakpointText');
+            if (bpText) bpText.innerText = dataConfig.breakpoint;
+
+            const datasets = Object.keys(dataConfig.years).map(year => ({
+                label: `ปี ${year}`,
+                data: dataConfig.years[year],
+                backgroundColor: YEAR_COLORS[year],
+                borderRadius: 3,
+                borderWidth: 1,
+                borderColor: '#ffffff'
+            }));
+
+            const canvas = document.getElementById('micDistributionChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            if (micChartInstance) {
+                micChartInstance.destroy();
+            }
+
+            micChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataConfig.levels.map(l => `${l} mg/L`),
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 12, font: { size: 11 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (item) => ` ปี ${item.dataset.label}: ${item.parsed.y} ราย`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'ระดับค่า MIC (mg/L)',
+                                font: { weight: 'bold', size: 12 }
+                            },
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'จำนวนตัวอย่าง (เคส)',
+                                font: { weight: 'bold', size: 12 }
+                            },
+                            ticks: { precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.updateMICChart = function(drugKey) {
+            renderMICDistribution(drugKey);
+        };
+
+        function initStaticCharts() {
+            // 1. กราฟ Donut สัดส่วนผลการติดเชื้อปี 2569
+            const donut2569InfCanvas = document.getElementById('donut2569Infection');
+            if (donut2569InfCanvas) {
+                if (donut2569InfChart) donut2569InfChart.destroy();
+                const ctx1 = donut2569InfCanvas.getContext('2d');
+                donut2569InfChart = new Chart(ctx1, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            'หนองในอย่างเดียว (NG Single)', 
+                            'หนองในเทียมอย่างเดียว (CT Single)', 
+                            'ติดเชื้อร่วม (CT & NG Co-inf)', 
+                            'เชื้อรา (KOH/Wet)', 
+                            'ตรวจไม่พบเชื้อ (Negative)'
+                        ],
+                        datasets: [{
+                            data: [10, 2, 2, 3, 30],
+                            backgroundColor: ['#0284c7', '#0d9488', '#8b5cf6', '#f59e0b', '#e2e8f0'],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => {
+                                        const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                        return ` ${ctx.label}: ${ctx.parsed} ราย (${((ctx.parsed / total) * 100).toFixed(1)}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 2. กราฟ Donut ประสิทธิภาพการตรวจพบหนองในแยกวิธี
+            const donut2569MethodCanvas = document.getElementById('donut2569Method');
+            if (donut2569MethodCanvas) {
+                if (donut2569MethodChart) donut2569MethodChart.destroy();
+                const ctx2 = donut2569MethodCanvas.getContext('2d');
+                donut2569MethodChart = new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            'Culture (+) & PCR (+)', 
+                            'Culture (+) เท่านั้น', 
+                            'PCR (+) เท่านั้น', 
+                            'ไม่พบเชื้อหนองใน'
+                        ],
+                        datasets: [{
+                            data: [2, 4, 6, 35],
+                            backgroundColor: ['#1e40af', '#38bdf8', '#8b5cf6', '#e2e8f0'],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } },
+                            tooltip: {
+                                callbacks: {
+                                    label: ctx => {
+                                        const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                        return ` ${ctx.label}: ${ctx.parsed} ราย (${((ctx.parsed / total) * 100).toFixed(1)}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 3. กราฟแท่ง AMR แนวนอน
+            const amrCanvas = document.getElementById('amrBarChart');
+            if (amrCanvas) {
+                if (amrBarChartInstance) amrBarChartInstance.destroy();
+                const ctx3 = amrCanvas.getContext('2d');
+                amrBarChartInstance = new Chart(ctx3, {
+                    type: 'bar',
+                    data: {
+                        labels: AMR_DRUGS.map(d => d.drug),
+                        datasets: [
+                            { label: 'ไวต่อยา (S) %', data: AMR_DRUGS.map(d => (100 - d.r_pct).toFixed(1)), backgroundColor: '#10b981', borderRadius: 4 },
+                            { label: 'ดื้อยา (R) %', data: AMR_DRUGS.map(d => d.r_pct.toFixed(1)), backgroundColor: '#ef4444', borderRadius: 4 }
+                        ]
+                    },
+                    options: { 
+                        indexAxis: 'y', 
+                        responsive: true, 
+                        maintainAspectRatio: false, 
+                        scales: { 
+                            x: { stacked: true, max: 100, ticks: { callback: v => v + '%' } }, 
+                            y: { stacked: true } 
+                        }, 
+                        plugins: { legend: { position: 'bottom' } } 
+                    }
+                });
+            }
+        }
+
+        // ========================== 5. REAL-TIME DATA FETCH ==========================
+        async function fetchRealtimeData() {
+            try {
+                const response = await fetch(API_URL + "?t=" + Date.now());
+                if (!response.ok) throw new Error('API Network response was not ok');
+                const data = await response.json();
+                console.log("Realtime Data Loaded:", data);
+                
+                if (data.mic_2569) {
+                    if (data.mic_2569.CRO) MIC_DATASETS.CRO.years['2569'] = data.mic_2569.CRO;
+                    if (data.mic_2569.CFM) MIC_DATASETS.CFM.years['2569'] = data.mic_2569.CFM;
+                    if (data.mic_2569.AZM) MIC_DATASETS.AZM.years['2569'] = data.mic_2569.AZM;
+                    updateMICChart(document.getElementById('drugSelector').value);
+                }
+
+                if (data.monthly_2569 && Array.isArray(data.monthly_2569)) {
+                    MONTHLY_SURVEILLANCE_2569.length = 0;
+                    data.monthly_2569.forEach(m => MONTHLY_SURVEILLANCE_2569.push(m));
+                    renderCurrentYearMonthlyTable();
+                }
+
+                if (data.fy2569) {
+                    const f = data.fy2569;
+                    const validTotalPatients = f.total_patients || 47;
+                    const validTotalInfected = f.total_infected || 17;
+                    const validNgOverall = f.ng_overall || 12;
+
+                    const cultTested = f.ng_culture?.tested || 12;
+                    const cultPos = f.ng_culture?.positive || f.ng_culture?.pos || 6;
+                    
+                    const pcrTested = f.ng_pcr?.tested || 17;
+                    const pcrPos = f.ng_pcr?.positive || f.ng_pcr?.pos || 8;
+
+                    DATA_SUMMARY_2569 = {
+                        total_patients: validTotalPatients,
+                        total_infected: validTotalInfected,
+                        ng_culture: {
+                            tested: cultTested,
+                            pos: cultPos,
+                            rate: ((cultPos / cultTested) * 100).toFixed(1) + '%'
+                        },
+                        ng_pcr: {
+                            tested: pcrTested,
+                            pos: pcrPos,
+                            rate: ((pcrPos / pcrTested) * 100).toFixed(1) + '%'
+                        },
+                        ng_overall: validNgOverall,
+                        ct_pcr: {
+                            tested: f.ct_pcr?.tested || 17,
+                            pos: f.ct_pcr?.positive || f.ct_pcr?.pos || 4,
+                            rate: f.ct_pcr?.rate || '23.5%'
+                        },
+                        coinfection: {
+                            tested: f.coinfection?.tested || 17,
+                            pos: f.coinfection?.positive || f.coinfection?.pos || 2,
+                            rate: f.coinfection?.rate || '11.8%'
+                        },
+                        gram_stain: {
+                            tested: f.gram_stain?.tested || 11,
+                            pos: f.gram_stain?.positive || f.gram_stain?.pos || 7,
+                            rate: '63.6%'
+                        },
+                        fungi_koh: {
+                            tested: f.fungi?.tested || f.fungi_koh?.tested || 17,
+                            pos: f.fungi?.positive || f.fungi?.pos || 3,
+                            rate: f.fungi?.rate || '17.6%'
+                        },
+                        anti_tp: {
+                            tested: f.anti_tp?.tested || 8,
+                            pos: f.anti_tp?.positive || f.anti_tp?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        anti_hiv: {
+                            tested: f.anti_hiv?.tested || 9,
+                            pos: f.anti_hiv?.positive || f.anti_hiv?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        anti_hcv: {
+                            tested: f.anti_hcv?.tested || 5,
+                            pos: f.anti_hcv?.positive || f.anti_hcv?.pos || 0,
+                            rate: '0.0%'
+                        },
+                        beta_lac: {
+                            tested: f.beta_lac?.tested || 6,
+                            pos: f.beta_lac?.positive || f.beta_lac?.pos || 5,
+                            rate: '83.3%'
+                        }
+                    };
+
+                    const pts = document.getElementById('kpi-2569-pts');
+                    if (pts) pts.innerText = DATA_SUMMARY_2569.total_patients;
+
+                    const infSub = document.getElementById('kpi-2569-inf-sub');
+                    if (infSub) infSub.innerText = `${DATA_SUMMARY_2569.total_infected} ราย`;
+
+                    const rateSub = document.getElementById('kpi-2569-rate-sub');
+                    const badgeInfRate = document.getElementById('badge-inf-rate');
+                    if (DATA_SUMMARY_2569.total_patients > 0) {
+                        const calculatedRate = ((DATA_SUMMARY_2569.total_infected / DATA_SUMMARY_2569.total_patients) * 100).toFixed(1) + '%';
+                        if (rateSub) rateSub.innerText = calculatedRate;
+                        if (badgeInfRate) badgeInfRate.innerText = `พบเชื้อ ${calculatedRate}`;
+                    }
+
+                    const ng = document.getElementById('kpi-2569-ng');
+                    if (ng) ng.innerText = DATA_SUMMARY_2569.ng_overall;
+
+                    const badgeNgYield = document.getElementById('badge-ng-yield');
+                    if (badgeNgYield) badgeNgYield.innerText = `รวม ${DATA_SUMMARY_2569.ng_overall} ราย`;
+
+                    const ct = document.getElementById('kpi-2569-ct');
+                    if (ct) ct.innerText = DATA_SUMMARY_2569.ct_pcr.pos;
+
+                    const ctRate = document.getElementById('kpi-2569-ct-rate');
+                    if (ctRate) ctRate.innerText = DATA_SUMMARY_2569.ct_pcr.rate;
+
+                    const co = document.getElementById('kpi-2569-co');
+                    if (co) co.innerText = DATA_SUMMARY_2569.coinfection.pos;
+
+                    const coRate = document.getElementById('kpi-2569-co-rate');
+                    if (coRate) coRate.innerText = DATA_SUMMARY_2569.coinfection.rate;
+
+                    const fungi = document.getElementById('kpi-2569-fungi');
+                    if (fungi) fungi.innerText = DATA_SUMMARY_2569.fungi_koh.pos;
+
+                    const fungiRate = document.getElementById('kpi-2569-fungi-rate');
+                    if (fungiRate) fungiRate.innerText = DATA_SUMMARY_2569.fungi_koh.rate;
+
+                    if (donut2569InfChart) {
+                        const coVal = DATA_SUMMARY_2569.coinfection.pos;
+                        const ngSingle = Math.max(0, DATA_SUMMARY_2569.ng_overall - coVal);
+                        const ctSingle = Math.max(0, DATA_SUMMARY_2569.ct_pcr.pos - coVal);
+                        const fungiVal = DATA_SUMMARY_2569.fungi_koh.pos;
+                        const negativeVal = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.total_infected);
+                        
+                        donut2569InfChart.data.datasets[0].data = [ngSingle, ctSingle, coVal, fungiVal, negativeVal];
+                        donut2569InfChart.update();
+                    }
+
+                    if (donut2569MethodChart) {
+                        const cultPos = DATA_SUMMARY_2569.ng_culture.pos;
+                        const pcrPos = DATA_SUMMARY_2569.ng_pcr.pos;
+                        const coMethod = 2;
+                        const cultOnly = Math.max(0, cultPos - coMethod);
+                        const pcrOnly = Math.max(0, pcrPos - coMethod);
+                        const noNg = Math.max(0, DATA_SUMMARY_2569.total_patients - DATA_SUMMARY_2569.ng_overall);
+
+                        donut2569MethodChart.data.datasets[0].data = [coMethod, cultOnly, pcrOnly, noNg];
+                        donut2569MethodChart.update();
+                    }
+
+                    renderSummaryTable2569();
+                }
+
+                if (data.specimen_2569 && Array.isArray(data.specimen_2569)) {
+                    SPECIMEN_2569_DATA = data.specimen_2569;
+                }
+                if (data.age_2569 && Array.isArray(data.age_2569)) {
+                    AGE_2569_DATA = data.age_2569;
+                }
+                if (data.facility_2569 && Array.isArray(data.facility_2569)) {
+                    FACILITY_2569_DATA = data.facility_2569;
+                }
+                renderDemographic2569Tables();
+
+            } catch (error) {
+                console.warn("ใช้ชุดข้อมูลเริ่มต้น (Offline Fallback):", error);
+                const badge = document.getElementById('api-status-badge');
+                if (badge) {
+                    badge.classList.remove('bg-blue-100', 'text-blue-800');
+                    badge.classList.add('bg-slate-100', 'text-slate-600');
+                    badge.innerHTML = '<i class="fa-solid fa-database mr-1 text-[10px]"></i> Offline Mode';
+                }
+            }
+        }
+
+        // ฟังก์ชันสลับแท็บ
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('tab-' + tabId);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            ['overview', 'amr', 'eqa'].forEach(id => {
+                const section = document.getElementById('section-' + id);
+                if (section) {
+                    if (id === tabId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                }
+            });
+
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 60);
+        }
+
+        // ========================== 6. APP INITIALIZATION ==========================
+        window.addEventListener('DOMContentLoaded', () => {
+            renderStandardTables();
+            renderDemographic2569Tables();
+            renderCurrentYearMonthlyTable();
+            renderSummaryTable2569();
+            initStaticCharts();
+            renderMICDistribution('CRO');
+            fetchRealtimeData();
+        });
+    </script>
+</body>
+</html>
