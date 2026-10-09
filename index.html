@@ -525,7 +525,7 @@
 
         // ========================== 2. DATA REPOSITORY ==========================
         
-        // ข้อมูลเฝ้าระวังรายเดือนปี 2569 (ยอดส่งตรวจรวม 47 คน, NG 12 คน)
+       // ข้อมูลเฝ้าระวังรายเดือนปี 2569 (ยอดส่งตรวจรวม 47 คน, NG 12 คน, พบเชื้อรวม 17 เคส)
         const MONTHLY_SURVEILLANCE_2569 = [
             { month: 'ต.ค. 68', ym: '2025-10', tested: 4, ng: 3, ct: 0, fungi: 0, total_pos: 3, pos_rate: '75.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG เพาะเชื้อ 3 เคส (CRO/CFM S)' },
             { month: 'พ.ย. 68', ym: '2025-11', tested: 1, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
@@ -533,12 +533,12 @@
             { month: 'ม.ค. 69', ym: '2026-01', tested: 3, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'ก.พ. 69', ym: '2026-02', tested: 1, ng: 0, ct: 0, fungi: 0, total_pos: 0, pos_rate: '0.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ส่งตรวจคัดกรองทั่วไป' },
             { month: 'มี.ค. 69', ym: '2026-03', tested: 6, ng: 2, ct: 1, fungi: 0, total_pos: 2, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG Culture 2 เคส (ไวต่อยาหลัก)' },
-            { month: 'เม.ย. 69', ym: '2026-04', tested: 3, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ CT และ NG จาก Real-time PCR' },
-            { month: 'พ.ค. 69', ym: '2026-05', tested: 4, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '66.7%', amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
-            { month: 'มิ.ย. 69', ym: '2026-06', tested:3, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '25.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG จาก Real-time PCR' },
-            { month: 'ก.ค. 69', ym: '2026-07', tested: 6, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '14.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ตรวจคัดกรองกลุ่มเสี่ยง' },
+            { month: 'เม.ย. 69', ym: '2026-04', tested: 3, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '66.7%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ CT และ NG จาก Real-time PCR' },
+            { month: 'พ.ค. 69', ym: '2026-05', tested: 4, ng: 1, ct: 1, fungi: 0, total_pos: 2, pos_rate: '50.0%', amr_badge: '🔴 ตรวจพบเชื้อดื้อยา (Alert)', note: '⚠️ เคส M502 ดื้อยาหลายขนาน (CRO 0.75, CFM 2.0)' },
+            { month: 'มิ.ย. 69', ym: '2026-06', tested: 3, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '33.3%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบ NG จาก Real-time PCR' },
+            { month: 'ก.ค. 69', ym: '2026-07', tested: 6, ng: 1, ct: 0, fungi: 0, total_pos: 1, pos_rate: '16.7%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'ตรวจคัดกรองกลุ่มเสี่ยง' },
             { month: 'ส.ค. 69', ym: '2026-08', tested: 10, ng: 3, ct: 1, fungi: 2, total_pos: 5, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 2 เคส, ติดเชื้อร่วม CT/NG' },
-            { month: 'ก.ย. 69', ym: '2026-09', tested: 4, ng: 0, ct: 0, fungi: 1, total_pos: 1, pos_rate: '50.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 1 เคส' }
+            { month: 'ก.ย. 69', ym: '2026-09', tested: 4, ng: 0, ct: 0, fungi: 1, total_pos: 1, pos_rate: '25.0%', amr_badge: '🟢 ไวต่อยาปกติ', note: 'พบเชื้อรา KOH 1 เคส' }
         ];
 
         // ข้อมูลสรุปปี 2569: ผู้รับบริการ 47, ติดเชื้อจริง 17 (35.4%)
@@ -662,7 +662,7 @@
 
         // ========================== 3. RENDERING FUNCTIONS ==========================
         
-        function renderCurrentYearMonthlyTable() {
+      function renderCurrentYearMonthlyTable() {
             const tbody = document.getElementById('currentYearMonthlyTableBody');
             const tfoot = document.getElementById('currentYearMonthlyTableFoot');
             if (!tbody || !tfoot) return;
@@ -676,6 +676,8 @@
                 sumFungi += d.fungi;
                 sumTotalPos += d.total_pos;
 
+                // 👉 คำนวณเปอร์เซ็นต์อัตโนมัติรายเดือน (ไม่ใช้ค่าข้อความคงที่)
+                const monthRate = d.tested > 0 ? ((d.total_pos / d.tested) * 100).toFixed(1) + '%' : '0.0%';
                 const isAlert = d.amr_badge.includes('ดื้อยา');
 
                 return `
@@ -686,13 +688,14 @@
                         <td class="px-3 py-2.5 text-right bg-teal-50/50 text-teal-800 font-bold">${d.ct > 0 ? d.ct : '-'}</td>
                         <td class="px-3 py-2.5 text-right bg-amber-50/50 text-amber-800 font-bold">${d.fungi > 0 ? d.fungi : '-'}</td>
                         <td class="px-3 py-2.5 text-right font-black text-slate-900">${d.total_pos > 0 ? d.total_pos : '-'}</td>
-                        <td class="px-3 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${d.pos_rate}</td>
+                        <td class="px-3 py-2.5 text-right font-bold text-indigo-700 bg-indigo-50/50">${monthRate}</td>
                         <td class="px-4 py-2.5 text-center text-xs font-semibold">${d.amr_badge}</td>
                         <td class="px-4 py-2.5 text-slate-500 text-[11px]">${d.note}</td>
                     </tr>
                 `;
             }).join('');
 
+            // 👉 คำนวณเปอร์เซ็นต์ภาพรวมทั้งปี (17 / 47 = 36.2%)
             const overallRate = sumTested > 0 ? ((sumTotalPos / sumTested) * 100).toFixed(1) + '%' : '0.0%';
 
             tfoot.innerHTML = `
